@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="376.0" prefWidth="460.0" style="-fx-background-color: #34393F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.AddItemFromController">
+   <children>
+      <ImageView fitHeight="589.0" fitWidth="492.0" opacity="0.17" pickOnBounds="true">
+         <image>
+            <Image url="@assets/BGImage/add%20Employee.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="txtItemCode" alignment="CENTER" layoutX="61.0" layoutY="177.0" onKeyReleased="#item" prefHeight="40.0" prefWidth="374.0" promptText="Item Code" styleClass="text-field-payment2" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXTextField fx:id="txtItemName" alignment="CENTER" layoutX="59.0" layoutY="237.0" onKeyReleased="#itemName" prefHeight="25.0" prefWidth="390.0" promptText="Item Name" styleClass="text-field-payment2" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXTextField fx:id="txtPrice" alignment="CENTER" layoutX="105.0" layoutY="370.0" onKeyReleased="#price" prefHeight="40.0" prefWidth="298.0" promptText="price" styleClass="text-field-payment2" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXTextField fx:id="txtBrand" alignment="CENTER" layoutX="71.0" layoutY="314.0" onKeyReleased="#brand" prefHeight="25.0" prefWidth="367.0" promptText="Brand" styleClass="text-field-payment2" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXTextField fx:id="txtDescription" alignment="CENTER" layoutX="62.0" layoutY="437.0" onKeyReleased="#discription" prefHeight="37.0" prefWidth="390.0" promptText="Discription" styleClass="text-field-payment2" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXComboBox fx:id="combCategory" layoutX="147.0" layoutY="97.0" prefHeight="28.0" prefWidth="215.0" promptText="Catagory" styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXButton fx:id="btnAdd" layoutX="86.0" layoutY="515.0" onAction="#addOnAction" prefHeight="47.0" prefWidth="328.0" styleClass="pay-button" stylesheets="@style/EmployeeDashBord.css" text="Add" />
+      <ImageView fitHeight="58.0" fitWidth="83.0" layoutX="206.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/icon/icons8-new-product-100.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="72.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="Rs." />
+      <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="7.0" layoutY="6.0" onMouseClicked="#colse" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/icon/icons8-close-window-64.png" />
+         </image>
+      </ImageView>
+   </children>
+   <stylesheets>
+      <URL value="@style/EmployeeDashBord.css" />
+      <URL value="@style/Payment.css" />
+      <URL value="@style/Payment.css" />
+   </stylesheets>
+</AnchorPane>

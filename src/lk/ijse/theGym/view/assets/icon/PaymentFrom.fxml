@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="1030.0" prefWidth="1920.0" style="-fx-background-color: #34393F;" stylesheets="@../../style/EmployeeDashBord.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.EmployeeFromController">
+   <children>
+      <ImageView fitHeight="1033.0" fitWidth="1916.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true">
+         <image>
+            <Image url="@../BGImage/BG%20Effect.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="68.0" fitWidth="66.0" layoutX="17.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons8-dumbbell-48.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="102.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="Stock" />
+      <JFXButton layoutX="241.0" layoutY="45.0" onAction="#backOnAction" prefHeight="54.0" prefWidth="202.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="white-button" stylesheets="@../../style/EmployeeDashBord.css">
+         <graphic>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.66665649414062" minWidth="10.0" prefWidth="67.33331298828125" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.66668701171875" minWidth="10.0" prefWidth="132.66668701171875" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" styleClass="set-image">
+                     <image>
+                        <Image url="@icons8-reply-arrow-100%20(1).png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="20.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20; -fx-font-weight: bold;" text="Home" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </graphic>
+      </JFXButton>
+      <Pane layoutX="1215.0" layoutY="26.0" prefHeight="114.0" prefWidth="335.0" styleClass="detail-box">
+         <children>
+            <ImageView fitHeight="77.0" fitWidth="80.0" layoutX="41.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons8-box-91.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="143.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="All Items" />
+            <Text fx:id="txtallEmployee" fill="WHITE" layoutX="154.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="notification-Num-text" text="5" textAlignment="CENTER" wrappingWidth="110.11962890625" />
+         </children>
+      </Pane>
+      <Pane layoutX="1583.0" layoutY="29.0" prefHeight="106.0" prefWidth="309.0" styleClass="detail-box">
+         <children>
+            <ImageView fitHeight="75.0" fitWidth="80.0" layoutX="27.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons8-nft-error-64.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="102.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="Limided" />
+            <Text fx:id="txtTodayAttendance" fill="WHITE" layoutX="135.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="notification-Num-text" text="4" textAlignment="CENTER" wrappingWidth="110.11962890625" />
+         </children>
+      </Pane>
+      <JFXTextField fx:id="search" layoutX="503.0" layoutY="55.0" onKeyReleased="#searchOnKeyReleased" prefHeight="47.0" prefWidth="636.0" promptText="Search ID or Name" styleClass="search-bar" />
+      <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="1085.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons8-search-96.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="73.0" layoutY="225.0" prefHeight="3.0" prefWidth="1764.0" />
+      <JFXComboBox layoutX="76.0" layoutY="163.0" prefHeight="28.0" prefWidth="274.0" promptText="CATOGORY" styleClass="Content-text" />
+      <Pane layoutX="72.0" layoutY="251.0" prefHeight="756.0" prefWidth="1780.0" />
+   </children>
+</AnchorPane>

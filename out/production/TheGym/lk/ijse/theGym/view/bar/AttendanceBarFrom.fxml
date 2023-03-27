@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="65.0" prefWidth="1891.0" styleClass="bar" stylesheets="@../style/bar.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.AttendanceBarFromController">
+   <children>
+      <Pane layoutX="1.0" layoutY="1.0" prefHeight="66.0" prefWidth="1891.0">
+         <children>
+            <Text fx:id="txtId" fill="WHITE" layoutX="102.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Customer ID" wrappingWidth="399.8193359375" />
+            <Text fx:id="txtName" fill="WHITE" layoutX="554.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Name" wrappingWidth="494.2109375" />
+            <Text fx:id="txtTime" fill="WHITE" layoutX="1063.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Time" wrappingWidth="469.2509765625" />
+            <Text fx:id="txtDate" fill="WHITE" layoutX="1559.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Date" wrappingWidth="282.42337799072266" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

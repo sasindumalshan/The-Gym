@@ -1,0 +1,52 @@
+.bar {
+    -fx-border-color: #FBA23E;
+    -fx-border-radius: 20;
+    -fx-background-color: #2E3045;
+    -fx-background-radius: 20;
+
+}
+
+.bar:hover {
+
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-effect: innershadow(gaussian, #FBA23E, 20, 0.1, 0, 0);
+}
+
+.text-detail {
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+}
+
+.bar-btn {
+    -fx-background-radius: 40;
+    -fx-background-color: #FBA23E;
+    -fx-border-radius: 40;
+}
+
+.bar-btn:hover {
+    -fx-background-color: #FBA23E;
+    -fx-effect: dropshadow(gaussian, #FBA23E, 10, 0.1, 0, 0);
+}
+
+.btn-txt {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+}
+
+.txt {
+    -fx-text-fill: #FD0000;
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+}
+
+.bar-2 {
+    -fx-shape: "M 0 200 L 1892 198 L 1892 264 L 1859 297 L 0 297 L 0 198 ";
+    -fx-border-color: white;
+
+}
+.bar-2:hover{
+    -fx-effect: dropshadow(gaussian, #FFFFFF, 10, 0.1, 0, 0);
+}

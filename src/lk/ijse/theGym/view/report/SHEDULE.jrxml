@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SHEDULE" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2e2795c7-be4c-4e04-957e-bca66b0231e4">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="TheGym"/>
+	<parameter name="ID" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT C.fist_name,C.last_name,C.customer_id,
+       A.fist_name,A.last_name,A.coach_id,
+       SD.steps,e.exercises
+
+FROM Schedule
+         INNER JOIN Schedule_Details SD on Schedule.schedule_id = SD.schedule_id
+         INNER JOIN Customer C on Schedule.customer_id = C.customer_id
+         INNER JOIN Coach A ON A.coach_id = Schedule.coach_id
+         INNER JOIN exercises e on SD.exercises_id = e.exercises_id
+         WHERE C.customer_id=$P{ID}]]>
+	</queryString>
+	<field name="fist_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="fist_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="fist_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer"/>
+	</field>
+	<field name="last_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="last_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="last_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer"/>
+	</field>
+	<field name="customer_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="customer_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="customer_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer"/>
+	</field>
+	<field name="COLUMN_4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="fist_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="fist_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="coach"/>
+	</field>
+	<field name="COLUMN_5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="last_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="last_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="coach"/>
+	</field>
+	<field name="coach_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="coach_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="coach_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="coach"/>
+	</field>
+	<field name="steps" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="steps"/>
+		<property name="com.jaspersoft.studio.field.label" value="steps"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="schedule_details"/>
+	</field>
+	<field name="exercises" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="exercises"/>
+		<property name="com.jaspersoft.studio.field.label" value="exercises"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="exercises"/>
+	</field>
+	<group name="customer_id">
+		<groupExpression><![CDATA[$F{customer_id}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="77" backcolor="#3988E8" uuid="96f8f191-7e5e-4c7b-99d4-d340ae3759e6"/>
+				<staticText>
+					<reportElement x="195" y="10" width="166" height="58" forecolor="#FFFFFF" uuid="a54e1a17-012e-49a8-8e65-3917ad394883"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Berlin Sans FB" size="37"/>
+					</textElement>
+					<text><![CDATA[THE GYM]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="195" y="53" width="166" height="23" forecolor="#FFFFFF" uuid="f04fe52b-6097-401d-9847-c5fe3815c036"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Berlin Sans FB" size="15"/>
+					</textElement>
+					<text><![CDATA[SCHEDULE]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="111" height="23" uuid="de933324-ba26-46f9-a4b8-351048f168bc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="24487899-ca66-4ae1-b19f-e5e093ac06f7"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COACH ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="21" width="111" height="23" uuid="f27be39c-14ed-42ec-85a9-0411fc50a0cd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="24487899-ca66-4ae1-b19f-e5e093ac06f7"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COACH NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="111" height="23" uuid="a6e9fe74-4e0d-4f29-8fb2-8de49aaf33f9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="24487899-ca66-4ae1-b19f-e5e093ac06f7"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MEMBER ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="21" width="111" height="23" uuid="9dff45c2-24e8-40b3-a805-f2eab0538550">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="24487899-ca66-4ae1-b19f-e5e093ac06f7"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MEMBER NAME]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="391" y="-4" width="164" height="30" uuid="ff950c54-7c02-4479-b219-fbf475ef6fb9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="391" y="24" width="89" height="22" uuid="895704a2-2a40-4ed4-b624-64fabdc14791"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fist_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="24" width="87" height="21" uuid="67b25cf1-8682-4049-a410-7ac3963e903f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{last_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="0" width="160" height="24" uuid="b0da2269-3bfb-4ab5-a6b8-92c099287873"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{coach_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="20" width="100" height="23" uuid="1c4c439b-bc71-4a9c-a400-e174de5166f0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="22" width="80" height="19" uuid="3a148dbe-aa44-4015-bf50-76b73bf92aa4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_5}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="40" backcolor="rgba(57, 136, 232, 0.25490198)" uuid="3f7daa1b-248e-493c-9381-a06f6afe8876"/>
+				<staticText>
+					<reportElement x="20" y="5" width="100" height="30" uuid="fccf47eb-bcca-46e2-9b92-26a72af6a352">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7ebb3d43-01eb-4d0c-ba35-9818b2aeacd7"/>
+					</reportElement>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans Mono" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[EXERCISES]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement x="432" y="0" width="100" height="30" uuid="7069f3cb-0e1a-4a69-8e47-7a9ee7dc94fd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3a6ae2f7-9190-43bd-8163-a06ef1ff6a8a"/>
+				</reportElement>
+				<textElement>
+					<font fontName="DejaVu Sans Mono" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[STEPS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="41" splitType="Stretch">
+			<textField>
+				<reportElement x="432" y="10" width="100" height="23" uuid="677c4797-9568-4990-a1f9-fb155fd1e4bb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3a6ae2f7-9190-43bd-8163-a06ef1ff6a8a"/>
+				</reportElement>
+				<textElement>
+					<font fontName="DejaVu Sans Mono" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{steps}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="10" width="360" height="19" uuid="a3035132-7f34-4e03-b133-a16c4e422340">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7ebb3d43-01eb-4d0c-ba35-9818b2aeacd7"/>
+				</reportElement>
+				<textElement>
+					<font fontName="DejaVu Sans Mono" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{exercises}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

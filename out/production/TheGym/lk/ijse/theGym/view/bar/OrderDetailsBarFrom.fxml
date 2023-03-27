@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane onMouseEntered="#mm" onMouseExited="#eee" prefHeight="60.0" prefWidth="1440.0" styleClass="bar" stylesheets="@../style/bar.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.OrderDetailsBarFromController">
+   <children>
+      <Pane layoutX="10.0" layoutY="-7.0" prefHeight="60.0" prefWidth="1440.0" styleClass="bar1" stylesheets="@../style/bar.css">
+         <children>
+            <Text fx:id="txtCustomerId" fill="WHITE" layoutX="319.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Customer ID" wrappingWidth="240.79557037353516" />
+            <Text fx:id="txtDate" fill="WHITE" layoutX="660.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Date" />
+            <Text fx:id="txtTime" fill="WHITE" layoutX="896.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Time" />
+            <Text fx:id="txtOrderId" fill="WHITE" layoutX="40.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Order ID" textAlignment="CENTER" wrappingWidth="146.42337799072266" />
+            <Text fx:id="txtTotal" fill="WHITE" layoutX="1188.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Total" />
+            <Button fx:id="btn" layoutX="1318.0" layoutY="22.0" mnemonicParsing="false" text="Button" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

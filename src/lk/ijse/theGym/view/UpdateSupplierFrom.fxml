@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="376.0" prefWidth="460.0" style="-fx-background-color: #34393F;" stylesheets="@style/EmployeeDashBord.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.UpdateSupplierFromController">
+   <children>
+      <ImageView fitHeight="433.0" fitWidth="460.0" opacity="0.17" pickOnBounds="true">
+         <image>
+            <Image url="@assets/BGImage/add%20Employee.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="txtMobilNo" alignment="CENTER" layoutX="38.0" layoutY="200.0" onKeyReleased="#mobile" prefHeight="25.0" prefWidth="390.0" promptText="Moble No." styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXTextField fx:id="txtCompanyName" alignment="CENTER" layoutX="40.0" layoutY="150.0" onKeyReleased="#company" prefHeight="25.0" prefWidth="390.0" promptText="Company Name" styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXTextField fx:id="txtLocation" alignment="CENTER" layoutX="42.0" layoutY="248.0" onKeyReleased="#location" prefHeight="25.0" prefWidth="390.0" promptText="Locatin" styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXTextField fx:id="txtEmail" alignment="CENTER" layoutX="44.0" layoutY="309.0" onKeyReleased="#email" prefHeight="25.0" prefWidth="390.0" promptText="e-mail" styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXButton fx:id="btnUpdate" layoutX="75.0" layoutY="361.0" onAction="#updateOnAction" prefHeight="37.0" prefWidth="320.0" styleClass="add-employee-button" stylesheets="@style/EmployeeDashBord.css" text="Update" />
+      <ImageView fitHeight="58.0" fitWidth="83.0" layoutX="206.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/icon/icons8-update-96.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="6.0" layoutY="6.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/icon/icons8-close-window-64.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

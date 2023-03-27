@@ -1,0 +1,16 @@
+.Alert-btn{
+    -fx-font-size: 15;
+    -fx-background-color: #FA8605;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20;
+}
+.Alert-btn:hover{
+    -fx-font-size: 17;
+    -fx-background-color: #FA8605;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow( gaussian ,#FBA23E,50,0.1,0,0);
+}
+.pane:hover{ -fx-effect: dropshadow( gaussian ,#FBA23E,50,0.1,0,0);}

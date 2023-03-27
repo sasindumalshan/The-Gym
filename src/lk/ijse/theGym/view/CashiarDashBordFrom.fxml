@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1030.0" prefWidth="1920.0" stylesheets="@style/AdminDashBord.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.CashierBordFromController">
+   <children>
+      <ImageView fitHeight="1030.0" fitWidth="1920.0" pickOnBounds="true">
+         <image>
+            <Image url="@assets/BGImage/CaashiarDashBord.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="37.0" fitWidth="37.0" layoutX="1882.0" onMouseClicked="#closeMouseClick" pickOnBounds="true" preserveRatio="true" styleClass="myImage">
+         <image>
+            <Image url="@assets/icon/icons8-close-window-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="37.0" fitWidth="40.0" layoutX="1839.0" onMouseClicked="#minimizMouseClick" pickOnBounds="true" preserveRatio="true" styleClass="myImage">
+         <image>
+            <Image url="@assets/icon/icons8-subtract-90.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="txtHour" fill="WHITE" layoutX="1675.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="time-text" text="07 " />
+      <Text fx:id="txtMin" fill="WHITE" layoutX="1681.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="time-text" text="55" />
+      <Text fx:id="txtDate" fill="WHITE" layoutX="1634.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date-text" text="Tue, 8 November" />
+      <Text fill="#c9c9c9" layoutX="1061.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="menu-text" text="Home" />
+      <Text fill="#cdcdcd" layoutX="1158.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="menu-text" text="About us" />
+      <JFXButton layoutX="43.0" layoutY="721.0" onAction="#CustomerOnAction" prefHeight="248.0" prefWidth="259.0" styleClass="custom-button" stylesheets="@style/AdminDashBord.css">
+         <graphic>
+            <GridPane prefHeight="227.0" prefWidth="243.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="98.6666259765625" minHeight="10.0" prefHeight="89.66668701171875" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="94.66668701171875" minHeight="10.0" prefHeight="41.33331298828125" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="96.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ImageView fitHeight="64.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/icon/icons8-registration-50.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets left="50.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button-text" text="Customer" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="70.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button-description" text="you can Employee add nad manege all" wrappingWidth="192.82508850097656" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+         </graphic>
+      </JFXButton>
+      <JFXButton layoutX="351.0" layoutY="720.0" onAction="#PaymentOnAction" prefHeight="248.0" prefWidth="259.0" styleClass="custom-button" stylesheets="@style/AdminDashBord.css">
+         <graphic>
+            <GridPane prefHeight="227.0" prefWidth="243.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="98.6666259765625" minHeight="10.0" prefHeight="89.66668701171875" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="94.66668701171875" minHeight="10.0" prefHeight="41.33331298828125" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="96.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fitHeight="64.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/icon/icons8-receive-cash-100.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets left="50.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button-text" text="Payment" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="70.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button-description" text="you can Supplers add nad manege all" wrappingWidth="192.82508850097656" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+         </graphic>
+      </JFXButton>
+      <JFXButton layoutX="665.0" layoutY="718.0" onAction="#StoreOnAction" prefHeight="248.0" prefWidth="259.0" styleClass="custom-button" stylesheets="@style/AdminDashBord.css">
+         <graphic>
+            <GridPane prefHeight="227.0" prefWidth="243.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="98.6666259765625" minHeight="10.0" prefHeight="89.66668701171875" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="94.66668701171875" minHeight="10.0" prefHeight="41.33331298828125" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="96.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fitHeight="64.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/icon/icons8-dumbbell-48.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets left="50.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button-text" text="Store" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="70.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button-description" text="you can manege item" wrappingWidth="192.82508850097656" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+         </graphic>
+      </JFXButton>
+      <JFXButton layoutX="980.0" layoutY="716.0" onAction="#AttendancOnAction" prefHeight="248.0" prefWidth="259.0" styleClass="custom-button" stylesheets="@style/AdminDashBord.css">
+         <graphic>
+            <GridPane prefHeight="227.0" prefWidth="243.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="98.6666259765625" minHeight="10.0" prefHeight="89.66668701171875" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="94.66668701171875" minHeight="10.0" prefHeight="41.33331298828125" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="96.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fitHeight="64.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/icon/icons8-attendance-100.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets left="50.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button-text" text="Attendanc" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="70.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button-description" text="generate Report" wrappingWidth="192.82508850097656" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+         </graphic>
+      </JFXButton>
+      <Text fill="#dadada" layoutX="46.0" layoutY="645.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="notification-text" text="Today Customer Attenden" />
+      <Text fill="#dadada" layoutX="391.0" layoutY="643.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="notification-text" text="Coachs" />
+      <Text fx:id="txtEmployeeAttendance" fill="WHITE" layoutX="167.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="notification-Num-text" text="4" />
+      <Text fx:id="txtCoaches" fill="WHITE" layoutX="416.0" layoutY="599.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="notification-Num-text" text="6" />
+      <Text fill="WHITE" layoutX="48.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="notification-text" text="Cashiar" />
+      <Circle fill="#1fff35" layoutX="31.0" layoutY="34.0" radius="9.0" stroke="#12f81e" strokeType="INSIDE" />
+      <Text fx:id="txtAdminFistName" fill="WHITE" layoutX="156.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="name-text" text="Sasindu" />
+      <Text fx:id="txtAdminLastName" fill="WHITE" layoutX="219.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="name-text" text="Malshan" />
+      <ImageView fitHeight="54.0" fitWidth="87.0" layoutX="1843.0" layoutY="944.0" onMouseClicked="#logoutMouseClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/icon/icons8-shutdown-64.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

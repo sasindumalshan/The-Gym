@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="78.0" prefWidth="1880.0" styleClass="bar" stylesheets="@../style/bar.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.EmployeeDetailBar">
+   <children>
+      <Text fx:id="txtEmployeeId" fill="WHITE" layoutX="60.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Employee ID" wrappingWidth="217.88037109375" />
+      <Text fx:id="txtName" fill="WHITE" layoutX="395.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Name" wrappingWidth="376.2109375" />
+      <Text fx:id="txtRole" fill="WHITE" layoutX="808.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Role" wrappingWidth="196.23193359375" />
+      <Text fx:id="txtCity" fill="WHITE" layoutX="1156.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="City" wrappingWidth="196.2319325953722" />
+      <JFXButton fx:id="btnDelete" layoutX="1473.0" layoutY="26.0" onAction="#deleteOnAction" prefHeight="32.0" prefWidth="123.0" styleClass="bar-btn" stylesheets="@../style/bar.css" visible="false">
+         <graphic>
+            <GridPane prefHeight="30.0" prefWidth="107.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="37.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.0" minWidth="10.0" prefWidth="70.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="btn-txt" text="Delete" GridPane.columnIndex="1" />
+                  <ImageView fitHeight="33.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icon/icons8-remove-24.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </ImageView>
+               </children>
+            </GridPane>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnUpdate" layoutX="1644.0" layoutY="27.0" onAction="#UpdateOnAction" prefHeight="32.0" prefWidth="123.0" styleClass="bar-btn" stylesheets="@../style/bar.css" visible="false">
+         <graphic>
+            <GridPane prefHeight="30.0" prefWidth="107.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="37.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.0" minWidth="10.0" prefWidth="70.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="btn-txt" text="Update" GridPane.columnIndex="1" />
+                  <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icon/icons8-update-24.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </ImageView>
+               </children>
+            </GridPane>
+         </graphic>
+      </JFXButton>
+      <ImageView fitHeight="39.0" fitWidth="35.0" layoutX="1796.0" layoutY="23.0" onMouseClicked="#viewDataOnMouseClick" pickOnBounds="true" preserveRatio="true" styleClass="bar-btn">
+         <image>
+            <Image url="@../assets/icon/icons8-about-48%20(1).png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

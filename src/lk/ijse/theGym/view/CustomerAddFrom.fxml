@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane onMouseEntered="#anchorPaneOnMouseEntered" onMouseExited="#anchorPaneOnMouseExited" prefHeight="697.0" prefWidth="687.0" style="-fx-background-color: #33383C;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.CustomerAddFromController">
+   <children>
+      <ImageView fitHeight="699.0" fitWidth="685.0" layoutX="1.0" layoutY="-1.0" opacity="0.26" pickOnBounds="true">
+         <image>
+            <Image url="@assets/BGImage/add%20Employee.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="532.0" fitWidth="500.0" layoutX="178.0" layoutY="220.0" opacity="0.26" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/image/PngItem_1322352.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="21.0" layoutY="129.0" prefHeight="44.0" prefWidth="311.0" styleClass="border2">
+         <children>
+            <Pane layoutX="8.0" layoutY="8.0" prefHeight="28.0" prefWidth="95.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="8.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="FIST NAME" wrappingWidth="85.34765645861626" />
+               </children>
+            </Pane>
+            <Text fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="174.611328125" />
+            <JFXTextField fx:id="lblFastName" focusColor="#0a193000" layoutX="103.0" layoutY="10.0" onKeyReleased="#fistName" prefHeight="29.0" prefWidth="175.0" styleClass="text-details2" unFocusColor="#4d4d4d00" />
+         </children>
+      </Pane>
+      <Pane layoutX="353.0" layoutY="129.0" prefHeight="44.0" prefWidth="311.0" styleClass="border2">
+         <children>
+            <Pane layoutX="10.0" layoutY="8.0" prefHeight="28.0" prefWidth="95.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="4.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="LAST NAME" wrappingWidth="94.99999737739563" />
+               </children>
+            </Pane>
+            <Text fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="174.611328125" />
+            <JFXTextField fx:id="lblLastName" focusColor="#0a193000" layoutX="106.0" layoutY="8.0" onKeyReleased="#lastName" prefHeight="29.0" prefWidth="175.0" styleClass="text-details2" unFocusColor="#4d4d4d00" />
+         </children>
+      </Pane>
+      <Pane layoutX="21.0" layoutY="194.0" prefHeight="36.0" prefWidth="311.0" styleClass="border3">
+         <children>
+            <Pane layoutX="7.0" layoutY="4.0" prefHeight="28.0" prefWidth="95.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="23.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="CITY" wrappingWidth="48.99999737739563" />
+               </children>
+            </Pane>
+            <Text fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="174.611328125" />
+            <JFXTextField fx:id="lblCity" focusColor="#0a193000" layoutX="104.0" layoutY="3.0" onKeyReleased="#city" prefHeight="29.0" prefWidth="175.0" styleClass="text-details3" unFocusColor="#4d4d4d00" />
+         </children>
+      </Pane>
+      <Pane layoutX="356.0" layoutY="195.0" prefHeight="36.0" prefWidth="311.0" styleClass="border3">
+         <children>
+            <Pane layoutX="7.0" layoutY="4.0" prefHeight="28.0" prefWidth="95.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="19.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="STREET" wrappingWidth="56.99999737739563" />
+               </children>
+            </Pane>
+            <Text fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="174.611328125" />
+            <JFXTextField fx:id="lblStreet" focusColor="#0a193000" layoutX="104.0" layoutY="3.0" onKeyReleased="#street" prefHeight="29.0" prefWidth="175.0" styleClass="text-details3" unFocusColor="#4d4d4d00" />
+         </children>
+      </Pane>
+      <Pane layoutX="21.0" layoutY="253.0" prefHeight="36.0" prefWidth="311.0" styleClass="border3">
+         <children>
+            <Pane layoutX="7.0" layoutY="4.0" prefHeight="28.0" prefWidth="95.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="23.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="LENE" wrappingWidth="56.99999737739563" />
+               </children>
+            </Pane>
+            <Text fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="174.611328125" />
+            <JFXTextField fx:id="lblLene" focusColor="#0a193000" layoutX="105.0" layoutY="4.0" onKeyReleased="#lene" prefHeight="29.0" prefWidth="175.0" styleClass="text-details3" unFocusColor="#4d4d4d00" />
+         </children>
+      </Pane>
+      <Pane layoutX="21.0" layoutY="315.0" prefHeight="44.0" prefWidth="627.0" styleClass="border2">
+         <children>
+            <Pane layoutX="10.0" layoutY="8.0" prefHeight="28.0" prefWidth="95.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="23.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="E MAIL" wrappingWidth="56.99999737739563" />
+               </children>
+            </Pane>
+            <Text fill="WHITE" layoutX="115.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="470.611328125" />
+            <JFXTextField fx:id="lblEmail" focusColor="#0a193000" layoutX="119.0" layoutY="8.0" onKeyReleased="#email" prefHeight="29.0" prefWidth="471.0" styleClass="text-details2" unFocusColor="#4d4d4d00" />
+         </children>
+      </Pane>
+      <Pane layoutX="23.0" layoutY="453.0" prefHeight="36.0" prefWidth="311.0" styleClass="border3">
+         <children>
+            <Pane layoutX="6.0" layoutY="4.0" prefHeight="28.0" prefWidth="95.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="11.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="BIRTHDAY" wrappingWidth="78.99999737739563" />
+               </children>
+            </Pane>
+            <Text fx:id="txtBirthday" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="174.611328125" />
+         </children>
+      </Pane>
+      <Pane layoutX="346.0" layoutY="379.0" prefHeight="44.0" prefWidth="311.0" styleClass="border2">
+         <children>
+            <Pane layoutX="10.0" layoutY="8.0" prefHeight="28.0" prefWidth="95.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="30.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="NIC" wrappingWidth="56.99999737739563" />
+               </children>
+            </Pane>
+            <Text fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="174.611328125" />
+            <JFXTextField fx:id="lblNic" focusColor="#0a193000" layoutX="106.0" layoutY="7.0" onKeyReleased="#nic" prefHeight="29.0" prefWidth="175.0" styleClass="text-details2" unFocusColor="#4d4d4d00" />
+         </children>
+      </Pane>
+      <Pane layoutX="21.0" layoutY="379.0" prefHeight="44.0" prefWidth="311.0" styleClass="border2">
+         <children>
+            <Pane layoutX="10.0" layoutY="8.0" prefHeight="28.0" prefWidth="95.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="6.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="MOBILE NO." wrappingWidth="104.99999737739563" />
+               </children>
+            </Pane>
+            <Text fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="174.611328125" />
+            <JFXTextField fx:id="lblMobile" focusColor="#0a193000" layoutX="112.0" layoutY="5.0" onKeyReleased="#mobileNo" prefHeight="29.0" prefWidth="175.0" styleClass="text-details2" unFocusColor="#4d4d4d00" />
+         </children>
+      </Pane>
+      <Pane layoutX="346.0" layoutY="454.0" prefHeight="36.0" prefWidth="311.0" styleClass="border3">
+         <children>
+            <Pane layoutX="8.0" layoutY="4.0" prefHeight="28.0" prefWidth="95.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="12.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="GRENDER" wrappingWidth="78.99999737739563" />
+               </children>
+            </Pane>
+            <Text fx:id="txtgender" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="174.611328125" />
+            <JFXComboBox fx:id="comboGender" focusColor="#405aa800" layoutX="103.0" layoutY="1.0" prefHeight="28.0" prefWidth="196.0" styleClass="text-details3" unFocusColor="#4d4d4d00" />
+         </children>
+      </Pane>
+      <JFXButton fx:id="btn" layoutX="183.0" layoutY="625.0" onAction="#btnOnAction" prefHeight="44.0" prefWidth="331.0" styleClass="add-button" />
+      <Pane layoutX="21.0" layoutY="516.0" prefHeight="36.0" prefWidth="311.0" styleClass="border3">
+         <children>
+            <Pane layoutX="8.0" layoutY="4.0" prefHeight="28.0" prefWidth="95.0" styleClass="border">
+               <children>
+                  <Text fx:id="CoachTypeOrPackage" fill="WHITE" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="PACKAGE" textAlignment="CENTER" wrappingWidth="95.00000342354178" />
+               </children>
+            </Pane>
+            <Text fx:id="txtPackage" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="174.611328125" />
+            <JFXComboBox fx:id="comboPackage" focusColor="#405aa800" layoutX="103.0" layoutY="3.0" onAction="#comboOnAction" prefHeight="28.0" prefWidth="196.0" styleClass="text-details3" unFocusColor="#4d4d4d00" />
+         </children>
+      </Pane>
+      <JFXRadioButton fx:id="rBMember" layoutX="40.0" layoutY="95.0" onAction="#rBMemberOnAction" styleClass="my-radio-btn" text="Member">
+         <toggleGroup>
+            <ToggleGroup fx:id="btnCoach" />
+         </toggleGroup>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="rBCoach" layoutX="180.0" layoutY="95.0" onAction="#rBCoachOnAction" styleClass="my-radio-btn" text="Coach" toggleGroup="$btnCoach" />
+      <Text fx:id="txtTitle" fill="WHITE" fontSmoothingType="LCD" layoutX="199.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="welcome-txt" text="Welcome to THE GYM" />
+      <JFXButton fx:id="btnUpdate" layoutX="546.0" layoutY="34.0" onAction="#updateOnAction" prefHeight="31.0" prefWidth="86.0" styleClass="update-btn">
+         <graphic>
+            <GridPane prefHeight="30.0" prefWidth="76.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="24.5" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="51.5" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="UPDATE" GridPane.columnIndex="1" />
+                  <ImageView fitHeight="18.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/icon/icons8-edit-100%20(1).png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </GridPane>
+         </graphic>
+      </JFXButton>
+      <Pane fx:id="salaryId" layoutX="346.0" layoutY="516.0" prefHeight="36.0" prefWidth="311.0" styleClass="border3" visible="false">
+         <children>
+            <Pane layoutX="8.0" layoutY="4.0" prefHeight="28.0" prefWidth="95.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="10.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="SALARY ID" wrappingWidth="104.9999869465828" />
+               </children>
+            </Pane>
+            <Text fx:id="salary" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="174.611328125" />
+            <JFXComboBox fx:id="comboSalary" focusColor="#405aa800" layoutX="103.0" layoutY="3.0" onAction="#cmbSalary" prefHeight="28.0" prefWidth="196.0" styleClass="text-details3" unFocusColor="#4d4d4d00" />
+         </children>
+      </Pane>
+      <Text fx:id="txtJoinDate" fill="WHITE" layoutX="40.0" layoutY="603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Package Activet Date : " wrappingWidth="257.9830722808838" />
+      <JFXDatePicker fx:id="dPBirthDay" defaultColor="#f79727" layoutX="120.0" layoutY="459.0" styleClass="text-details3" />
+      <Text fx:id="txtpackdate" fill="WHITE" layoutX="40.0" layoutY="579.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Package Activet Date : " wrappingWidth="257.9830722808838" />
+      <ImageView fitHeight="36.0" fitWidth="32.0" layoutX="4.0" layoutY="6.0" onMouseClicked="#colse" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/icon/icons8-close-window-64.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="TXTSalaryPrice" fill="WHITE" layoutX="448.0" layoutY="589.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" wrappingWidth="156.9830722808838" />
+   </children>
+   <stylesheets>
+      <URL value="@style/Payment.css" />
+      <URL value="@style/AddFrom.css" />
+   </stylesheets>
+</AnchorPane>

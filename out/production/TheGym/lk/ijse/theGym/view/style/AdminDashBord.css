@@ -1,0 +1,51 @@
+.myImage:hover{
+    -fx-effect: dropshadow( gaussian ,red,1,1,0,0);
+}
+.time-text{
+    -fx-font-size: 50;
+    -fx-font-weight: bold;
+
+}
+.date-text{
+    -fx-font-size: 20;
+}
+.menu-text{
+    -fx-text-fill: #B5BEC1;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+}
+.menu-text:hover{
+    -fx-effect: dropshadow( gaussian ,#FFFFFF,50,0.1,0,0);
+}
+.custom-button{
+    -fx-shape: "M 100 250 L 600 250 L 600 500 L 500 550 L 100 550 L 100 250   ";
+    -fx-background-color: #33383C;
+    -fx-effect: dropshadow( gaussian ,#FFFFFF,10,0.1,0,0);
+}
+.custom-button:hover{
+    -fx-background-color: #FBA23E;
+    -fx-effect: dropshadow( gaussian ,#FBA23E,50,0.1,0,0);
+}
+.button-text{
+    -fx-font-size: 25;
+    -fx-font-weight: bold;
+
+}
+.button-description{
+    -fx-font-size: 15;
+}
+.notification-text{
+    -fx-font-weight: bold;
+    -fx-text-fill:#E5DCD7 ;
+    -fx-font-size: 25;
+}
+
+.notification-Num-text{
+    -fx-font-weight: bold;
+    -fx-text-fill:#FFFF ;
+    -fx-font-size: 50;
+}
+.name-text{
+    -fx-text-fill:#FFFF ;
+    -fx-font-size: 15;
+}

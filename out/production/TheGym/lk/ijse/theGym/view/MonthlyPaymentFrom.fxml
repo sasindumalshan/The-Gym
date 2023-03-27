@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorpane" prefHeight="1018.0" prefWidth="1530.0" style="-fx-background-color: #33383E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.MonthlyPaymentFromController">
+   <children>
+      <ScrollPane fx:id="scrollPane" layoutX="44.0" layoutY="440.0" prefHeight="624.0" prefWidth="1032.0" style="-fx-background-color: #34393F;">
+         <content>
+            <VBox fx:id="vBox" prefHeight="680.0" prefWidth="1041.0" style="-fx-background-color: #34393F;" />
+         </content>
+      </ScrollPane>
+      <Pane layoutX="1055.0" layoutY="425.0" prefHeight="643.0" prefWidth="283.0" style="-fx-background-color: #33383E;" />
+      <ImageView fitHeight="1067.0" fitWidth="458.0" layoutX="1073.0" layoutY="-2.0" opacity="0.16" pickOnBounds="true">
+         <image>
+            <Image url="@assets/BGImage/Untitled-1.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="53.0" layoutY="313.0" prefHeight="57.0" prefWidth="1007.0" style="-fx-border-color: #FBA23E;">
+         <children>
+            <Text fill="WHITE" layoutX="284.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="Name" wrappingWidth="73.79557037353516" />
+            <Text fill="WHITE" layoutX="564.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="Fees" />
+            <Text fill="WHITE" layoutX="778.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="Date" />
+            <Text fx:id="txtCityDate" fill="WHITE" layoutX="30.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="ID" textAlignment="CENTER" wrappingWidth="146.42337799072266" />
+         </children>
+      </Pane>
+      <JFXTextField fx:id="search" layoutX="246.0" layoutY="69.0" onKeyReleased="#searchOnReleased" prefHeight="47.0" prefWidth="636.0" promptText="Search ID or Name" styleClass="search-bar" />
+      <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="828.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/icon/icons8-search-96.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="lblId" alignment="CENTER" focusColor="#ffffff00" layoutX="1116.0" layoutY="329.0" onAction="#idOnAction" onKeyReleased="#idOnReleased" onKeyTyped="#idOnKeyTyped" prefHeight="40.0" prefWidth="361.0" promptText="ID" styleClass="text-field-payment" unFocusColor="#4d4d4d00" />
+      <JFXTextField fx:id="lblBalance" alignment="CENTER" focusColor="#405aa800" layoutX="1117.0" layoutY="734.0" onAction="#balanceOnAction" onKeyReleased="#balanceOnKeyReleased" prefHeight="40.0" prefWidth="375.0" promptText="Balance" styleClass="text-field-payment" unFocusColor="#ffffff00" />
+      <JFXButton fx:id="btnPay" layoutX="1123.0" layoutY="900.0" onAction="#payOnAction" prefHeight="51.0" prefWidth="367.0" styleClass="pay-button" text="Pay" />
+      <Pane layoutX="1109.0" layoutY="400.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+         <children>
+            <Pane layoutX="9.0" layoutY="10.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="27.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="NAME" />
+               </children>
+            </Pane>
+            <Text fx:id="txtName" fill="WHITE" layoutX="142.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="220.611328125" />
+         </children>
+      </Pane>
+      <Pane layoutX="1109.0" layoutY="559.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+         <children>
+            <Text fx:id="txtEmail" fill="WHITE" layoutX="142.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="220.611328125" />
+            <Pane layoutX="12.0" layoutY="7.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="30.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="E-MAIL" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane layoutX="1108.0" layoutY="483.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+         <children>
+            <Text fx:id="txtNic" fill="WHITE" layoutX="138.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="220.611328125" />
+            <Pane layoutX="9.0" layoutY="10.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="38.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="NIC" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane layoutX="1114.0" layoutY="809.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+         <children>
+            <Pane layoutX="12.0" layoutY="9.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="17.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="BALANCE" />
+               </children>
+            </Pane>
+            <Text fx:id="txtBalance" fill="WHITE" layoutX="142.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="220.611328125" />
+         </children>
+      </Pane>
+      <Pane layoutX="1113.0" layoutY="636.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+         <children>
+            <Pane layoutX="10.0" layoutY="9.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="16.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="PAYMENT" />
+               </children>
+            </Pane>
+            <Text fx:id="txtPayment" fill="WHITE" layoutX="141.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="220.611328125" />
+         </children>
+      </Pane>
+      <Pane fx:id="panePack1" layoutX="1051.0" layoutY="215.0" onMouseClicked="#package1OnMouseClick" prefHeight="70.0" prefWidth="145.0" styleClass="package-button" stylesheets="@style/Css.css">
+         <children>
+            <Text fx:id="txtPackage1Name" fill="WHITE" layoutX="12.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly" textAlignment="CENTER" wrappingWidth="120.99998272955418" />
+            <Text fill="WHITE" layoutX="14.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="price-txt" text="LKR." />
+            <Text fx:id="txtPackage1Price" fill="WHITE" layoutX="48.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="price-txt" text="000000.0" wrappingWidth="88.96483387053013" />
+         </children>
+      </Pane>
+      <Pane fx:id="panePack2" layoutX="1208.0" layoutY="214.0" onMouseClicked="#package2OnMouseClick" prefHeight="70.0" prefWidth="145.0" styleClass="package-button" stylesheets="@style/Css.css">
+         <children>
+            <Text fx:id="txtPackage2Name" fill="WHITE" layoutX="8.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly" textAlignment="CENTER" wrappingWidth="120.99998272955418" />
+            <Text fill="WHITE" layoutX="14.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="price-txt" text="LKR." />
+            <Text fx:id="txtPackage2Price" fill="WHITE" layoutX="48.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="price-txt" text="000000.0" wrappingWidth="88.96483387053013" />
+         </children>
+      </Pane>
+      <Pane fx:id="panePack3" layoutX="1366.0" layoutY="212.0" onMouseClicked="#package3OnMouseClick" prefHeight="70.0" prefWidth="145.0" styleClass="package-button" stylesheets="@style/Css.css">
+         <children>
+            <Text fx:id="txtPackage3Name" fill="WHITE" layoutX="12.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly" textAlignment="CENTER" wrappingWidth="120.99998272955418" />
+            <Text fill="WHITE" layoutX="14.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="price-txt" text="LKR." />
+            <Text fx:id="txtPackage3Price" fill="WHITE" layoutX="48.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="price-txt" text="000000.0" wrappingWidth="88.96483387053013" />
+         </children>
+      </Pane>
+      <JFXComboBox fx:id="comboSelectMonth" focusColor="#405aa800" layoutX="57.0" layoutY="249.0" onAction="#selectMonthOnAction" prefHeight="46.0" prefWidth="209.0" promptText="SELECT MONTH" stylesheets="@style/ComboBox.css" unFocusColor="#4d4d4d00" />
+      <JFXComboBox fx:id="comboSelectYear" focusColor="#405aa800" layoutX="300.0" layoutY="249.0" onAction="#selectYearOnAction" prefHeight="46.0" prefWidth="209.0" promptText="SELECT YEAR" stylesheets="@style/ComboBox.css" unFocusColor="#4d4d4d00" />
+   </children>
+   <stylesheets>
+      <URL value="@style/Payment.css" />
+      <URL value="@style/EmployeeDashBord.css" />
+   </stylesheets>
+</AnchorPane>

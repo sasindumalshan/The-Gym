@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import java.lang.String?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane fx:id="anchorpane" prefHeight="869.0" prefWidth="1542.0" style="-fx-background-color: #2E3045;" stylesheets="@style/AdminDashBord.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.ReportChartsFrom">
+   <children>
+      <Text fx:id="txtReport" fill="WHITE" layoutX="349.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="time-text" text="Monthly Report" textAlignment="CENTER" wrappingWidth="667.5735778808594" />
+      <Pane layoutX="63.0" layoutY="93.0" opacity="0.8" prefHeight="684.0" prefWidth="1426.0" style="-fx-background-color: #33383C; -fx-background-radius: 30;" />
+      <LineChart fx:id="chart" layoutX="89.0" layoutY="117.0" prefHeight="644.0" prefWidth="1382.0" stylesheets="@style/Chart.css">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" styleClass="shadow" fx:id="yAxy" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" styleClass="shadow" fx:id="xAxy" />
+        </yAxis>
+         <styleClass>
+            <String fx:value="axis" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </LineChart>
+      <JFXComboBox fx:id="rBtnSelectMonth" layoutX="247.0" layoutY="788.0" onAction="#selectMonthOnAction" prefHeight="28.0" prefWidth="245.0" promptText="Select Month" styleClass="combo-box-check" stylesheets="@style/Chart.css" />
+      <JFXComboBox fx:id="rBtnSelectYear" layoutX="650.0" layoutY="787.0" onAction="#selectYearOnAction" prefHeight="28.0" prefWidth="245.0" promptText="Select year" styleClass="combo-box-check" stylesheets="@style/Chart.css" />
+      <JFXRadioButton fx:id="fiveYearReport" graphicTextGap="9.0" layoutX="1023.0" layoutY="787.0" onAction="#fiveYearReportOnAction" prefHeight="38.0" prefWidth="221.0" styleClass="combo-box-check" stylesheets="@style/Chart.css" text="5 years Report" />
+   </children>
+</AnchorPane>

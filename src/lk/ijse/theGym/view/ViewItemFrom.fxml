@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="376.0" prefWidth="460.0" style="-fx-background-color: #34393F;" stylesheets="@style/EmployeeDashBord.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.ViewItemFromController">
+   <children>
+      <ImageView fitHeight="433.0" fitWidth="460.0" layoutY="1.0" opacity="0.17" pickOnBounds="true">
+         <image>
+            <Image url="@assets/BGImage/add%20Employee.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="75.0" layoutY="338.0" onAction="#closeOnAction" prefHeight="37.0" prefWidth="320.0" styleClass="add-employee-button" stylesheets="@style/EmployeeDashBord.css" text="Close" />
+      <ImageView fitHeight="58.0" fitWidth="83.0" layoutX="206.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/icon/icons8-dumbbell-48.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="141.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="Rs." />
+      <Text fill="WHITE" layoutX="52.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text-2" text="Item Code : " />
+      <Text fill="WHITE" layoutX="52.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text-2" text="Catagory :" />
+      <Text fill="WHITE" layoutX="54.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text-2" text="Item Name :" />
+      <Text fill="WHITE" layoutX="54.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text-2" text="Price :" />
+      <Text fill="WHITE" layoutX="56.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text-2" text="Brand :" />
+      <Text fill="WHITE" layoutX="56.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text-2" text="Discription :" />
+      <Text fx:id="txtItemCode" fill="WHITE" layoutX="150.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="Iteme Code" wrappingWidth="255.23388671875" />
+      <Text fx:id="txtCategory" fill="WHITE" layoutX="154.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="Catagro" wrappingWidth="248.99366736412048" />
+      <Text fx:id="txtName" fill="WHITE" layoutX="156.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="Name" wrappingWidth="248.99366050958633" />
+      <Text fx:id="txtPrice" fill="WHITE" layoutX="167.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="0000.00" wrappingWidth="248.99365234375" />
+      <Text fx:id="txtBrand" fill="WHITE" layoutX="165.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="Brand" wrappingWidth="248.99365234375" />
+      <Text fx:id="txtDescription" fill="WHITE" layoutX="165.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="discription" wrappingWidth="248.99365234375" />
+   </children>
+</AnchorPane>

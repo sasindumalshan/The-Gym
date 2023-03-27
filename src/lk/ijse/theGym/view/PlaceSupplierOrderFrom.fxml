@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="892.0" prefWidth="1382.0" style="-fx-background-color: #34393F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.SupplierOrderFromController">
+   <children>
+      <ImageView fitHeight="901.0" fitWidth="1382.0" layoutX="2.0" layoutY="-7.0" opacity="0.17" pickOnBounds="true">
+         <image>
+            <Image url="@assets/BGImage/add%20Employee.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="138.0" fitWidth="176.0" layoutX="9.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/icon/icons8-shopping-cart-with-money-96.png" />
+         </image>
+      </ImageView>
+      <ScrollPane fx:id="scrollPane" layoutX="54.0" layoutY="289.0" prefHeight="603.0" prefWidth="866.0" style="-fx-background-color: #34393F;">
+         <content>
+            <VBox fx:id="vBox" prefHeight="836.0" prefWidth="876.0" style="-fx-background-color: #34393F;" />
+         </content>
+      </ScrollPane>
+      <Pane layoutX="902.0" layoutY="284.0" prefHeight="611.0" prefWidth="44.0" style="-fx-background-color: #33383E;" />
+      <ImageView fitHeight="881.0" fitWidth="458.0" layoutX="922.0" layoutY="8.0" opacity="0.16" pickOnBounds="true">
+         <image>
+            <Image url="@assets/BGImage/Untitled-1.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="63.0" layoutY="184.0" prefHeight="57.0" prefWidth="843.0" style="-fx-border-color: #FBA23E;">
+         <children>
+            <Text fill="WHITE" layoutX="235.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="ITEM NAME" wrappingWidth="194.79557037353516" />
+            <Text fill="WHITE" layoutX="508.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="PRICE" />
+            <Text fill="WHITE" layoutX="725.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="QTY" />
+            <Text fill="WHITE" layoutX="30.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="ITEM CODE" textAlignment="CENTER" wrappingWidth="146.42337799072266" />
+         </children>
+      </Pane>
+      <JFXTextField fx:id="lblItemCode" alignment="CENTER" focusColor="#ffffff00" layoutX="965.0" layoutY="335.0" onAction="#itemCodeOnAction" onKeyReleased="#itemCodeOnKeyReleased" onKeyTyped="#itemCodeOnKeyTyped" prefHeight="40.0" prefWidth="361.0" promptText="Item Code" styleClass="text-field-payment" unFocusColor="#4d4d4d00" />
+      <JFXButton fx:id="btnOder" layoutX="968.0" layoutY="817.0" onAction="#OkOrderOnAction" prefHeight="51.0" prefWidth="367.0" styleClass="pay-button" text="Pay">
+         <graphic>
+            <GridPane prefHeight="51.0" prefWidth="353.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.6666259765625" minWidth="10.0" prefWidth="163.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.0" minWidth="10.0" prefWidth="190.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ORDER OK">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="txtTotal" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="00.00" wrappingWidth="258.22314453125" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets left="60.0" />
+                     </GridPane.margin></Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="LKR" wrappingWidth="46.22314453125" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </graphic>
+      </JFXButton>
+      <Pane layoutX="956.0" layoutY="389.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+         <children>
+            <Pane layoutX="9.0" layoutY="10.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="27.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="ITEMS" />
+               </children>
+            </Pane>
+            <Text fx:id="txtItemsName" fill="WHITE" layoutX="137.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="220.611328125" />
+         </children>
+      </Pane>
+      <Pane layoutX="956.0" layoutY="743.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+         <children>
+            <Pane layoutX="12.0" layoutY="9.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="17.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="BALANCE" />
+               </children>
+            </Pane>
+            <Text fx:id="txtBalance" fill="WHITE" layoutX="139.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="220.611328125" />
+         </children>
+      </Pane>
+      <Pane layoutX="956.0" layoutY="231.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+         <children>
+            <Pane layoutX="9.0" layoutY="10.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="27.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="Name" />
+               </children>
+            </Pane>
+            <Text fx:id="txtName" fill="WHITE" layoutX="137.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="220.611328125" />
+         </children>
+      </Pane>
+      <JFXTextField fx:id="lblCustomerId" alignment="CENTER" focusColor="#ffffff00" layoutX="952.0" layoutY="164.0" onAction="#supIdOnAction" onKeyReleased="#supIdReleased" onKeyTyped="#supIdOnKeyTyped" prefHeight="40.0" prefWidth="361.0" promptText="SUPLEAR ID" styleClass="text-field-payment" unFocusColor="#4d4d4d00" />
+      <JFXTextField fx:id="lblQty" alignment="CENTER" focusColor="#ffffff00" layoutX="965.0" layoutY="476.0" onAction="#qtyOnAction" onKeyReleased="#qtyOnKeyReleased" prefHeight="40.0" prefWidth="361.0" promptText="QTY" styleClass="text-field-payment" unFocusColor="#4d4d4d00" />
+      <JFXButton fx:id="btnAdd" layoutX="971.0" layoutY="659.0" onAction="#addOnAction" prefHeight="51.0" prefWidth="367.0" styleClass="pay-button" text="ADD" />
+      <JFXTextField fx:id="lblPrice" alignment="CENTER" focusColor="#ffffff00" layoutX="971.0" layoutY="578.0" onAction="#priceOnAction" onKeyReleased="#priceOnKeyReleased" prefHeight="40.0" prefWidth="361.0" promptText="PRICE" styleClass="text-field-payment" unFocusColor="#4d4d4d00" />
+      <Pane layoutX="41.0" layoutY="862.0" prefHeight="43.0" prefWidth="915.0" style="-fx-background-color: #33383E;" />
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="1345.0" layoutY="14.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/icon/icons8-close-window-64.png" />
+         </image>
+      </ImageView>
+   </children>
+   <stylesheets>
+      <URL value="@style/EmployeeDashBord.css" />
+      <URL value="@style/Payment.css" />
+   </stylesheets>
+</AnchorPane>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="220.0" prefWidth="454.0" style="-fx-background-color: #33383E;" styleClass="pane" stylesheets="@style/Alert.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.util.Alert.MyAlert">
+   <children>
+      <ImageView fitHeight="220.0" fitWidth="454.0" opacity="0.39" pickOnBounds="true">
+         <image>
+            <Image url="@assets/BGImage/BGCOLOER.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="leftBtn" layoutX="62.0" layoutY="171.0" onAction="#leftBtnOnAction" prefHeight="35.0" prefWidth="114.0" styleClass="Alert-btn" />
+      <JFXButton fx:id="rightBtn" layoutX="276.0" layoutY="171.0" onAction="#rightBtnOnAction" prefHeight="35.0" prefWidth="124.0" styleClass="Alert-btn" />
+      <JFXButton fx:id="btnCenter" layoutX="171.0" layoutY="170.0" onAction="#centeBTNOnAction" prefHeight="35.0" prefWidth="105.0" styleClass="Alert-btn" visible="false" />
+      <Text fx:id="tittle" fill="WHITE" layoutX="16.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 30;" text="Text" textAlignment="CENTER" wrappingWidth="422.17578125" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="19.0" prefWidth="875.0" style="-fx-background-color: #33383E;" styleClass="btn-txt" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.OrderBarController">
+   <children>
+      <Pane layoutX="-1.0" layoutY="2.0" prefHeight="63.0" prefWidth="857.0" style="-fx-background-color: #0A1930;" styleClass="bar-2">
+         <children>
+            <Text fx:id="txtName" fill="WHITE" layoutX="245.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="ITEM NAME" wrappingWidth="194.79557037353516" />
+            <Text fx:id="txtPrice" fill="WHITE" layoutX="518.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="PRICE" />
+            <Text fx:id="txtQTY" fill="WHITE" layoutX="735.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="QTY" />
+            <Text fx:id="txtId" fill="WHITE" layoutX="40.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="ITEM CODE" textAlignment="CENTER" wrappingWidth="146.42337799072266" />
+         </children>
+      </Pane>
+   </children>
+   <stylesheets>
+      <URL value="@../style/bar.css" />
+      <URL value="@../style/Css.css" />
+   </stylesheets>
+</AnchorPane>

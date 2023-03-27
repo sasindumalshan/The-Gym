@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="635.0" prefWidth="460.0" style="-fx-background-color: #34393F;" stylesheets="@style/EmployeeDashBord.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.ViewEmployeeDetailsFromController">
+   <children>
+      <ImageView fitHeight="635.0" fitWidth="460.0" layoutX="-2.0" opacity="0.17" pickOnBounds="true">
+         <image>
+            <Image url="@assets/BGImage/add%20Employee.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="368.0" fitWidth="202.0" layoutX="258.0" layoutY="286.0" opacity="0.16" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/BGImage/NicePng_body-building-png_2561762.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="69.0" layoutY="567.0" onAction="#closeOnAction" prefHeight="37.0" prefWidth="320.0" styleClass="add-employee-button" stylesheets="@style/EmployeeDashBord.css" text="Close" />
+      <ImageView fitHeight="58.0" fitWidth="83.0" layoutX="206.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/icon/icons8-employee-64.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="40.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text-2" text="Full name :" />
+      <Text fx:id="txtFName" fill="WHITE" layoutX="40.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="Fist Name" textAlignment="CENTER" wrappingWidth="179.9999939277768" />
+      <Text fx:id="txtLName" fill="WHITE" layoutX="246.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="Last Name" textAlignment="CENTER" wrappingWidth="179.9999939277768" />
+      <Text fx:id="txtEmail" fill="WHITE" layoutX="35.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="Email@gmail.com" textAlignment="CENTER" wrappingWidth="398.9999939277768" />
+      <Text fill="WHITE" layoutX="42.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text-2" text="E-mail :" />
+      <Text fx:id="txtCity" fill="WHITE" layoutX="42.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="City" textAlignment="CENTER" wrappingWidth="179.9999939277768" />
+      <Text fx:id="txtStreet" fill="WHITE" layoutX="255.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="Street" textAlignment="CENTER" wrappingWidth="179.9999939277768" />
+      <Text fx:id="txtLane" fill="WHITE" layoutX="48.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="Lene" textAlignment="CENTER" wrappingWidth="179.9999939277768" />
+      <Text fill="WHITE" layoutX="46.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text-2" text="Address :" />
+      <Text fx:id="txtNIC" fill="WHITE" layoutX="134.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="NIC" wrappingWidth="179.9999939277768" />
+      <Text fill="WHITE" layoutX="48.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text-2" text="NIC :" />
+      <Text fx:id="txtMONo" fill="WHITE" layoutX="130.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="Mobail No." wrappingWidth="179.9999939277768" />
+      <Text fill="WHITE" layoutX="48.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text-2" text="Mobail No." />
+      <Text fx:id="txtBirthday" fill="WHITE" layoutX="130.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="Birhday" wrappingWidth="179.9999939277768" />
+      <Text fill="WHITE" layoutX="48.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text-2" text="Birthday :" />
+      <Text fill="WHITE" layoutX="48.0" layoutY="529.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text-2" text="Role :" />
+      <Text fx:id="txtRole" fill="WHITE" layoutX="130.0" layoutY="529.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="Role" wrappingWidth="179.9999939277768" />
+      <Text fill="WHITE" layoutX="38.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text-2" text="Employee ID :" />
+      <Text fx:id="txtId" fill="WHITE" layoutX="138.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="ID" wrappingWidth="179.9999939277768" />
+   </children>
+</AnchorPane>

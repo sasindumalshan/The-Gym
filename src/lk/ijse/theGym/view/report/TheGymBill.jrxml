@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TheGymBill" pageWidth="216" pageHeight="792" columnWidth="196" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="0" isIgnorePagination="true" uuid="42532947-c349-44b6-9abf-f224aa189b0f">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="TheGym"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="oId" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select Orders.order_id,Orders.customer_id ,customer.fist_name,Customer.last_name,Item.item_name,Order_Details.item_id,Order_Details.price,Order_Details.qut,Orders.final_total from orders inner JOIN Order_Details on Orders.order_id = Order_Details.order_id inner join Customer on Orders.customer_id = Customer.customer_id inner join item on Order_Details.item_id = Item.item_id
+ where Orders.order_id=$P{oId}]]>
+	</queryString>
+	<field name="order_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="order_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="order_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="orders"/>
+	</field>
+	<field name="customer_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="customer_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="customer_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="orders"/>
+	</field>
+	<field name="fist_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="fist_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="fist_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer"/>
+	</field>
+	<field name="last_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="last_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="last_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer"/>
+	</field>
+	<field name="item_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="item_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="item_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+	</field>
+	<field name="item_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="item_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="item_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="order_details"/>
+	</field>
+	<field name="price" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="price"/>
+		<property name="com.jaspersoft.studio.field.label" value="price"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="order_details"/>
+	</field>
+	<field name="qut" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="qut"/>
+		<property name="com.jaspersoft.studio.field.label" value="qut"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="order_details"/>
+	</field>
+	<field name="final_total" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="final_total"/>
+		<property name="com.jaspersoft.studio.field.label" value="final_total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="orders"/>
+	</field>
+	<group name="order_id">
+		<groupExpression><![CDATA[$F{order_id}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="196" height="24" uuid="a2f3c056-1970-4873-9a18-3474625d5c1c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Britannic Bold" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[THE GYM]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="37" y="2" width="122" height="30" uuid="2d7e2716-b7ed-4bd3-98f4-a651cbad6053"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri Light" size="9"/>
+				</textElement>
+				<text><![CDATA[No 217 Wakwella Road Hapugala Junction Galle ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="26" width="100" height="20" uuid="f765c1e4-bd0f-4bb9-9fad-996f45e4de9c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri Light"/>
+				</textElement>
+				<text><![CDATA[ +94 77-08-99-974]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="43" width="196" height="1" uuid="1524f8d3-5364-498a-87cc-cd60dfb4df7f"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="88" height="10" uuid="eea6e0de-5438-4df3-889e-0e511c2205bb"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{item_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="0" width="34" height="10" uuid="63ef21fc-58b5-4309-aea2-8477d12e804b"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qut}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="149" y="0" width="44" height="10" uuid="04f811be-dad2-490d-b14c-5a5db2c41b96"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="137" y="0" width="12" height="10" uuid="0d6feccb-1cae-44f8-a0ba-56b1b28b4672"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="8"/>
+				</textElement>
+				<text><![CDATA[Rs.]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="53" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="32" width="70" height="10" uuid="dbaed4f3-4229-4445-9d96-6d8e8626b6ea"/>
+				<textElement>
+					<font fontName="Candara Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Customer   ID    :]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="0" y="2" width="90" height="10" uuid="956ad78c-e0df-4639-9550-fe6c9bef9f53"/>
+				<textElement>
+					<font fontName="Candara Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="0" y="12" width="90" height="10" uuid="8283c8c8-31d6-47cc-a26e-8dbfd520c964"/>
+				<textElement textAlignment="Left">
+					<font fontName="Candara Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="42" width="62" height="10" uuid="6aad296c-1829-49c5-b69e-b4ec69d7eac1"/>
+				<textElement>
+					<font fontName="Candara Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{last_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="43" width="70" height="10" uuid="ebc89df1-ba03-4713-9422-041d7aecffc3"/>
+				<textElement>
+					<font fontName="Candara Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Customer Name :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="42" width="40" height="10" uuid="4877188d-8623-4e75-9990-4fc7329e2a19"/>
+				<textElement>
+					<font fontName="Candara Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fist_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="22" width="70" height="10" uuid="c0ce4e49-43c8-4821-828d-bfaa4a6f62ac"/>
+				<textElement>
+					<font fontName="Candara Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Transaction   ID :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="32" width="100" height="10" uuid="689b4a80-5d37-4423-bdf2-fbf9727cf79b"/>
+				<textElement>
+					<font fontName="Candara Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="20" width="100" height="12" uuid="45be3a34-6478-42b9-8729-d8b035f23a4a"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Candara Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{order_id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="45" y="5" width="100" height="26" uuid="b2e180ec-7561-43f6-abc9-3416ef1863b4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri Light" isBold="false"/>
+				</textElement>
+				<text><![CDATA[THANK YOU FOR YOUR PURCHASE]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="-1" y="2" width="196" height="1" uuid="6c56f434-c46e-4604-a4fc-0ecdee7e0c3b"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="5" width="88" height="21" uuid="76d18595-e47b-4ff1-ab1a-94a5d59e0c25">
+					<property name="com.jaspersoft.layout.grid.x" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.y" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.weight.x" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.weight.y" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.rowspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.colspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.weight.fixed" value="false"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Candara" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL  ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-3" y="29" width="196" height="1" uuid="f9a117df-8a7a-47a8-8c56-abe293ab3829"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="120" y="6" width="70" height="20" uuid="3ef150ff-442e-4b57-90fd-6f395b9d9cdf"/>
+				<textElement>
+					<font fontName="Candara" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{final_total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="102" y="4" width="18" height="21" uuid="ce53ee25-4680-4a78-b06f-448ab0b597ea">
+					<property name="com.jaspersoft.layout.grid.x" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.y" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.weight.x" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.weight.y" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.rowspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.colspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.weight.fixed" value="false"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Candara" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rs.]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

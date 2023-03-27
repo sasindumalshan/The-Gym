@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" styleClass="set-Bg-image" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.LoginFromController">
+   <children>
+      <ImageView fitHeight="488.0" fitWidth="720.0" layoutY="-7.0" pickOnBounds="true">
+         <image>
+            <Image url="@assets/BGImage/Login.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="182.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 25;" text="LOGIN" />
+      <JFXButton fx:id="btn" buttonType="RAISED" layoutX="89.0" layoutY="352.0" onAction="#loginOnAction" prefHeight="44.0" prefWidth="276.0" ripplerFill="WHITE" stylesheets="@style/Login.css" text="LOGIN" />
+      <JFXTextField fx:id="txtUserName" alignment="CENTER" layoutX="80.0" layoutY="208.0" onAction="#user" prefHeight="29.0" prefWidth="276.0" promptText="User Name" stylesheets="@style/Login.css" />
+      <JFXPasswordField fx:id="txtPassword" alignment="CENTER" layoutX="80.0" layoutY="281.0" onAction="#password" prefHeight="29.0" prefWidth="276.0" promptText="Password" stylesheets="@style/Login.css" />
+      <Text fx:id="txtWarning" fill="#ff6060" layoutX="98.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="239.9830722808838" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="65.0" prefWidth="1891.0" styleClass="bar" stylesheets="@../style/bar.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.RegistrationBarController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="65.0" prefWidth="1891.0">
+         <children>
+            <Text fx:id="txtCustId" fill="WHITE" layoutX="104.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Customer ID" wrappingWidth="285.85546875" />
+            <Text fx:id="txtName" fill="WHITE" layoutX="449.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Name" wrappingWidth="335.96875" />
+            <Text fx:id="txtEmail" fill="WHITE" layoutX="842.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="E-Mail" wrappingWidth="285.85545843839645" />
+            <Text fx:id="txtCity" fill="WHITE" layoutX="1206.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="City" wrappingWidth="443.42337799072266" />
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1796.0" layoutY="15.0" onMouseClicked="#ViewOnMouseClick" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icon/icons8-about-48%20(1).png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="btnRemove" layoutX="1654.0" layoutY="15.0" onAction="#removeOnAction" prefHeight="35.0" prefWidth="123.0" text="Remove">
+               <styleClass>
+                  <String fx:value="btn-txt" />
+                  <String fx:value="bar-btn" />
+               </styleClass>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icon/icons8-remove-24.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnSchedule" layoutX="1515.0" layoutY="15.0" onAction="#SheduleOnAction" prefHeight="35.0" prefWidth="123.0" text="SCHEDULE">
+               <styleClass>
+                  <String fx:value="btn-txt" />
+                  <String fx:value="bar-btn" />
+               </styleClass>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,66 @@
+.pay-button{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 25;
+    -fx-background-radius: 15;
+    -fx-border-color:  #FBA23E;
+    -fx-shape: "M 50 100 L 700 100 L 700 250 L 650 300 L 50 300 L 50 100  ";
+}
+.pay-button:hover{
+    -fx-background-color: #FBA23E;
+    -fx-font-size: 26;
+    -fx-effect: dropshadow( gaussian ,#FBA23E,30,0.1,0,0);
+}
+.text-field-payment{
+    -fx-text-fill: #FBA23E;
+    -fx-font-weight: bold;
+    -fx-font-size: 25;
+    -fx-border-color:#FFFF;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-prompt-text-fill:#FFFF;
+    -fx-shape: "M 100 100 L 650 100 L 650 200 L 600 250 L 50 250 L 50 150 L 100 100 ";
+}
+.text-field-payment:hover{
+    -fx-font-size: 26;
+    -fx-effect: dropshadow( gaussian ,#FFFFFF,50,0.1,0,0);
+}
+.text-details{
+    -fx-text-fill: #FFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 25;
+}
+.text-details2{
+    -fx-text-fill: #FFFF;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+
+}
+.border{
+    -fx-background-radius: 20;
+    -fx-background-color:#FBA23E ;
+}
+
+.border2{
+    -fx-background-radius: 50;
+    -fx-background-color:#0A1930;
+}
+.border3{
+    -fx-background-radius: 50;
+    -fx-background-color:#FFFF;
+}
+.details-box{
+
+
+}
+.text-field-payment2{
+    -fx-text-fill: #FBA23E;
+    -fx-font-weight: bold;
+    -fx-font-size: 18;
+    -fx-border-color:#FFFF;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-prompt-text-fill:#FFFF;
+    -fx-shape: "M 100 100 L 650 100 L 650 200 L 600 250 L 50 250 L 50 150 L 100 100 ";
+}

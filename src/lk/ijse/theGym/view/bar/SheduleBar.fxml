@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane onMouseEntered="#AcerPaneOnMoseEnter" onMouseExited="#AnderPaneOnMoseExit" prefHeight="57.0" prefWidth="1057.0" style="-fx-background-color: #34393F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.ScheduleBarController">
+   <children>
+      <Pane layoutY="-1.0" prefHeight="58.0" prefWidth="1014.0" styleClass="bar-2">
+         <children>
+            <JFXCheckBox fx:id="exeCheck" checkedColor="#fa8605" layoutX="109.0" layoutY="10.0" onAction="#checkOnAction" prefHeight="40.0" prefWidth="591.0" style="-fx-font-weight: bold; -fx-text-fill: white;" styleClass="text-details2" text="vcxvcxvcxvv" textFill="WHITE" unCheckedColor="WHITE" />
+            <Pane fx:id="stepPane" layoutX="674.0" layoutY="12.0" prefHeight="35.0" prefWidth="203.0" styleClass="border2">
+               <children>
+                  <Pane layoutX="7.0" layoutY="4.0" prefHeight="28.0" prefWidth="75.0" styleClass="border">
+                     <children>
+                        <Text fill="WHITE" layoutX="9.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details3" text="SPTEPS" />
+                     </children>
+                  </Pane>
+                  <JFXTextField fx:id="lblSteps" focusColor="#405aa800" layoutX="95.0" layoutY="5.0" onKeyReleased="#stepsKeyReleased" prefHeight="19.0" prefWidth="96.0" unFocusColor="#bf7e7e00" />
+               </children>
+            </Pane>
+            <ImageView fx:id="btnUpdate" fitHeight="28.0" fitWidth="38.0" layoutX="929.0" layoutY="16.0" onMouseClicked="#updateOnMouseClick" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../assets/icon/icons8-edit-100%20(1).png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btnDelete" fitHeight="28.0" fitWidth="38.0" layoutX="892.0" layoutY="16.0" onMouseClicked="#deleteOnMouseClick" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../assets/icon/icons8-remove-24.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btnCancel" fitHeight="26.0" fitWidth="26.0" layoutX="893.0" layoutY="16.0" onMouseClicked="#cancelOnMouseClick" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../assets/icon/icons8-cancel-24.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btnOk" fitHeight="26.0" fitWidth="28.0" layoutX="931.0" layoutY="17.0" onMouseClicked="#okOnMouseClick" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../assets/icon/icons8-ok-24.png" />
+               </image>
+            </ImageView>
+            <JFXTextField fx:id="lblExe" alignment="TOP_CENTER" focusColor="#405aa800" layoutX="73.0" layoutY="8.0" prefHeight="40.0" prefWidth="699.0" styleClass="text-details" unFocusColor="#21101000" visible="false" />
+            <Text fx:id="txtID" fill="WHITE" layoutX="14.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="1" textAlignment="CENTER" wrappingWidth="86.34326171875" />
+         </children>
+      </Pane>
+   </children>
+   <stylesheets>
+      <URL value="@../style/AddFrom.css" />
+      <URL value="@../style/Payment.css" />
+      <URL value="@../style/bar.css" />
+   </stylesheets>
+</AnchorPane>

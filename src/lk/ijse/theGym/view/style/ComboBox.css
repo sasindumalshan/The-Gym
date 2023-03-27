@@ -1,0 +1,97 @@
+/*.combo-box .list-cell*/
+.combo-box{
+    -fx-background-color: red;
+    -fx-text-fill: White;
+    /*-fx-padding: 3 0 2 7;*/
+    /*-fx-cell-size: 1.66667em;*/
+    -fx-border-color: #F79727;
+    -fx-shape: "M 100 250 L 600 250 L 600 500 L 500 550 L 100 550 L 100 250   ";
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-prompt-text-fill: white;
+    -fx-text-alignment: center;
+}
+
+.combo-box-pop.list-view
+{
+    -fx-background-color: transparent,red ;
+    -fx-shape: "M 100 250 L 600 250 L 600 500 L 500 550 L 100 550 L 100 250   ";
+    -fx-background-insets: 0, 1;
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow( three-pass-box , #FFFFFF , 8, 0.0 , 0 , 0 );
+}
+.combo-box-pop.list-cell{
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.combo-box .cell:selected {
+    -fx-text-fill: red;
+}
+.combo-box.list-view:selected{
+    -fx-text-fill: red;
+}
+/*.combo-box-popup .list-view .list-cell*/
+/*{*/
+/*    -fx-padding: 4 0 4 5;*/
+
+/*    !* No alternate highlighting *!*/
+/*    -fx-background-color: white;*/
+/*}*/
+
+/*.combo-box-pop .list-view .list-cell:filled:selected, .combo-box-pop .list-view .list-cell:filled:selected:hover*/
+/*{*/
+/*    -fx-background: -fx-accent;*/
+/*    -fx-background-color: -fx-selection-bar;*/
+/*    -fx-text-fill: red;*/
+/*}*/
+
+/*.combo-box-popup .list-view .list-cell:filled:hover*/
+/*{*/
+/*    -fx-background-color: white;*/
+/*    -fx-text-fill: -fx-text-inner-color;*/
+/*}*/
+
+/*.combo-box-base*/
+/*{*/
+/*    -fx-skin: "com.sun.javafx.scene.control.skin.ComboBoxBaseSkin";*/
+/*    -fx-background-color: white, white, white, white;*/
+/*    -fx-background-radius: 5, 5, 4, 3;*/
+/*    -fx-background-insets: 0 0 -1 0, 0, 1, 2;*/
+/*    -fx-padding: 0;*/
+/*}*/
+
+/*.combo-box-base:hover*/
+/*{*/
+/*    -fx-color: -fx-hover-base;*/
+/*}*/
+
+/*.combo-box-base:showing*/
+/*{*/
+/*    -fx-color: -fx-pressed-base;*/
+/*}*/
+
+/*.combo-box-base:focused {*/
+/*    -fx-background-color: -fx-focus-color, -fx-outer-border, -fx-inner-border, -fx-body-color;*/
+/*    -fx-background-radius: 6.4, 4, 5, 3;*/
+/*    -fx-background-insets: -1.4, 0, 1, 2;*/
+/*}*/
+
+.jfx-combo-box {
+    -fx-background-color: #FFFF;
+}
+
+.jfx-combo-box .combo-box-po{
+    -fx-background-color:  WHITE;
+    -fx-text-fill: RED;
+}
+.text-input{
+    fx-text-fill: RED;
+}
+.jfx-combo-box:hover{
+    -fx-effect: dropshadow( three-pass-box , #FFFFFF , 8, 0.0 , 0 , 0 );
+
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="busnescard" pageWidth="565" pageHeight="345" orientation="Landscape" columnWidth="545" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" uuid="6c2d2205-1305-4540-912e-4a919fd44634">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="id" class="java.lang.String"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="email" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="324" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.HorizontalRowLayout"/>
+			<frame>
+				<reportElement x="0" y="0" width="545" height="324" uuid="112f5978-1a8b-469f-a740-316c786de39b"/>
+				<image>
+					<reportElement x="0" y="0" width="544" height="324" uuid="d2646097-8e4f-473f-8585-a8b236cba42c"/>
+					<imageExpression><![CDATA["C:/Users/Sasindu Malshan/Documents/THE GYM Final Project/The Gym Card3.jpg"]]></imageExpression>
+				</image>
+				<frame>
+					<reportElement x="146" y="48" width="210" height="27" uuid="f022f1eb-73d9-45e1-aff4-a0ece05bdf81"/>
+					<textField>
+						<reportElement x="0" y="0" width="210" height="27" forecolor="#FFFFFF" uuid="1eed61cd-f918-4323-b0e0-bfcb54f994e7"/>
+						<textElement>
+							<font fontName="Arial" size="20"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$P{id}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement x="125" y="96" width="265" height="27" uuid="f4ebce1b-b5f8-4142-b813-12a425c374b2"/>
+					<textField>
+						<reportElement x="0" y="0" width="265" height="27" forecolor="#FFFFFF" uuid="21487b80-aab4-47d9-853d-b38f2e747928"/>
+						<textElement>
+							<font fontName="Calibri" size="18"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement x="126" y="135" width="200" height="27" uuid="30c7dd88-aa7a-4b7e-83ef-b0a555b0d141"/>
+					<textField>
+						<reportElement x="0" y="0" width="200" height="27" forecolor="#FFFFFF" uuid="913c5f3b-ad9f-4c49-95cb-84bdd385df51"/>
+						<textElement>
+							<font fontName="Calibri" size="18"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$P{email}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement mode="Opaque" x="186" y="180" width="131" height="125" uuid="c80d181c-9740-4d72-8736-83f4a7e70ad7"/>
+					<image>
+						<reportElement x="10" y="9" width="110" height="110" uuid="97d35c2d-5489-4336-a662-4070df27c29a"/>
+						<imageExpression><![CDATA[com.google.zxing.client.j2se.MatrixToImageWriter.toBufferedImage(
+new com.google.zxing.qrcode.QRCodeWriter().encode(
+$P{id},
+com.google.zxing.BarcodeFormat.QR_CODE, 300, 300))]]></imageExpression>
+					</image>
+				</frame>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="1030.0" prefWidth="1920.0" style="-fx-background-color: #34393F;" stylesheets="@style/EmployeeDashBord.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.StoreFromController">
+   <children>
+      <ImageView fitHeight="1033.0" fitWidth="1916.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true">
+         <image>
+            <Image url="@assets/BGImage/BG%20Effect.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="68.0" fitWidth="66.0" layoutX="17.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/icon/icons8-dumbbell-48.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="102.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="Store" />
+      <JFXButton layoutX="241.0" layoutY="45.0" onAction="#homeOnAction" prefHeight="54.0" prefWidth="202.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="white-button" stylesheets="@style/EmployeeDashBord.css">
+         <graphic>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.66665649414062" minWidth="10.0" prefWidth="67.33331298828125" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.66668701171875" minWidth="10.0" prefWidth="132.66668701171875" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" styleClass="set-image">
+                     <image>
+                        <Image url="@assets/icon/icons8-reply-arrow-100%20(1).png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="20.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20; -fx-font-weight: bold;" text="Home" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </graphic>
+      </JFXButton>
+      <Pane layoutX="1215.0" layoutY="26.0" prefHeight="114.0" prefWidth="335.0" styleClass="detail-box">
+         <children>
+            <ImageView fitHeight="118.0" fitWidth="99.0" layoutX="11.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/icon/icons8-combo-chart-96.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="143.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="All Items" />
+            <Text fx:id="txtAllItem" fill="WHITE" layoutX="154.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="notification-Num-text" text="5" textAlignment="CENTER" wrappingWidth="110.11962890625" />
+         </children>
+      </Pane>
+      <Pane layoutX="1583.0" layoutY="29.0" prefHeight="106.0" prefWidth="309.0" styleClass="detail-box">
+         <children>
+            <ImageView fitHeight="118.0" fitWidth="99.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/icon/icons8-combo-chart-90.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="102.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="Limited Items" />
+            <Text fx:id="txtLimiedItem" fill="WHITE" layoutX="135.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="notification-Num-text" text="4" textAlignment="CENTER" wrappingWidth="110.11962890625" />
+         </children>
+      </Pane>
+      <JFXTextField fx:id="txtSearch" layoutX="503.0" layoutY="55.0" onKeyReleased="#searchItemOnKeyReleased" prefHeight="47.0" prefWidth="636.0" promptText="Search Iteme corde or Item Name" styleClass="search-bar" />
+      <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="1085.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/icon/icons8-search-96.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="1654.0" layoutY="153.0" onAction="#newItemAddOnAction" prefHeight="54.0" prefWidth="202.0" style="-fx-background-color: #FBA23E; -fx-background-radius: 20;" styleClass="detail-box" stylesheets="@style/EmployeeDashBord.css">
+         <graphic>
+            <GridPane>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.66665649414062" minWidth="10.0" prefWidth="67.33331298828125" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.66668701171875" minWidth="10.0" prefWidth="132.66668701171875" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" styleClass="set-image">
+                     <image>
+                        <Image url="@assets/icon/icons8-add-96.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30; -fx-font-weight: bold;" text="New " GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </graphic>
+      </JFXButton>
+      <Separator layoutX="73.0" layoutY="225.0" prefHeight="3.0" prefWidth="1764.0" />
+      <ScrollPane layoutX="17.0" layoutY="366.0" prefHeight="650.0" prefWidth="1903.0" style="-fx-background-color: #34393F;" styleClass="MyScroll-pane">
+         <content>
+            <VBox fx:id="vBox" prefHeight="726.0" prefWidth="1891.0" style="-fx-background-color: #34393F;" />
+         </content>
+      </ScrollPane>
+      <Pane layoutX="21.0" layoutY="287.0" prefHeight="57.0" prefWidth="1880.0" style="-fx-border-color: #FBA23E;">
+         <children>
+            <Text fill="WHITE" layoutX="100.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="Item Code" />
+            <Text fill="WHITE" layoutX="352.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="item Name" />
+            <Text fill="WHITE" layoutX="704.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="Price" />
+            <Text fill="WHITE" layoutX="957.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="QUt" textAlignment="CENTER" wrappingWidth="146.42337799072266" />
+            <Text fill="WHITE" layoutX="1629.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="Option" textAlignment="CENTER" wrappingWidth="139.88039016723633" />
+            <Text fill="WHITE" layoutX="1254.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="Catagory" textAlignment="CENTER" wrappingWidth="146.42337799072266" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

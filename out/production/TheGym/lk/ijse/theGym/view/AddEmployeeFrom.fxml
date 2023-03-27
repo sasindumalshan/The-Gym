@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="635.0" prefWidth="460.0" style="-fx-background-color: #34393F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.AddEmployeeFromController">
+   <children>
+      <ImageView fitHeight="741.0" fitWidth="460.0" opacity="0.17" pickOnBounds="true">
+         <image>
+            <Image url="@assets/BGImage/add%20Employee.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="368.0" fitWidth="202.0" layoutX="258.0" layoutY="387.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/BGImage/NicePng_body-building-png_2561762.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="58.0" fitWidth="83.0" layoutX="206.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/icon/icons8-add-user-male-100.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="txtFName" alignment="CENTER" layoutX="38.0" layoutY="100.0" onKeyReleased="#fistName" prefHeight="25.0" prefWidth="187.0" promptText="Fist Name" styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXTextField fx:id="txtLName" alignment="CENTER" layoutX="240.0" layoutY="100.0" onKeyReleased="#LastName" prefHeight="25.0" prefWidth="187.0" promptText="Last Name" styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXTextField fx:id="txtEmail" alignment="CENTER" layoutX="40.0" layoutY="156.0" onKeyReleased="#email" prefHeight="25.0" prefWidth="390.0" promptText="E-Mail" styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXTextField fx:id="txtNIC" alignment="CENTER" layoutX="40.0" layoutY="345.0" onKeyReleased="#nic" prefHeight="25.0" prefWidth="215.0" promptText="NIC" styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXTextField fx:id="txtCity" alignment="CENTER" layoutX="42.0" layoutY="226.0" onKeyReleased="#ctiy" prefHeight="25.0" prefWidth="180.0" promptText="City" styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXTextField fx:id="txtStreet" alignment="CENTER" layoutX="246.0" layoutY="226.0" onKeyReleased="#street" prefHeight="25.0" prefWidth="180.0" promptText="Street" styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXTextField fx:id="txtLane" alignment="CENTER" layoutX="42.0" layoutY="285.0" onKeyReleased="#lean" prefHeight="25.0" prefWidth="180.0" promptText="Lane" styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXTextField fx:id="txtMoNo" alignment="CENTER" layoutX="42.0" layoutY="398.0" onKeyReleased="#mobile" prefHeight="25.0" prefWidth="215.0" promptText="Mobail No." styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXDatePicker fx:id="dPBrithday" defaultColor="#fba23e" layoutX="42.0" layoutY="453.0" onAction="#getDateOnAction" prefHeight="26.0" prefWidth="215.0" promptText="Birthday" styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXComboBox fx:id="combRole" layoutX="42.0" layoutY="506.0" onAction="#roleOnAction" prefHeight="28.0" prefWidth="215.0" promptText="Role" styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXButton fx:id="btnAdd" layoutX="69.0" layoutY="674.0" onAction="#addOnAction" prefHeight="37.0" prefWidth="320.0" styleClass="add-employee-button" stylesheets="@style/EmployeeDashBord.css" text="Add" />
+      <JFXTextField fx:id="txtUserName" alignment="CENTER" layoutX="42.0" layoutY="557.0" onKeyReleased="#userName" prefHeight="25.0" prefWidth="215.0" promptText="User Name" styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXTextField fx:id="txtPassword" alignment="CENTER" layoutX="40.0" layoutY="615.0" onKeyReleased="#password" prefHeight="25.0" prefWidth="215.0" promptText="Password" styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="426.0" layoutY="11.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/icon/icons8-close-window-64.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

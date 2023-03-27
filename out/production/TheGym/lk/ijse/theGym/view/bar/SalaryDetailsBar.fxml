@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="56.0" prefWidth="977.0" styleClass="bar" stylesheets="@../style/bar.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.SalaryDetailsBarController">
+   <children>
+      <Pane layoutX="12.0" layoutY="6.0" onMouseClicked="#clickOnAction" prefHeight="48.0" prefWidth="965.0">
+         <children>
+            <Text fx:id="txtRole" fill="WHITE" layoutX="435.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="SALARY AVALABLE ROLE" />
+            <Text fx:id="txtSalary" fill="WHITE" layoutX="262.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="SALARY" />
+            <Text fx:id="txtId" fill="WHITE" layoutX="9.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="SALARY ID" textAlignment="CENTER" wrappingWidth="165.45850467681885" />
+            <Text fx:id="txtUsage" fill="WHITE" layoutX="818.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="USEGE" wrappingWidth="97.46222686767578" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

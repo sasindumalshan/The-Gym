@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="300.0" prefWidth="460.0" style="-fx-background-color: #34393F;" stylesheets="@style/EmployeeDashBord.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.AddEmployeeFromController">
+   <children>
+      <ImageView fitHeight="308.0" fitWidth="460.0" opacity="0.17" pickOnBounds="true">
+         <image>
+            <Image url="@assets/BGImage/add%20Employee.png" />
+         </image>
+      </ImageView>
+      <JFXTextField alignment="CENTER" layoutX="90.0" layoutY="187.0" prefHeight="25.0" prefWidth="296.0" promptText="Salary" styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+      <JFXButton layoutX="75.0" layoutY="244.0" prefHeight="37.0" prefWidth="320.0" styleClass="add-employee-button" stylesheets="@style/EmployeeDashBord.css" text="Add" />
+      <ImageView fitHeight="58.0" fitWidth="83.0" layoutX="206.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/icon/icons8-salary-male-100.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="57.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="Rs." />
+      <JFXTextField alignment="CENTER" layoutX="87.0" layoutY="136.0" prefHeight="25.0" prefWidth="296.0" promptText="Role" styleClass="add-employee-text" stylesheets="@style/EmployeeDashBord.css" />
+   </children>
+</AnchorPane>

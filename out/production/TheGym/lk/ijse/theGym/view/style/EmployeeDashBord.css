@@ -1,0 +1,88 @@
+.MyScroll-pane{
+-fx-background-color: #34393F;
+
+
+
+}
+
+
+.MyScroll-pane >.corner{
+   -fx-background-color: #34393F;
+}
+.Content-text{
+   -fx-font-size: 25;
+   -fx-font-weight: bold;
+   -fx-prompt-text-fill: white;
+   
+
+}
+.set-image{
+   -fx-background-image: url("/lk/ijse/theGym/view/assets/icon/icons8-reply-arrow-100.png");
+}
+.white-button:hover{
+   -fx-effect: dropshadow( gaussian ,#FFFFFF,20,0.1,0,0);
+}
+.detail-box{
+   -fx-background-color: #FBA23E;
+   -fx-background-radius: 30 30 30 0;
+}
+.detail-box:hover{
+   -fx-effect: dropshadow( gaussian ,#FBA23E,20,0.1,0,0);
+}
+.notification-Num-text{
+   -fx-font-weight: bold;
+   -fx-text-fill:#FFFF ;
+   -fx-font-size: 50;
+}
+.search-bar{
+   -fx-border-color: white;
+   -fx-border-radius: 50;
+   -fx-border-insets: 5;
+   -fx-prompt-text-fill: #E5DCD7;
+   -fx-text-fill: white;
+   -fx-alignment: center;
+   -fx-font-weight: bold;
+   -fx-font-size: 20;
+}
+.date-month{
+   -fx-prompt-text-fill: White;
+   -fx-font-size: 20;
+   -fx-font-weight: bold;
+   -fx-text-fill: white;
+}
+
+.add-employee-text{
+   -fx-border-color: #FFFF;
+   -fx-border-radius: 5;
+   -fx-prompt-text-fill: White;
+   -fx-font-size: 12;
+   -fx-font-weight: bold;
+   -fx-text-fill: white;
+   -fx-alignment: center;
+
+}
+.add-employee-text:hover{
+   -fx-effect: dropshadow( gaussian ,#FFFFFF,10,0.1,0,0);
+}
+.add-employee-button{
+   -fx-text-fill: White;
+   -fx-font-size: 20;
+   -fx-font-weight: bold;
+   -fx-background-color: #FBA23E;
+   -fx-background-radius: 15;
+}
+.add-employee-button:hover{
+   -fx-effect: dropshadow( gaussian ,#FBA23E,10,0.1,0,0);
+   -fx-background-color: #FBA23E;
+}
+.view-employee-details-text{
+   -fx-font-size: 15;
+   -fx-font-weight: bold;
+   -fx-text-fill: white;
+   -fx-alignment: center;
+}
+.view-employee-details-text-2{
+   -fx-font-size: 15;
+   -fx-text-fill: white;
+   -fx-alignment: center;
+}

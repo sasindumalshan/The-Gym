@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="869.0" prefWidth="1542.0" style="-fx-background-color: #33383E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.SalaryFromController">
+   <children>
+      <ScrollPane layoutX="67.0" layoutY="257.0" prefHeight="584.0" prefWidth="1043.0" style="-fx-background-color: #33383E;">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="584.0" prefWidth="1044.0" style="-fx-background-color: #33383E;">
+               <children>
+                  <VBox fx:id="Vbox" layoutX="-2.0" layoutY="1.0" prefHeight="645.0" prefWidth="1040.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <Pane layoutX="1091.0" layoutY="255.0" prefHeight="592.0" prefWidth="42.0" style="-fx-background-color: #33383E;" />
+      <Pane layoutX="16.0" layoutY="807.0" prefHeight="51.0" prefWidth="1108.0" style="-fx-background-color: #33383E;" />
+      <Pane layoutX="63.0" layoutY="184.0" prefHeight="57.0" prefWidth="1007.0" style="-fx-border-color: #FBA23E;">
+         <children>
+            <Text fx:id="availableRole" fill="WHITE" layoutX="454.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="SALARY AVALABLE ROLE" />
+            <Text fx:id="txtSalary" fill="WHITE" layoutX="281.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="SALARY" />
+            <Text fx:id="txtId" fill="WHITE" layoutX="28.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="SALARY ID" textAlignment="CENTER" wrappingWidth="165.45850467681885" />
+            <Text fx:id="usage" fill="WHITE" layoutX="837.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="USEGE" wrappingWidth="97.46222686767578" />
+         </children>
+      </Pane>
+      <JFXRadioButton fx:id="salary" layoutX="87.0" layoutY="148.0" onAction="#salaryOnAction" styleClass="text-details2" text="SALARY">
+         <toggleGroup>
+            <ToggleGroup fx:id="RADIO" />
+         </toggleGroup>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="salaryDetails" layoutX="221.0" layoutY="146.0" onAction="#salaryDetaisOnAction" styleClass="text-details2" text="SALARY DETAILS" toggleGroup="$RADIO" />
+      <Pane fx:id="addSalary" layoutX="1111.0" layoutY="181.0" prefHeight="569.0" prefWidth="403.0" visible="false">
+         <children>
+            <Pane fx:id="otherRole" layoutX="9.0" layoutY="250.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+               <children>
+                  <Pane layoutX="9.0" layoutY="10.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+                     <children>
+                        <Text fill="WHITE" layoutX="15.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="OTHER ORLE" />
+                     </children>
+                  </Pane>
+                  <JFXTextField fx:id="txtOtherRole" focusColor="#0a193000" layoutX="139.0" layoutY="10.0" onKeyReleased="#otherRole" prefHeight="34.0" prefWidth="223.0" styleClass="text-details2" unFocusColor="#4d4d4d00" />
+               </children>
+            </Pane>
+            <Pane layoutX="8.0" layoutY="120.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+               <children>
+                  <Pane layoutX="9.0" layoutY="10.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+                     <children>
+                        <Text fill="WHITE" layoutX="39.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="SALARY" />
+                     </children>
+                  </Pane>
+                  <Text fx:id="txtName1" fill="WHITE" layoutX="137.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="220.611328125" />
+                  <JFXTextField fx:id="lblPrice" focusColor="#0a193000" layoutX="135.0" layoutY="11.0" onKeyReleased="#priceOnAction" prefHeight="34.0" prefWidth="223.0" styleClass="text-details2" unFocusColor="#4d4d4d00" />
+               </children>
+            </Pane>
+            <JFXButton fx:id="btnAdd" layoutX="14.0" layoutY="367.0" onAction="#salaryAddOnAction" prefHeight="51.0" prefWidth="367.0" styleClass="pay-button" text="ADD" />
+            <Pane layoutX="10.0" layoutY="187.0" prefHeight="42.0" prefWidth="378.0" styleClass="border3">
+               <children>
+                  <Pane layoutX="5.0" layoutY="4.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+                     <children>
+                        <Text fill="WHITE" layoutX="39.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="ROLE" />
+                     </children>
+                  </Pane>
+                  <JFXComboBox fx:id="comboRole" layoutX="135.0" layoutY="12.0" onAction="#roleOnAction" prefHeight="28.0" prefWidth="223.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="paneSalaryId" layoutX="10.0" layoutY="57.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+               <children>
+                  <Pane layoutX="9.0" layoutY="10.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+                     <children>
+                        <Text fill="WHITE" layoutX="24.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="SALARY ID" />
+                     </children>
+                  </Pane>
+                  <Text fx:id="txtIdSearch" fill="WHITE" layoutX="137.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="220.611328125" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="givenSalary" layoutX="1091.0" layoutY="181.0" prefHeight="678.0" prefWidth="422.0">
+         <children>
+            <Pane layoutX="21.0" layoutY="37.0" prefHeight="42.0" prefWidth="378.0" styleClass="border3">
+               <children>
+                  <Pane layoutX="5.0" layoutY="4.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+                     <children>
+                        <Text fill="WHITE" layoutX="17.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="EMPLOYE ID" />
+                     </children>
+                  </Pane>
+                  <JFXComboBox fx:id="comboId" layoutX="135.0" layoutY="6.0" onAction="#idOnAction" onKeyReleased="#employeeId" prefHeight="28.0" prefWidth="223.0" />
+               </children>
+            </Pane>
+            <Pane layoutX="23.0" layoutY="111.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+               <children>
+                  <Pane layoutX="9.0" layoutY="10.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+                     <children>
+                        <Text fill="WHITE" layoutX="38.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="NAME" />
+                     </children>
+                  </Pane>
+                  <Text fx:id="txtName" fill="WHITE" layoutX="141.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="203.611328125" />
+               </children>
+            </Pane>
+            <Pane layoutX="26.0" layoutY="179.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+               <children>
+                  <Pane layoutX="9.0" layoutY="10.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+                     <children>
+                        <Text fill="WHITE" layoutX="38.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="NIC" />
+                     </children>
+                  </Pane>
+                  <Text fx:id="txtNic" fill="WHITE" layoutX="141.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="203.611328125" />
+               </children>
+            </Pane>
+            <Pane layoutX="29.0" layoutY="251.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+               <children>
+                  <Pane layoutX="9.0" layoutY="10.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+                     <children>
+                        <Text fill="WHITE" layoutX="11.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="ATTENDANCE" />
+                     </children>
+                  </Pane>
+                  <Text fx:id="txtAttendance" fill="WHITE" layoutX="141.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="203.611328125" />
+               </children>
+            </Pane>
+            <Pane layoutX="29.0" layoutY="321.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+               <children>
+                  <Pane layoutX="9.0" layoutY="10.0" prefHeight="35.0" prefWidth="156.0" styleClass="border">
+                     <children>
+                        <Text fill="WHITE" layoutX="11.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="AVALABLE SALARY" />
+                     </children>
+                  </Pane>
+                  <Text fx:id="txtAvailableSalary" fill="WHITE" layoutX="177.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="188.611328125" />
+               </children>
+            </Pane>
+            <Pane layoutX="32.0" layoutY="394.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+               <children>
+                  <Pane layoutX="9.0" layoutY="11.0" prefHeight="34.0" prefWidth="156.0" styleClass="border">
+                     <children>
+                        <Text fill="WHITE" layoutX="4.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="PER MONTH SALARY" />
+                     </children>
+                  </Pane>
+                  <Text fx:id="txtPerMonthSalary" fill="WHITE" layoutX="179.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="165.45850467681885" />
+               </children>
+            </Pane>
+            <JFXButton fx:id="btnAdd1" layoutX="32.0" layoutY="473.0" onAction="#addOnAction" prefHeight="51.0" prefWidth="367.0" styleClass="pay-button" text="ADD" />
+         </children>
+      </Pane>
+      <JFXComboBox fx:id="comboMonth" focusColor="#405aa800" layoutX="457.0" layoutY="130.0" onAction="#monthOnAction" prefHeight="28.0" prefWidth="149.0" stylesheets="@style/ComboBox.css" unFocusColor="#4d4d4d00" />
+      <JFXComboBox fx:id="comboYear" focusColor="#405aa800" layoutX="650.0" layoutY="127.0" onAction="#yearOnAction" prefHeight="28.0" prefWidth="149.0" stylesheets="@style/ComboBox.css" unFocusColor="#4d4d4d00" />
+   </children>
+   <stylesheets>
+      <URL value="@style/Payment.css" />
+      <URL value="@style/EmployeeDashBord.css" />
+      <URL value="@style/AddFrom.css" />
+   </stylesheets>
+</AnchorPane>

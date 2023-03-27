@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="57.0" prefWidth="1870.0" styleClass="bar" stylesheets="@../style/bar.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.SupplierOrderDetailBarController">
+   <children>
+      <Text fx:id="txtOrderId" fill="WHITE" layoutX="103.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Order Id" wrappingWidth="262.15673828125" />
+      <Text fx:id="txtCompanyName" fill="WHITE" layoutX="459.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Company Name" wrappingWidth="366.60107421875" />
+      <Text fx:id="txtItemName" fill="WHITE" layoutX="827.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Item Name" wrappingWidth="325.6011028289795" />
+      <Text fx:id="txtPrice" fill="WHITE" layoutX="1219.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="price" wrappingWidth="228.9999771118164" />
+      <ImageView fitHeight="39.0" fitWidth="35.0" layoutX="1781.0" layoutY="13.0" onMouseClicked="#viewDataOnMouseClick" pickOnBounds="true" preserveRatio="true" styleClass="bar-btn">
+         <image>
+            <Image url="@../assets/icon/icons8-about-48%20(1).png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="1162.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Rs." wrappingWidth="52.999977111816406" />
+      <Text fx:id="txtQut" fill="WHITE" layoutX="1523.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="qut" wrappingWidth="228.9999771118164" />
+   </children>
+</AnchorPane>

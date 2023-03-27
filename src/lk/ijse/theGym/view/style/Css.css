@@ -1,0 +1,34 @@
+.addId{
+    -fx-prompt-text-fill: white;
+    -fx-fill: white;
+    -fx-font-size: 20;
+    -fx-font-weight:bold;
+    -fx-border-color: white;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-alignment: center;
+}
+
+.package-button{
+    -fx-background-color: #373C42;
+    -fx-shape:"M 100 250 L 600 250 L 600 500 L 500 550 L 100 550 L 100 250   ";
+    -fx-border-color: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+}
+.package-button:hover{
+    -fx-pref-height: 70;
+    -fx-pref-width: 155;
+    -fx-font-size: 25;
+    -fx-background-color: #FA8605;
+    -fx-effect: dropshadow( gaussian ,#FA8605,50,0.1,0,0);
+
+}
+.price-txt{
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+    -fx-text-fill: white;
+}
+
+

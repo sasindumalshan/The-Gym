@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="1030.0" prefWidth="1920.0" style="-fx-background-color: #34393F;" stylesheets="@style/EmployeeDashBord.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.ReportFromController">
+   <children>
+      <ImageView fitHeight="1033.0" fitWidth="1916.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true">
+         <image>
+            <Image url="@assets/BGImage/BG%20Effect.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="68.0" fitWidth="66.0" layoutX="17.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/icon/icons8-report-64.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="102.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="Report" />
+      <JFXButton layoutX="241.0" layoutY="45.0" onAction="#backOnAction" prefHeight="54.0" prefWidth="202.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="white-button" stylesheets="@style/EmployeeDashBord.css">
+         <graphic>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.66665649414062" minWidth="10.0" prefWidth="67.33331298828125" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.66668701171875" minWidth="10.0" prefWidth="132.66668701171875" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" styleClass="set-image">
+                     <image>
+                        <Image url="@assets/icon/icons8-reply-arrow-100%20(1).png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="20.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20; -fx-font-weight: bold;" text="Home" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </graphic>
+      </JFXButton>
+      <JFXTextField fx:id="search" layoutX="728.0" layoutY="57.0" onKeyReleased="#searchKeyReleased" prefHeight="47.0" prefWidth="636.0" promptText="Search ID or Name" styleClass="search-bar" visible="false" />
+      <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="1310.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@assets/icon/icons8-search-96.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="68.0" layoutY="322.0" onAction="#salaryOnAction" prefHeight="119.0" prefWidth="259.0" style="-fx-background-color: #FBA23E;" styleClass="custom-button">
+         <graphic>
+            <GridPane prefHeight="108.0" prefWidth="292.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.66665649414062" minWidth="10.0" prefWidth="67.33331298828125" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.66668701171875" minWidth="10.0" prefWidth="132.66668701171875" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fitHeight="61.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" styleClass="set-image">
+                     <image>
+                        <Image url="@assets/icon/icons8-cash-90.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30; -fx-font-weight: bold;" text="Salary" wrappingWidth="170.9140625" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </graphic>
+         <stylesheets>
+            <URL value="@style/EmployeeDashBord.css" />
+            <URL value="@style/AdminDashBord.css" />
+         </stylesheets>
+      </JFXButton>
+      <JFXButton fx:id="btnReport" layoutX="68.0" layoutY="164.0" onAction="#reportOnAction" prefHeight="119.0" prefWidth="259.0" style="-fx-background-color: #FBA23E;" styleClass="custom-button">
+         <graphic>
+            <GridPane prefHeight="108.0" prefWidth="292.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.66665649414062" minWidth="10.0" prefWidth="67.33331298828125" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.66668701171875" minWidth="10.0" prefWidth="132.66668701171875" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fitHeight="62.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" styleClass="set-image">
+                     <image>
+                        <Image url="@assets/icon/icons8-combo-chart-64%20(2).png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30; -fx-font-weight: bold;" text="Report" wrappingWidth="170.9140625" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </graphic>
+         <stylesheets>
+            <URL value="@style/EmployeeDashBord.css" />
+            <URL value="@style/AdminDashBord.css" />
+         </stylesheets>
+      </JFXButton>
+      <Pane layoutX="60.0" layoutY="610.0" prefHeight="102.0" prefWidth="275.0" styleClass="detail-box">
+         <children>
+            <ImageView fitHeight="66.0" fitWidth="57.0" layoutX="8.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/icon/icons8-combo-chart-96.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="72.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="Monthly Ordes" />
+            <Text fx:id="txtMonthlyOrders" fill="WHITE" layoutX="99.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="notification-Num-text" text="5" textAlignment="CENTER" wrappingWidth="110.11962890625" />
+         </children>
+      </Pane>
+      <Pane layoutX="64.0" layoutY="734.0" prefHeight="102.0" prefWidth="275.0" styleClass="detail-box">
+         <children>
+            <ImageView fitHeight="66.0" fitWidth="57.0" layoutX="8.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/icon/icons8-combo-chart-96.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="72.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="All Custromers" />
+            <Text fx:id="txtAllCustomer" fill="WHITE" layoutX="99.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="notification-Num-text" text="5" textAlignment="CENTER" wrappingWidth="110.11962890625" />
+         </children>
+      </Pane>
+      <Text fill="WHITE" layoutX="141.0" layoutY="935.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-employee-details-text" text="Report Status" />
+      <Text fx:id="txtReportStatus" fill="WHITE" layoutX="102.0" layoutY="904.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30; -fx-font-weight: bold;" text="GOOD" textAlignment="CENTER" wrappingWidth="170.9140625" />
+      <Pane fx:id="pane" layoutX="371.0" layoutY="161.0" prefHeight="869.0" prefWidth="1542.0" />
+      <JFXButton layoutX="68.0" layoutY="462.0" onAction="#packOnAction" prefHeight="119.0" prefWidth="259.0" style="-fx-background-color: #FBA23E;" styleClass="custom-button">
+         <graphic>
+            <GridPane prefHeight="108.0" prefWidth="292.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.66665649414062" minWidth="10.0" prefWidth="67.33331298828125" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.66668701171875" minWidth="10.0" prefWidth="132.66668701171875" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fitHeight="61.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" styleClass="set-image">
+                     <image>
+                        <Image url="@assets/icon/icons8-share-crown-online-gaming-permium-membership-key-96.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30; -fx-font-weight: bold;" text="Package" wrappingWidth="170.9140625" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </graphic>
+         <stylesheets>
+            <URL value="@style/EmployeeDashBord.css" />
+            <URL value="@style/AdminDashBord.css" />
+         </stylesheets>
+      </JFXButton>
+   </children>
+</AnchorPane>

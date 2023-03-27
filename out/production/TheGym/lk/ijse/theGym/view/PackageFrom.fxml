@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="869.0" prefWidth="1542.0" style="-fx-background-color: #33383E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.PackageFromController">
+   <children>
+      <Pane layoutX="1131.0" layoutY="337.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+         <children>
+            <Pane layoutX="9.0" layoutY="10.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="24.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="PACHAGE " />
+               </children>
+            </Pane>
+            <JFXTextField fx:id="lblPackage" focusColor="#0a193000" layoutX="139.0" layoutY="10.0" onKeyReleased="#packageOnKeyrelesed" prefHeight="34.0" prefWidth="223.0" styleClass="text-details2" unFocusColor="#4d4d4d00" />
+         </children>
+      </Pane>
+      <Pane layoutX="1129.0" layoutY="410.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+         <children>
+            <Pane layoutX="9.0" layoutY="10.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="39.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="PRICE" />
+               </children>
+            </Pane>
+            <Text fx:id="txtName1" fill="WHITE" layoutX="137.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" wrappingWidth="220.611328125" />
+            <JFXTextField fx:id="lblPrice" focusColor="#0a193000" layoutX="135.0" layoutY="11.0" onKeyReleased="#priceKeyReleased" prefHeight="34.0" prefWidth="223.0" styleClass="text-details2" unFocusColor="#4d4d4d00" />
+         </children>
+      </Pane>
+      <Pane layoutX="1132.0" layoutY="489.0" prefHeight="53.0" prefWidth="378.0" styleClass="border2">
+         <children>
+            <Pane layoutX="9.0" layoutY="10.0" prefHeight="35.0" prefWidth="121.0" styleClass="border">
+               <children>
+                  <Text fill="WHITE" layoutX="18.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-details2" text="DURATION" />
+               </children>
+            </Pane>
+            <JFXTextField fx:id="lblDuration" focusColor="#0a193000" layoutX="143.0" layoutY="9.0" onKeyReleased="#durationOnKeyReleased" prefHeight="34.0" prefWidth="223.0" styleClass="text-details2" unFocusColor="#4d4d4d00" />
+         </children>
+      </Pane>
+      <JFXButton fx:id="btnAdd" layoutX="1140.0" layoutY="578.0" onAction="#addOnAction" prefHeight="51.0" prefWidth="367.0" styleClass="pay-button" text="ADD" />
+      <ScrollPane layoutX="67.0" layoutY="257.0" prefHeight="584.0" prefWidth="1043.0" style="-fx-background-color: #33383E;">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="584.0" prefWidth="1044.0" style="-fx-background-color: #33383E;">
+               <children>
+                  <VBox fx:id="Vbox" layoutX="-2.0" layoutY="1.0" prefHeight="645.0" prefWidth="1040.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <Pane layoutX="1091.0" layoutY="255.0" prefHeight="592.0" prefWidth="42.0" style="-fx-background-color: #33383E;" />
+      <Pane layoutX="16.0" layoutY="807.0" prefHeight="51.0" prefWidth="1108.0" style="-fx-background-color: #33383E;" />
+      <Pane layoutX="63.0" layoutY="184.0" prefHeight="57.0" prefWidth="1007.0" style="-fx-border-color: #FBA23E;">
+         <children>
+            <Text fill="WHITE" layoutX="648.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="PRICE" wrappingWidth="97.46222686767578" />
+            <Text fill="WHITE" layoutX="446.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="DURETION" />
+            <Text fill="WHITE" layoutX="221.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="PACKGE" />
+            <Text fill="WHITE" layoutX="28.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="PACKAGE ID" textAlignment="CENTER" wrappingWidth="165.45850467681885" />
+            <Text fill="WHITE" layoutX="837.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Content-text" text="USEGE" wrappingWidth="97.46222686767578" />
+         </children>
+      </Pane>
+   </children>
+   <stylesheets>
+      <URL value="@style/Payment.css" />
+      <URL value="@style/EmployeeDashBord.css" />
+      <URL value="@style/AddFrom.css" />
+   </stylesheets>
+</AnchorPane>

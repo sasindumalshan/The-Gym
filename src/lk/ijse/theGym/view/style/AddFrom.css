@@ -1,0 +1,62 @@
+.text-details2{
+    -fx-text-fill: #FFFF;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    /*-fx-shape: "M 100 150 L 550 150 L 650 250 L 100 250 L 100 150 ";*/
+
+
+}
+.text-details3{
+    -fx-text-fill: #33383C;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-color-label-visible: blue;
+    -fx-progress-color: blue;
+    /*-fx-shape: "M 100 150 L 550 150 L 650 250 L 100 250 L 100 150 ";*/
+
+
+}
+.add-button{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+    -fx-background-radius: 15;
+    -fx-border-color:  #FBA23E;
+    -fx-shape: "M 50 100 L 700 100 L 700 250 L 650 300 L 50 300 L 50 100  ";
+}
+.add-button:hover{
+    -fx-background-color: #FBA23E;
+    -fx-font-size: 22;
+    -fx-effect: dropshadow( gaussian ,#FBA23E,30,0.1,0,0);
+}
+.my-radio-btn{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+
+}
+.welcome-txt{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 30;
+
+}
+.update-btn{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 12;
+    -fx-border-color:  #FBA23E;
+    -fx-shape: "M 50 100 L 700 100 L 700 250 L 650 300 L 50 300 L 50 100  ";
+
+}
+.update-btn:hover{
+    -fx-background-color: #FBA23E;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-border-color:  #FBA23E;
+    -fx-shape: "M 50 100 L 700 100 L 700 250 L 650 300 L 50 300 L 50 100  ";
+    -fx-effect: dropshadow( gaussian ,#FBA23E,50,0.1,0,0);
+}

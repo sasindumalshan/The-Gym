@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_3" pageWidth="216" pageHeight="360" columnWidth="196" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" isIgnorePagination="true" uuid="d5ad6325-f915-42c7-bb07-9399290592eb">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="inch"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="inch"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="id" class="java.lang.String"/>
+	<parameter name="package" class="java.lang.String"/>
+	<parameter name="price" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="196" height="24" uuid="79d7cfe2-c30e-4a27-a9dc-af8b2eef18fa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Britannic Bold" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[THE GYM]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="37" y="2" width="122" height="30" uuid="8ebbc082-f318-4002-ab55-a209d655db99"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri Light" size="9"/>
+				</textElement>
+				<text><![CDATA[No 217 Wakwella Road Hapugala Junction Galle ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="26" width="100" height="20" uuid="4a84ed1c-ad92-4124-b66f-be2e2ab3f85b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri Light"/>
+				</textElement>
+				<text><![CDATA[ +94 77-08-99-974]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="43" width="196" height="1" uuid="a7fe75ff-b612-4bd6-b811-f4089ccc0f92"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="94" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="98" height="13" uuid="f92626bb-4833-456a-a47d-47f82b40df3f">
+					<property name="com.jaspersoft.layout.grid.x" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.y" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.weight.x" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.weight.y" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.rowspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.colspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.weight.fixed" value="false"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Calibri Light" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MEMBER NAME :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="16" width="98" height="13" uuid="b344d826-c662-4f23-93b1-d460c94ece4c">
+					<property name="com.jaspersoft.layout.grid.x" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.y" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.weight.x" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.weight.y" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.rowspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.colspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.weight.fixed" value="false"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Calibri Light" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MEMBER ID        :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="1" y="30" width="98" height="13" uuid="5801f442-9346-4875-9ec1-e8a7859fa9f5">
+					<property name="com.jaspersoft.layout.grid.x" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.y" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.weight.x" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.weight.y" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.rowspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.colspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.weight.fixed" value="false"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Calibri Light" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PACKAGE            :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="1" y="43" width="98" height="13" uuid="3f0bceff-e64c-487d-a3b5-9ef394771016">
+					<property name="com.jaspersoft.layout.grid.x" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.y" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.weight.x" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.weight.y" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.rowspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.colspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.weight.fixed" value="false"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Calibri Light" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PACKAGE PRICE :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="96" y="0" width="97" height="13" uuid="1e59eeaf-15c2-47d7-bf68-54b67916e104"/>
+				<textElement>
+					<font fontName="Calibri Light"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="96" y="13" width="99" height="14" uuid="8c99bd02-375f-418c-bba1-fb410302d3ed"/>
+				<textElement>
+					<font fontName="Calibri Light"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="96" y="28" width="100" height="13" uuid="bbae9392-5b22-4789-93ea-a3aae961ea9e"/>
+				<textElement>
+					<font fontName="Calibri Light"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{package}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="95" y="40" width="100" height="14" uuid="6fa16e43-15c4-4efd-aeda-f1109db745ce"/>
+				<textElement>
+					<font fontName="Calibri Light"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{price}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="2" y="71" width="88" height="21" uuid="b27155be-e1c2-4775-b7bc-24345058070c">
+					<property name="com.jaspersoft.layout.grid.x" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.y" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.weight.x" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.weight.y" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.rowspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.colspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.weight.fixed" value="false"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Candara" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL  ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="69" width="100" height="22" uuid="cff254f2-1b3d-434c-8220-872d7c635226"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Candara" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-3" y="68" width="196" height="1" uuid="26ba6adf-6f29-4cf5-8c81-15af76b88d6a"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="29" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout"/>
+			<textField pattern="HH:mm">
+				<reportElement x="0" y="16" width="100" height="10" uuid="8f659fe5-64dc-4217-b26e-d1cf423630c4"/>
+				<textElement>
+					<font fontName="Candara Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="0" y="4" width="90" height="10" uuid="ad6f3f83-c280-4dde-bb81-dea18478343e"/>
+				<textElement>
+					<font fontName="Candara Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="1" width="196" height="1" uuid="0e14a160-30af-4fc7-bbd0-2f6253f21924"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="50" y="0" width="100" height="30" uuid="c39285c5-efdb-444f-8f38-970ebf0ec7d5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri Light" isBold="false"/>
+				</textElement>
+				<text><![CDATA[THANK YOU FOR YOUR PURCHASE]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>
