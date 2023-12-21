@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorpane" prefHeight="1018.0" prefWidth="1530.0" style="-fx-background-color: #33383E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.OrderDetailsFromController">
+<AnchorPane fx:id="anchorpane" prefHeight="1018.0" prefWidth="1530.0" style="-fx-background-color: #33383E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.User.OrderDetailsFromController">
    <children>
       <ScrollPane fx:id="scrollPane" layoutX="44.0" layoutY="365.0" prefHeight="699.0" prefWidth="1462.0" style="-fx-background-color: #34393F;">
          <content>

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="376.0" prefWidth="460.0" style="-fx-background-color: #34393F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.UpdateItemFromController">
+<AnchorPane prefHeight="376.0" prefWidth="460.0" style="-fx-background-color: #34393F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.Admin.UpdateItemFromController">
    <children>
       <ImageView fitHeight="568.0" fitWidth="477.0" opacity="0.17" pickOnBounds="true">
          <image>

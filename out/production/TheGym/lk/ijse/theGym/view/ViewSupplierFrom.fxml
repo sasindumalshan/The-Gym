@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="376.0" prefWidth="460.0" style="-fx-background-color: #34393F;" stylesheets="@style/EmployeeDashBord.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.ViewSupplierFromController">
+<AnchorPane prefHeight="376.0" prefWidth="460.0" style="-fx-background-color: #34393F;" stylesheets="@style/EmployeeDashBord.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.Admin.ViewSupplierFromController">
    <children>
       <ImageView fitHeight="433.0" fitWidth="460.0" layoutY="1.0" opacity="0.17" pickOnBounds="true">
          <image>

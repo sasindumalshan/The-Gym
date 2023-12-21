@@ -1,6 +1,7 @@
 package lk.ijse.theGym.model;
 
 import lk.ijse.theGym.db.DBConnection;
+import lk.ijse.theGym.dto.ItemDTO;
 import lk.ijse.theGym.to.SupplierOrder;
 import lk.ijse.theGym.to.SupplierOrderDetails;
 import lk.ijse.theGym.util.CrudUtil;
@@ -15,21 +16,29 @@ public class SupplierOrderController {
         return CrudUtil.crudUtil("SELECT order_id FROM Suppler_Order ORDER BY LENGTH(order_id),order_id");
     }
 
-    public static boolean setOrder(ArrayList<SupplierOrderDetails> orderDetails, SupplierOrder supplierOrder) throws SQLException {
+    public static boolean setOrder(ArrayList<SupplierOrderDetails> supplierOrderDetails, SupplierOrder supplierOrder) throws SQLException {
         Connection connection = null;
         try {
             connection = DBConnection.getInstance().getConnection();
             connection.setAutoCommit(false);
             if (SupplierOrderController.setOrder(supplierOrder)) {
                 System.out.println("Oder OK");
-                if (SupplierOrderDetailsController.setOrderDetails(orderDetails, supplierOrder)) {
-                    System.out.println("Oder details OK");
-                    if (ItemsController.supplierUpdateQty(orderDetails)) {
-                        connection.commit();
-                        return true;
-                    } else {
-                        connection.rollback();
+                if (SupplierOrderDetailsController.setOrderDetails(supplierOrderDetails, supplierOrder)) {
+
+                    ArrayList<ItemDTO> itemDTOS = new ArrayList<>();
+                    for (SupplierOrderDetails details : supplierOrderDetails) {
+                        ItemDTO itemDTO = ItemModel.findById(details.getItem_code());
+                        itemDTO.setQut(itemDTO.getQut() - Integer.parseInt(details.getQut()));
+                        itemDTOS.add(itemDTO);
+                        boolean isUpdate = ItemModel.update(itemDTO);
+                        if (!isUpdate) {
+                            connection.commit();
+                            return true;
+                        } else {
+                            connection.rollback();
+                        }
                     }
+
                 } else {
                     connection.rollback();
                 }
@@ -37,8 +46,9 @@ public class SupplierOrderController {
                 connection.rollback();
             }
         } catch (SQLException | ClassNotFoundException throwables) {
+            connection.rollback();
             throwables.printStackTrace();
-        }finally {
+        } finally {
             connection.setAutoCommit(true);
         }
 

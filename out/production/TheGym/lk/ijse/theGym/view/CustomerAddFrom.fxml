@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane onMouseEntered="#anchorPaneOnMouseEntered" onMouseExited="#anchorPaneOnMouseExited" prefHeight="697.0" prefWidth="687.0" style="-fx-background-color: #33383C;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.CustomerAddFromController">
+<AnchorPane onMouseEntered="#anchorPaneOnMouseEntered" onMouseExited="#anchorPaneOnMouseExited" prefHeight="697.0" prefWidth="687.0" style="-fx-background-color: #33383C;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.User.CustomerAddFromController">
    <children>
       <ImageView fitHeight="699.0" fitWidth="685.0" layoutX="1.0" layoutY="-1.0" opacity="0.26" pickOnBounds="true">
          <image>

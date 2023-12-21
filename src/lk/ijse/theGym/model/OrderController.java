@@ -2,6 +2,9 @@ package lk.ijse.theGym.model;
 
 import javafx.scene.control.Alert;
 import lk.ijse.theGym.db.DBConnection;
+import lk.ijse.theGym.dto.ItemDTO;
+import lk.ijse.theGym.dto.OrderDTO;
+import lk.ijse.theGym.dto.OrderDetailsDTO;
 import lk.ijse.theGym.to.Order;
 import lk.ijse.theGym.util.CrudUtil;
 
@@ -31,44 +34,54 @@ public class OrderController {
         return CrudUtil.crudUtil("SELECT order_id FROM orders ORDER BY order_id DESC LIMIT 1");
     }
 
-    public static boolean PlaceOrder(Order order, ArrayList<lk.ijse.theGym.view.data.Order> orderDetails) throws SQLException {
+    public static boolean PlaceOrder(OrderDTO orderDTO, ArrayList<OrderDetailsDTO> orderDetailsDTOS) throws SQLException {
         Connection connection = null;
         try {
             connection = DBConnection.getInstance().getConnection();
             connection.setAutoCommit(false);
-            if (OrderController.setOrder(order)) {
-                if (OrderDetailsController.setOrderDetails(orderDetails,order)) {
-                    if (ItemsController.updateQty(orderDetails)) {
+            if (save(orderDTO)) {
+                boolean isDetailsSave = OrderDetailsModel.saveAll(orderDetailsDTOS);
+                if (isDetailsSave) {
+                    ArrayList<ItemDTO> itemDTOS = new ArrayList<>();
+                    for (OrderDetailsDTO orderDetailsDTO : orderDetailsDTOS) {
+                        ItemDTO itemDTO = ItemModel.findById(orderDetailsDTO.getItem_id());
+                        itemDTO.setQut(itemDTO.getQut() - orderDetailsDTO.getQut());
+                        itemDTOS.add(itemDTO);
+                        boolean isUpdate = ItemModel.update(itemDTO);
+                        if (!isUpdate) {
                             connection.commit();
-                            //new Alert(Alert.AlertType.CONFIRMATION,"Order Success !").show();
                             return true;
-                    } else {
-                        connection.rollback();
-                        new Alert(Alert.AlertType.ERROR,"Order fail !").show();
+                        } else {
+                            connection.rollback();
+                            new Alert(Alert.AlertType.ERROR, "Order fail !").show();
+                        }
                     }
+
+
                 } else {
                     connection.rollback();
-                    new Alert(Alert.AlertType.ERROR,"Order fail !").show();
+                    new Alert(Alert.AlertType.ERROR, "Order fail !").show();
                 }
             } else {
                 connection.rollback();
-                new Alert(Alert.AlertType.ERROR,"Order fail !").show();
+                new Alert(Alert.AlertType.ERROR, "Order fail !").show();
             }
         } catch (SQLException | ClassNotFoundException throwables) {
+            connection.rollback();
             throwables.printStackTrace();
-        }finally {
+        } finally {
             connection.setAutoCommit(true);
         }
         return false;
     }
 
-    private static boolean setOrder(Order order) throws SQLException, ClassNotFoundException {
+    private static boolean save(OrderDTO orderDTO) throws SQLException, ClassNotFoundException {
         return CrudUtil.crudUtil("INSERT INTO orders VALUES (?,?,?,?,?)",
-                order.getOrder_id(),
-                order.getTime(),
-                order.getDate(),
-                order.getFinal_total(),
-                order.getCustomer_id()
-                );
+                orderDTO.getOrder_id(),
+                orderDTO.getTime(),
+                orderDTO.getDate(),
+                orderDTO.getFinal_total(),
+                orderDTO.getCustomer_id()
+        );
     }
 }

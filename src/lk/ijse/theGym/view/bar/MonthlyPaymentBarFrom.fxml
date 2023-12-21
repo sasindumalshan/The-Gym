@@ -4,7 +4,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="60.0" prefWidth="970.0" styleClass="bar" stylesheets="@../style/bar.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.MonthlyPaymentBarFromController">
+<AnchorPane prefHeight="60.0" prefWidth="970.0" styleClass="bar" stylesheets="@../style/bar.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.User.bar.MonthlyPaymentBarFromController">
    <children>
       <Text fx:id="txtName" fill="WHITE" layoutX="290.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Name" wrappingWidth="252.79557037353516" />
       <Text fx:id="txtFees" fill="WHITE" layoutX="575.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Fees" wrappingWidth="200.57666015625" />

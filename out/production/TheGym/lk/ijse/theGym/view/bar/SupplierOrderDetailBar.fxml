@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="57.0" prefWidth="1870.0" styleClass="bar" stylesheets="@../style/bar.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.SupplierOrderDetailBarController">
+<AnchorPane prefHeight="57.0" prefWidth="1870.0" styleClass="bar" stylesheets="@../style/bar.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.Admin.SupplierOrderDetailBarController">
    <children>
       <Text fx:id="txtOrderId" fill="WHITE" layoutX="103.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Order Id" wrappingWidth="262.15673828125" />
       <Text fx:id="txtCompanyName" fill="WHITE" layoutX="459.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="Company Name" wrappingWidth="366.60107421875" />

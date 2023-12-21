@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane fx:id="anchorpane" prefHeight="869.0" prefWidth="1542.0" style="-fx-background-color: #2E3045;" stylesheets="@style/AdminDashBord.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.ReportChartsFrom">
+<AnchorPane fx:id="anchorpane" prefHeight="869.0" prefWidth="1542.0" style="-fx-background-color: #2E3045;" stylesheets="@style/AdminDashBord.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.Admin.ReportChartsFrom">
    <children>
       <Text fx:id="txtReport" fill="WHITE" layoutX="349.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="time-text" text="Monthly Report" textAlignment="CENTER" wrappingWidth="667.5735778808594" />
       <Pane layoutX="63.0" layoutY="93.0" opacity="0.8" prefHeight="684.0" prefWidth="1426.0" style="-fx-background-color: #33383C; -fx-background-radius: 30;" />

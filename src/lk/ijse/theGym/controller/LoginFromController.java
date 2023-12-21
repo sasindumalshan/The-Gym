@@ -53,8 +53,6 @@ public class LoginFromController implements Initializable {
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
-        //     Navigation.swatchNavigation("AdminDashBordFrom.fxml", actionEvent);
-  // Navigation.swatchNavigation("CashiarDashBordFrom.fxml", actionEvent);
 
     }
 

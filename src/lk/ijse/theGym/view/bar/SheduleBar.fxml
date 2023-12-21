@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane onMouseEntered="#AcerPaneOnMoseEnter" onMouseExited="#AnderPaneOnMoseExit" prefHeight="57.0" prefWidth="1057.0" style="-fx-background-color: #34393F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.ScheduleBarController">
+<AnchorPane onMouseEntered="#AcerPaneOnMoseEnter" onMouseExited="#AnderPaneOnMoseExit" prefHeight="57.0" prefWidth="1057.0" style="-fx-background-color: #34393F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.User.bar.ScheduleBarController">
    <children>
       <Pane layoutY="-1.0" prefHeight="58.0" prefWidth="1014.0" styleClass="bar-2">
          <children>

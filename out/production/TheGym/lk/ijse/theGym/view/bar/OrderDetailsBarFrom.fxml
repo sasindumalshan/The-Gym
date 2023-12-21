@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane onMouseEntered="#mm" onMouseExited="#eee" prefHeight="60.0" prefWidth="1440.0" styleClass="bar" stylesheets="@../style/bar.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.OrderDetailsBarFromController">
+<AnchorPane onMouseEntered="#mm" onMouseExited="#eee" prefHeight="60.0" prefWidth="1440.0" styleClass="bar" stylesheets="@../style/bar.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theGym.controller.User.bar.OrderDetailsBarFromController">
    <children>
       <Pane layoutX="10.0" layoutY="-7.0" prefHeight="60.0" prefWidth="1440.0" styleClass="bar1" stylesheets="@../style/bar.css">
          <children>

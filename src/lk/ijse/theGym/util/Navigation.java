@@ -5,13 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import lk.ijse.theGym.controller.EmployeeDetailBar;
-import lk.ijse.theGym.controller.StoreFromController;
 
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 
