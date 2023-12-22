@@ -1,4 +1,4 @@
-package lk.ijse.theGym.model;
+package lk.ijse.theGym.modelController;
 
 import lk.ijse.theGym.db.DBConnection;
 import lk.ijse.theGym.to.EmployeeSalaryDetails;

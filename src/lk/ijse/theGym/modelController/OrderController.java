@@ -1,11 +1,11 @@
-package lk.ijse.theGym.model;
+package lk.ijse.theGym.modelController;
 
 import javafx.scene.control.Alert;
 import lk.ijse.theGym.db.DBConnection;
 import lk.ijse.theGym.dto.ItemDTO;
 import lk.ijse.theGym.dto.OrderDTO;
 import lk.ijse.theGym.dto.OrderDetailsDTO;
-import lk.ijse.theGym.to.Order;
+import lk.ijse.theGym.model.ItemModel;
 import lk.ijse.theGym.util.CrudUtil;
 
 import java.sql.Connection;

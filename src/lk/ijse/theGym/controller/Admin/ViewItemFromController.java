@@ -8,7 +8,6 @@ import lk.ijse.theGym.model.ItemModel;
 import lk.ijse.theGym.util.Navigation;
 
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 

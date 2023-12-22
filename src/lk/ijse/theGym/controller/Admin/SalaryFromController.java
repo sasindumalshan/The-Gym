@@ -14,7 +14,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import lk.ijse.theGym.controller.User.StoreFromController;
-import lk.ijse.theGym.model.*;
+import lk.ijse.theGym.dto.CoachSalaryDetailsDTO;
+import lk.ijse.theGym.model.CoachAttendanceModel;
+import lk.ijse.theGym.model.CoachSalaryModel;
+import lk.ijse.theGym.model.EmployeeAttendanceModel;
+import lk.ijse.theGym.modelController.*;
 import lk.ijse.theGym.to.CoachSalaryDetails;
 import lk.ijse.theGym.to.EmployeeSalaryDetails;
 import lk.ijse.theGym.to.Salary;
@@ -30,6 +34,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class SalaryFromController implements Initializable {
@@ -37,6 +42,7 @@ public class SalaryFromController implements Initializable {
     public static String salaryPrice;
     private static String id;
     private static String salaryId;
+    private static SalaryFromController controller;
     public AnchorPane anchorPane;
     public VBox Vbox;
     public Text txtId;
@@ -63,17 +69,15 @@ public class SalaryFromController implements Initializable {
     public JFXComboBox comboYear;
     public Text txtIdSearch;
     public Pane paneSalaryId;
-    private  static SalaryFromController controller;
+    String[] allMonth = {"JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"};
 
     public SalaryFromController() {
-        controller=this;
+        controller = this;
     }
 
     public static SalaryFromController getController() {
         return controller;
     }
-
-    String[] allMonth = {"JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"};
 
     public void setData(String id, String price) {
         System.out.println("click");
@@ -84,12 +88,12 @@ public class SalaryFromController implements Initializable {
             salaryPrice = price;
             paneSalaryId.setVisible(true);
             txtIdSearch.setText(id);
-            clickId=id;
+            clickId = id;
         }
     }
 
     public void addOnAction(ActionEvent actionEvent) {
-        if (comboId.getValue()!=null) {
+        if (comboId.getValue() != null) {
             try {
                 if (EmployeeController.idExists(id)) {
                     if (EmployeeSalaryDetailsController.addDetails(new EmployeeSalaryDetails(
@@ -98,7 +102,7 @@ public class SalaryFromController implements Initializable {
                             txtPerMonthSalary.getText(),
                             salaryId
                     ))) {
-                        Notification.notification("Salary is Payed","payed successful ");
+                        Notification.notification("Salary is Payed", "payed successful ");
 //                        new Alert(Alert.AlertType.CONFIRMATION, "OK").show();
                         setSalaryDetails();
                     }
@@ -110,15 +114,15 @@ public class SalaryFromController implements Initializable {
                             txtPerMonthSalary.getText(),
                             salaryId
                     ))) {
-                        Notification.notification("Salary is Payed","payed successful ");
+                        Notification.notification("Salary is Payed", "payed successful ");
 //                        new Alert(Alert.AlertType.CONFIRMATION, "OK").show();
                     }
                 }
             } catch (SQLException | ClassNotFoundException throwables) {
                 throwables.printStackTrace();
             }
-        }else {
-            Notification.notificationWARNING("please select employee","No select employee");
+        } else {
+            Notification.notificationWARNING("please select employee", "No select employee");
         }
     }
 
@@ -130,10 +134,10 @@ public class SalaryFromController implements Initializable {
                 id = set1.getString(4);
                 txtName.setText(set1.getString(1) + " " + set1.getString(2));
                 txtNic.setText(set1.getString(3));
-                ResultSet set = EmployeeAttendanceController.getAttendanceCount(String.valueOf(comboId.getValue()));
-                if (set.next()) {
-                    txtAttendance.setText(set.getString(1));
-                }
+
+                String employeeCount = EmployeeAttendanceModel.getAttendanceCount(String.valueOf(comboId.getValue()), getProcessDate());
+                txtAttendance.setText(employeeCount);
+
                 ResultSet set2 = SalaryController.findSalary(set1.getString(5));
                 if (set2.next()) {
                     txtAvailableSalary.setText(set2.getString(1));
@@ -150,10 +154,10 @@ public class SalaryFromController implements Initializable {
                 id = set.getString(4);
                 txtName.setText(set.getString(1) + " " + set.getString(2));
                 txtNic.setText(set.getString(3));
-                ResultSet resultSet = CoachAttendanceController.getAttendanceCount(String.valueOf(comboId.getValue()));
-                if (resultSet.next()) {
-                    txtAttendance.setText(resultSet.getString(1));
-                }
+
+                String coachCount = CoachAttendanceModel.countAttendanceByDateAndCouchId(String.valueOf(comboId.getValue()), getProcessDate());
+                txtAttendance.setText(coachCount);
+
                 ResultSet set2 = SalaryController.findSalary(set.getString(5));
                 if (set2.next()) {
                     txtAvailableSalary.setText(set2.getString(1));
@@ -171,6 +175,12 @@ public class SalaryFromController implements Initializable {
 
     }
 
+    private String getProcessDate() {
+        String[] split = DateTimeUtil.dateNow().split("-");
+        String month = split[0] + "-" + split[1];
+        return month;
+    }
+
     public void roleOnAction(ActionEvent actionEvent) {
         try {
             if (comboRole.getValue().equals("other")) {
@@ -179,7 +189,7 @@ public class SalaryFromController implements Initializable {
                 otherRole.setVisible(false);
                 txtOtherRole.setText("");
             }
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
@@ -202,7 +212,7 @@ public class SalaryFromController implements Initializable {
                             Double.valueOf(lblPrice.getText())
 
                     ))) {
-                        Notification.notification("Salary Added","your salary Added");
+                        Notification.notification("Salary Added", "your salary Added");
 //                        new Alert(Alert.AlertType.CONFIRMATION, "Ok").show();
                         setSalaryData();
                     }
@@ -219,7 +229,7 @@ public class SalaryFromController implements Initializable {
                 try {
                     if (SalaryController.updateSalary(clickId, lblPrice.getText())) {
 //                      new Alert(Alert.AlertType.CONFIRMATION, "Ok").show();
-                        Notification.notification("Salary Updated","your salary is updated ");
+                        Notification.notification("Salary Updated", "your salary is updated ");
                         btnAdd.setText("ADD NEW SALARY");
                         comboRole.getItems().clear();
                         setRole();
@@ -231,23 +241,24 @@ public class SalaryFromController implements Initializable {
                 }
                 btnAdd.setText("ADD NEW SALARY");
             }
-        }else {
-            Notification.notificationWARNING("Place add data","add data ");
+        } else {
+            Notification.notificationWARNING("Place add data", "add data ");
         }
     }
 
     private String getNextId() {
-        String id=null;
+        String id = null;
         try {
             ResultSet set = SalaryController.getlastId();
             if (set.next()) {
-               id=set.getString(1);
-            }try {
+                id = set.getString(1);
+            }
+            try {
                 String[] s = id.split("S");
-                int n= Integer.parseInt(s[1]);
+                int n = Integer.parseInt(s[1]);
                 n++;
-                return "S"+n;
-            }catch (NullPointerException e){
+                return "S" + n;
+            } catch (NullPointerException e) {
                 return "S1";
             }
         } catch (SQLException | ClassNotFoundException throwables) {
@@ -443,11 +454,14 @@ public class SalaryFromController implements Initializable {
                 navigation(set.getString(1), set.getString(3), set.getString(4), set.getString(2));
 
             }
-            ResultSet set1 = CoachSalaryController.getAll(comboYear.getValue() + "-" + month);
-            while (set1.next()) {
-
-                navigation(set1.getString(1), set1.getString(3), set1.getString(4), set1.getString(2));
-
+            List<CoachSalaryDetailsDTO> coachSalaryDetailsDTOsList = CoachSalaryModel.findCoachSalaryDetails(comboYear.getValue() + "-" + month);
+            for (CoachSalaryDetailsDTO coachSalaryDetailsDTO : coachSalaryDetailsDTOsList) {
+                navigation(
+                        coachSalaryDetailsDTO.getCoach_id(),
+                        coachSalaryDetailsDTO.getPrice(),
+                        coachSalaryDetailsDTO.getSalary_id(),
+                        coachSalaryDetailsDTO.getDate()
+                );
             }
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
@@ -592,14 +606,15 @@ public class SalaryFromController implements Initializable {
     }
 
     public void priceOnAction(KeyEvent keyEvent) {
-        if (RegexUtil.regex(btnAdd,lblPrice,lblPrice.getText(),"^([+-]?[0-9]+(?:\\.[0-9]{0,4})?)$","-fx-text-fill: white")){
-           try {
-               if (salaryPrice.equals(lblPrice.getText())) {
+        if (RegexUtil.regex(btnAdd, lblPrice, lblPrice.getText(), "^([+-]?[0-9]+(?:\\.[0-9]{0,4})?)$", "-fx-text-fill: white")) {
+            try {
+                if (salaryPrice.equals(lblPrice.getText())) {
 
-               } else {
-                   btnAdd.setText("UPDATE SALARY");
-               }
-           }catch (NullPointerException n){}
+                } else {
+                    btnAdd.setText("UPDATE SALARY");
+                }
+            } catch (NullPointerException n) {
+            }
 
 
         }
@@ -607,7 +622,7 @@ public class SalaryFromController implements Initializable {
     }
 
     public void otherRole(KeyEvent keyEvent) {
-        if (RegexUtil.regex(btnAdd,txtOtherRole,txtOtherRole.getText(),"\\b([a-z]|[A-Z])+","-fx-text-fill: white")){
+        if (RegexUtil.regex(btnAdd, txtOtherRole, txtOtherRole.getText(), "\\b([a-z]|[A-Z])+", "-fx-text-fill: white")) {
 
         }
     }

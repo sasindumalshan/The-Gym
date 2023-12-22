@@ -3,6 +3,7 @@ package lk.ijse.theGym.util;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class DateTimeUtil {
@@ -28,8 +29,17 @@ public class DateTimeUtil {
     }
 
     public static String timeNow() {
-        SimpleDateFormat dateFormat=new SimpleDateFormat("hh:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
         System.out.println(dateFormat.format(new Date()));
-        return dateFormat.format(new Date()) ;
+        return dateFormat.format(new Date());
+    }
+
+    public static String formatDatePatten(LocalDate date) {
+        String formattedDate = "0000-00-00";
+        try {
+            formattedDate = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        } catch (NullPointerException e) {
+        }
+        return formattedDate;
     }
 }

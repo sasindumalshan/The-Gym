@@ -10,8 +10,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import lk.ijse.theGym.controller.User.bar.RegistrationBarController;
-import lk.ijse.theGym.model.CoachController;
-import lk.ijse.theGym.model.CustomerController;
+import lk.ijse.theGym.modelController.CoachController;
+import lk.ijse.theGym.modelController.CustomerController;
 import lk.ijse.theGym.util.Navigation;
 
 import java.io.IOException;

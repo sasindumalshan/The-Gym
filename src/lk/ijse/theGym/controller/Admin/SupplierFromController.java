@@ -10,9 +10,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import lk.ijse.theGym.controller.User.StoreFromController;
-import lk.ijse.theGym.model.SupplierController;
-import lk.ijse.theGym.model.SupplierOrderController;
-import lk.ijse.theGym.model.SupplierOrderDetailsController;
+import lk.ijse.theGym.modelController.SupplierController;
+import lk.ijse.theGym.model.SupplierOrderModel;
+import lk.ijse.theGym.modelController.SupplierOrderDetailsController;
 import lk.ijse.theGym.util.Navigation;
 
 import java.io.IOException;
@@ -20,6 +20,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class SupplierFromController implements Initializable {
@@ -239,9 +240,9 @@ public class SupplierFromController implements Initializable {
     public void setAllOrder() {
         vBox.getChildren().clear();
         try {
-            ResultSet set = SupplierOrderController.getAllIds();
-            while (set.next()) {
-                transferOrderData(set.getString(1));
+            List<String> idList = SupplierOrderModel.findIdOrderByLength();
+            for (String id:idList) {
+                transferOrderData(id);
             }
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();

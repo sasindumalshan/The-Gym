@@ -2,6 +2,7 @@ package lk.ijse.theGym.model;
 
 import lk.ijse.theGym.db.DBConnection;
 import lk.ijse.theGym.dto.ItemDTO;
+import lk.ijse.theGym.modelController.SupplierOrderDetailsController;
 import lk.ijse.theGym.to.SupplierOrder;
 import lk.ijse.theGym.to.SupplierOrderDetails;
 import lk.ijse.theGym.util.CrudUtil;
@@ -10,18 +11,20 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class SupplierOrderController {
-    public static ResultSet getIds() throws SQLException, ClassNotFoundException {
-        return CrudUtil.crudUtil("SELECT order_id FROM Suppler_Order ORDER BY LENGTH(order_id),order_id");
+public class SupplierOrderModel {
+
+    public static List<String> findIdOrderByLength() throws SQLException, ClassNotFoundException {
+        return setString(CrudUtil.crudUtil("SELECT order_id FROM Suppler_Order ORDER BY LENGTH(order_id),order_id"));
     }
 
-    public static boolean setOrder(ArrayList<SupplierOrderDetails> supplierOrderDetails, SupplierOrder supplierOrder) throws SQLException {
+    public static boolean placeSupplerOrder(ArrayList<SupplierOrderDetails> supplierOrderDetails, SupplierOrder supplierOrder) throws SQLException {
         Connection connection = null;
         try {
             connection = DBConnection.getInstance().getConnection();
             connection.setAutoCommit(false);
-            if (SupplierOrderController.setOrder(supplierOrder)) {
+            if (SupplierOrderModel.save(supplierOrder)) {
                 System.out.println("Oder OK");
                 if (SupplierOrderDetailsController.setOrderDetails(supplierOrderDetails, supplierOrder)) {
 
@@ -55,7 +58,7 @@ public class SupplierOrderController {
         return false;
     }
 
-    private static boolean setOrder(SupplierOrder supplierOrder) throws SQLException, ClassNotFoundException {
+    private static boolean save(SupplierOrder supplierOrder) throws SQLException, ClassNotFoundException {
         return CrudUtil.crudUtil("INSERT INTO suppler_order VALUES (?,?,?,?,?)",
                 supplierOrder.getOrder_id(),
                 supplierOrder.getTotal(),
@@ -66,7 +69,17 @@ public class SupplierOrderController {
         );
     }
 
-    public static ResultSet getAllIds() throws SQLException, ClassNotFoundException {
-        return CrudUtil.crudUtil("SELECT order_id FROM Suppler_Order");
+    private static List<String> setString(ResultSet resultSet) throws SQLException {
+        List<String> list = new ArrayList<>();
+        while (resultSet.next()) {
+            list.add(resultSet.getString(1));
+        }
+        return list;
     }
+
+
+
+   /* public static ResultSet getAllIds() throws SQLException, ClassNotFoundException {
+        return CrudUtil.crudUtil("SELECT order_id FROM Suppler_Order");
+    }*/
 }

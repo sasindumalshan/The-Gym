@@ -16,8 +16,8 @@ import javafx.scene.text.Text;
 import lk.ijse.theGym.controller.User.OrderBarController;
 import lk.ijse.theGym.dto.ItemDTO;
 import lk.ijse.theGym.model.ItemModel;
-import lk.ijse.theGym.model.SupplierController;
-import lk.ijse.theGym.model.SupplierOrderController;
+import lk.ijse.theGym.modelController.SupplierController;
+import lk.ijse.theGym.model.SupplierOrderModel;
 import lk.ijse.theGym.to.SupplierOrder;
 import lk.ijse.theGym.to.SupplierOrderDetails;
 import lk.ijse.theGym.util.DateTimeUtil;
@@ -29,6 +29,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class SupplierOrderFromController implements Initializable {
@@ -64,7 +65,7 @@ public class SupplierOrderFromController implements Initializable {
     public void OkOrderOnAction(ActionEvent actionEvent) {
         if (Double.parseDouble(txtTotal.getText()) > 0) {
             try {
-                if (SupplierOrderController.setOrder(orderDetails,
+                if (SupplierOrderModel.placeSupplerOrder(orderDetails,
                         new SupplierOrder(getNextId(),
                                 txtTotal.getText(),
                                 lblCustomerId.getText(),
@@ -86,15 +87,14 @@ public class SupplierOrderFromController implements Initializable {
     }
 
     private String getNextId() {
-        String id = null;
+        String existsId = null;
         try {
-            ResultSet set = SupplierOrderController.getIds();
-            while (set.next()) {
-                id = set.getString(1);
-
+            List<String> idList = SupplierOrderModel.findIdOrderByLength();
+            for (String id : idList) {
+                existsId = id;
             }
             try {
-                String[] os = id.split("O");
+                String[] os = existsId.split("O");
                 int nextId = Integer.parseInt(os[1]);
                 nextId++;
                 return "O" + nextId;
@@ -113,19 +113,15 @@ public class SupplierOrderFromController implements Initializable {
     }
 
     public void itemCodeOnKeyReleased(KeyEvent keyEvent) {
-        if (lblItemCode.getText().equals("")) {
-            btnAdd.setDisable(true);
-        } else {
-            btnAdd.setDisable(false);
-        }
+        btnAdd.setDisable(lblItemCode.getText().equals(""));
         searchItemCode();
     }
 
     private void searchItemCode() {
         try {
             ItemDTO itemDTO = ItemModel.findById(lblItemCode.getText());
-                txtItemsName.setText(itemDTO.getItem_name());
-                lblQty.requestFocus();
+            txtItemsName.setText(itemDTO.getItem_name());
+            lblQty.requestFocus();
 
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
@@ -157,25 +153,17 @@ public class SupplierOrderFromController implements Initializable {
     }
 
     public void qtyOnKeyReleased(KeyEvent keyEvent) {
-      if(RegexUtil.regex(btnAdd,lblQty,lblQty.getText(),"^[\\d]{0,15}$","-fx-text-fill: #FBA23E")){
+        if (RegexUtil.regex(btnAdd, lblQty, lblQty.getText(), "^[\\d]{0,15}$", "-fx-text-fill: #FBA23E")) {
 
-          if (lblQty.getText().equals("")) {
-              btnAdd.setDisable(true);
-          } else {
-              btnAdd.setDisable(false);
-          }
-      }
+            btnAdd.setDisable(lblQty.getText().equals(""));
+        }
 
     }
 
     public void priceOnKeyReleased(KeyEvent keyEvent) {
-       if(RegexUtil.regex(btnAdd, lblPrice, lblPrice.getText(), "^([+-]?[0-9]+(?:\\.[0-9]{0,4})?)$", "-fx-text-fill: #FBA23E")){
-           if (lblPrice.getText().equals("")) {
-               btnAdd.setDisable(true);
-           } else {
-               btnAdd.setDisable(false);
-           }
-       }
+        if (RegexUtil.regex(btnAdd, lblPrice, lblPrice.getText(), "^([+-]?[0-9]+(?:\\.[0-9]{0,4})?)$", "-fx-text-fill: #FBA23E")) {
+            btnAdd.setDisable(lblPrice.getText().equals(""));
+        }
     }
 
     public void supIdOnAction(ActionEvent actionEvent) {

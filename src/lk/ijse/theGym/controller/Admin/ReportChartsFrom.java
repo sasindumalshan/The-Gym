@@ -10,7 +10,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import lk.ijse.theGym.model.*;
+import lk.ijse.theGym.modelController.*;
 import lk.ijse.theGym.util.DateTimeUtil;
 
 import java.net.URL;

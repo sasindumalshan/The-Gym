@@ -3,7 +3,7 @@ package lk.ijse.theGym.controller.Admin;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
-import lk.ijse.theGym.model.SupplierController;
+import lk.ijse.theGym.modelController.SupplierController;
 import lk.ijse.theGym.util.Navigation;
 
 import java.net.URL;

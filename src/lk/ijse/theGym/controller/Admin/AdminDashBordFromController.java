@@ -6,8 +6,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import lk.ijse.theGym.model.CoachController;
-import lk.ijse.theGym.model.EmployeeController;
+import lk.ijse.theGym.modelController.CoachController;
+import lk.ijse.theGym.modelController.EmployeeController;
 import lk.ijse.theGym.util.Navigation;
 
 import java.io.IOException;

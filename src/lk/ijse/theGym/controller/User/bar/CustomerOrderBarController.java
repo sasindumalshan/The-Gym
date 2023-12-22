@@ -17,7 +17,7 @@ public class CustomerOrderBarController {
     public void setData(OrderDetailsDTO orderDetailsDTO) throws SQLException, ClassNotFoundException {
         code.setText(orderDetailsDTO.getItem_id());
         name.setText(ItemModel.findById(orderDetailsDTO.getItem_id()).getItem_name());
-        this.price.setText(orderDetailsDTO.getPrice());
-        this.qty.setText(orderDetailsDTO.getQut());
+        this.price.setText(String.valueOf(orderDetailsDTO.getPrice()));
+        this.qty.setText(String.valueOf(orderDetailsDTO.getQut()));
     }
 }

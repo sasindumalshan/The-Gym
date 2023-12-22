@@ -12,12 +12,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import lk.ijse.theGym.controller.User.bar.ScheduleBarController;
-import lk.ijse.theGym.model.CoachController;
-import lk.ijse.theGym.model.CustomerController;
-import lk.ijse.theGym.model.ExerciseController;
-import lk.ijse.theGym.model.ScheduleController;
-import lk.ijse.theGym.to.Exercises;
-import lk.ijse.theGym.to.Schedule;
+import lk.ijse.theGym.dto.ExerciseDTO;
+import lk.ijse.theGym.dto.ScheduleDTO;
+import lk.ijse.theGym.dto.ScheduleDetailsDTO;
+import lk.ijse.theGym.model.ExerciseModel;
+import lk.ijse.theGym.modelController.CoachController;
+import lk.ijse.theGym.modelController.CustomerController;
+import lk.ijse.theGym.model.ScheduleModel;
+import lk.ijse.theGym.to.ScheduleDetails;
 import lk.ijse.theGym.util.Navigation;
 
 import java.io.IOException;
@@ -25,6 +27,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ScheduleFromController implements Initializable {
@@ -45,6 +48,18 @@ public class ScheduleFromController implements Initializable {
 
     public static ScheduleFromController getController() {
         return controller;
+    }
+
+    private static List<ScheduleDetailsDTO> getScheduleDetailsList(ArrayList<ScheduleDetails> scheduleDetails, ScheduleDTO scheduleDTO) {
+        List<ScheduleDetailsDTO> list = new ArrayList<>();
+        for (ScheduleDetails details : scheduleDetails) {
+            ScheduleDetailsDTO scheduleDetailsDTO = new ScheduleDetailsDTO();
+            scheduleDetailsDTO.setSchedule_id(scheduleDTO.getSchedule_id());
+            scheduleDetailsDTO.setExercises_id(details.getExercises_id());
+            scheduleDetailsDTO.setSteps(details.getSteps());
+            list.add(scheduleDetailsDTO);
+        }
+        return list;
     }
 
     public void memberOnAction(ActionEvent actionEvent) {
@@ -73,12 +88,11 @@ public class ScheduleFromController implements Initializable {
 
         if (btnNew.getText().equals("ADD")) {
             try {
-                if (ExerciseController.setExercises(
-                        new Exercises(
-                                nextId(),
-                                lblExe.getText()
-                        )
-                )) {
+                ExerciseDTO exerciseDTO = new ExerciseDTO();
+                exerciseDTO.setExercises_id(nextId());
+                exerciseDTO.setExercises(lblExe.getText());
+
+                if (ExerciseModel.save(exerciseDTO)) {
                     ScheduleFromController.getController().setData();
                     new Alert(Alert.AlertType.CONFIRMATION, "Ok").show();
                 }
@@ -99,26 +113,19 @@ public class ScheduleFromController implements Initializable {
 
     private String nextId() {
         try {
-            ResultSet set = ExerciseController.getNextId();
-//           if (set.next()){
-//               String[] exes = set.getString(1).split("X0");
-//               int id= Integer.valueOf(exes[1]);
-//              id++;
-//              return "X0"+id;
-//           }
-            String id = null;
-            while (set.next()) {
-                id = set.getString(1);
+            List<String> ids = ExerciseModel.findIdOrderByLength();
+            String exitsId = null;
+            for (String id : ids) {
+                exitsId = id;
             }
             try {
-                String[] x0s = id.split("X0");
+                String[] x0s = exitsId.split("X0");
                 int nextId = Integer.parseInt(x0s[1]);
                 nextId++;
                 return "X0" + nextId;
             } catch (NullPointerException e) {
                 return "X01";
             }
-
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
@@ -134,22 +141,23 @@ public class ScheduleFromController implements Initializable {
             boolean isFullFillArray = true;
             for (int i = 0; i < ScheduleBarController.scheduleDetails.size(); i++) {
                 if (ScheduleBarController.scheduleDetails.get(i).getSteps().equals(null)) {
-                    new Alert(Alert.AlertType.WARNING,"Chech").show();
+                    new Alert(Alert.AlertType.WARNING, "Chech").show();
                     isFullFillArray = false;
                     break;
                 }
             }
             if (isFullFillArray) {
                 try {
-                    if (ScheduleController.setSchedule(
-                            new Schedule(
-                                    String.valueOf( comboMember.getValue()),
-                                    getNextScheduleId(),
-                                    String.valueOf(comboCoach.getValue())
-                            ),ScheduleBarController.scheduleDetails
-                    )) {
+                    ScheduleDTO scheduleDTO = new ScheduleDTO();
+                    scheduleDTO.setSchedule_id(getNextScheduleId());
+                    scheduleDTO.setCoach_id(String.valueOf(comboCoach.getValue()));
+                    scheduleDTO.setCustomer_id(String.valueOf(comboMember.getValue()));
+
+                    List<ScheduleDetailsDTO> scheduleDetailsDTOS = getScheduleDetailsList(ScheduleBarController.scheduleDetails, scheduleDTO);
+
+                    if (ScheduleModel.placeSchedule(scheduleDTO, scheduleDetailsDTOS)) {
                         setData();
-                        new Alert(Alert.AlertType.CONFIRMATION,"OK").show();
+                        new Alert(Alert.AlertType.CONFIRMATION, "OK").show();
                         Navigation.close(actionEvent);
                     }
                 } catch (SQLException throwables) {
@@ -171,19 +179,19 @@ public class ScheduleFromController implements Initializable {
 
     private String getNextScheduleId() {
         try {
-            String id=null;
-            ResultSet set =ScheduleController.getIds();
-            while (set.next()){
-                id=set.getString(1);
+            String existId = null;
+            List<String> ids = ScheduleModel.findIdOrderByLength();
+            for (String id : ids) {
+                existId = id;
             }
-           try {
-                String[] s = id.split("S");
+            try {
+                String[] s = existId.split("S");
                 int NextId = Integer.parseInt(s[1]);
                 NextId++;
                 return "S" + NextId;
-            }catch (NullPointerException e){
-               return "S1";
-           }
+            } catch (NullPointerException e) {
+                return "S1";
+            }
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
@@ -212,19 +220,30 @@ public class ScheduleFromController implements Initializable {
     }
 
     private void setDefaultSchedule() {
-        String[] ex = {"Deadlift", "Back squat", "Bench Press", "Dumbbell romanian deadlift", "Kettlebell swing",
-                "Suspended pushup", "Pullup", "Medicine ball slam", "Swiss Ball Rollout", "Banded Good Morning", "Hamstring curl",
-                "Suspended inverted row", "Barbell overhead press", "Barbell hip thrust"
+        String[] exercisesList = {
+                "Dead lift",
+                "Back squat",
+                "Bench Press",
+                "Dumbbell romanian dead lift",
+                "Kettle bell swing",
+                "Suspended push up",
+                "Pull up",
+                "Medicine ball slam",
+                "Swiss Ball Rollout",
+                "Banded Good Morning",
+                "Hamstring curl",
+                "Suspended inverted row",
+                "Barbell overhead press",
+                "Barbell hip thrust"
         };
         try {
-            if (!ScheduleController.exsist("X01")) {
-                for (int i = 0; i < ex.length; i++) {
-                    ScheduleController.setData(
-                            new Exercises(
-                                    nextId(),
-                                    ex[i]
-                            )
-                    );
+            if (!ScheduleModel.isExistId("X01")) {
+                for (String exercise : exercisesList) {
+                    ExerciseDTO exerciseDTO = new ExerciseDTO();
+                    exerciseDTO.setExercises_id(nextId());
+                    exerciseDTO.setExercises(exercise);
+
+                    ExerciseModel.save(exerciseDTO);
                 }
             }
         } catch (SQLException | ClassNotFoundException throwables) {
@@ -236,12 +255,12 @@ public class ScheduleFromController implements Initializable {
         vBox.getChildren().clear();
 
         try {
-            ResultSet set = ScheduleController.getAll();
-            while (set.next()) {
+            List<ExerciseDTO> exercise = ScheduleModel.findExercise();
+            for (ExerciseDTO exerciseDTO:exercise) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/theGym/view/bar/SheduleBar.fxml"));
                 Parent root = loader.load();
                 ScheduleBarController controller = loader.getController();
-                controller.setData(set.getString(2), set.getString(1));
+                controller.setData(exerciseDTO);
                 vBox.getChildren().add(root);
             }
 

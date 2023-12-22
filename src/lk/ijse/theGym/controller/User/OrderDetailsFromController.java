@@ -11,7 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import lk.ijse.theGym.controller.User.bar.OrderDetailsBarFromController;
-import lk.ijse.theGym.model.OrderDetailsModel;
+import lk.ijse.theGym.modelController.OrderDetailsModel;
 import lk.ijse.theGym.util.DateTimeUtil;
 
 import java.io.IOException;

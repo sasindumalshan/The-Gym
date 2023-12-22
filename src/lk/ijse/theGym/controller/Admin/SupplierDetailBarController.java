@@ -6,7 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import lk.ijse.theGym.model.SupplierController;
+import lk.ijse.theGym.modelController.SupplierController;
 import lk.ijse.theGym.util.Navigation;
 
 import java.io.IOException;

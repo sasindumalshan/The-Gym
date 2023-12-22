@@ -15,8 +15,10 @@ import javafx.scene.text.Text;
 import lk.ijse.theGym.controller.Admin.bar.EmployeeDetailBar;
 import lk.ijse.theGym.controller.User.StoreFromController;
 import lk.ijse.theGym.controller.User.bar.EmployeeAttendanceBar;
-import lk.ijse.theGym.model.EmployeeAttendanceController;
-import lk.ijse.theGym.model.EmployeeController;
+import lk.ijse.theGym.dto.projection.EmployeeAttendanceProjection;
+import lk.ijse.theGym.model.EmployeeAttendanceModel;
+import lk.ijse.theGym.modelController.EmployeeController;
+import lk.ijse.theGym.util.DateTimeUtil;
 import lk.ijse.theGym.util.Navigation;
 
 import java.io.IOException;
@@ -24,8 +26,6 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -137,17 +137,17 @@ public class EmployeeFromController implements Initializable {
                 }
             } else {
                 if (rBtnAllEmployee.isSelected()) {
-                    ResultSet set=EmployeeController.getSearchData(search.getText());
-                    while (set.next()){
+                    ResultSet set = EmployeeController.getSearchData(search.getText());
+                    while (set.next()) {
                         LoadEmployeeData(set.getString(1));
                     }
                 }
                 if (rBtnAttendance.isSelected()) {
 
-                    ResultSet set1 = EmployeeAttendanceController.searchId(search.getText());
-                while (set1.next()) {
-                    setSearchData(set1.getString(1), set1.getString(2), set1.getString(3), set1.getString(4), set1.getString(5), set1.getString(6));
-                }
+                    ArrayList<EmployeeAttendanceProjection> employeeAttendance = EmployeeAttendanceModel.findEmployeeAttendance(search.getText());
+                    for (EmployeeAttendanceProjection employeeAttendanceProjection : employeeAttendance) {
+                        loadAttendanceBar(employeeAttendanceProjection);
+                    }
                 }
             }
         } catch (SQLException | ClassNotFoundException throwables) {
@@ -193,46 +193,34 @@ public class EmployeeFromController implements Initializable {
         }
     }
 
-    public void setSearchData(String string, String set1String, String s, String string1, String set1String1, String s1) {
-        FXMLLoader loader = new FXMLLoader(StoreFromController.class.getResource("/lk/ijse/theGym/view/bar/EmployeeAttendaceBar.fxml"));
-        Parent root = null;
+    public void loadAttendanceBar(EmployeeAttendanceProjection employeeAttendanceProjection) {
         try {
-            root = loader.load();
+            FXMLLoader loader = new FXMLLoader(EmployeeFromController.class.getResource("/lk/ijse/theGym/view/bar/EmployeeAttendaceBar.fxml"));
+            Parent root = loader.load();
+            EmployeeAttendanceBar controller = loader.getController();
+            controller.setData(employeeAttendanceProjection);
+            vBox.getChildren().add(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        EmployeeAttendanceBar controller = loader.getController();
-        controller.setData(string, set1String, s, string1, set1String1, s1);
-        vBox.getChildren().add(root);
     }
 
     public void LoadEmployeeAttendanceData() {
         vBox.getChildren().clear();
         try {
-            ResultSet set = EmployeeAttendanceController.getAllDetails();
-            while (set.next()) {
-
-                FXMLLoader loader = new FXMLLoader(StoreFromController.class.getResource("/lk/ijse/theGym/view/bar/EmployeeAttendaceBar.fxml"));
-                Parent root = loader.load();
-                EmployeeAttendanceBar controller = loader.getController();
-                controller.setData(set.getString(1), set.getString(2), set.getString(3), set.getString(4), set.getString(5), set.getString(6));
-                vBox.getChildren().add(root);
-
+            ArrayList<EmployeeAttendanceProjection> list = EmployeeAttendanceModel.findAttendanceAndEmployee();
+            for (EmployeeAttendanceProjection employeeAttendanceProjection : list) {
+                loadAttendanceBar(employeeAttendanceProjection);
             }
-
-        } catch (SQLException | ClassNotFoundException | IOException throwables) {
+        } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
     }
 
-    private void setTodayAttendance() {
 
+    private void setTodayAttendance() {
         try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            ResultSet set = EmployeeAttendanceController.getTodayAttendance(dateFormat.format(new Date()));
-            if (set.next()) {
-                txtTodayAttendance.setText(set.getString(1));
-            }
+            txtTodayAttendance.setText(EmployeeAttendanceModel.countAttendanceByDate(DateTimeUtil.dateNow()));
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
@@ -279,27 +267,21 @@ public class EmployeeFromController implements Initializable {
                     if (month.get(i).equals(String.valueOf(selectMonth.getValue()))) {
                         String Index = String.valueOf(i);
                         String month = Index.length() == 1 ? "0" + Index : Index;
-                        ResultSet set = EmployeeAttendanceController.searchDate(year.format(new Date()) + "-" + month);
-                        if (set.next()) {
+                        ArrayList<EmployeeAttendanceProjection> employeeAttendanceProjections = EmployeeAttendanceModel.findAttendanceEmployeeByDate(year.format(new Date()) + "-" + month);
+                        if (!employeeAttendanceProjections.isEmpty()) {
                             vBox.getChildren().clear();
                             selectDate.setDisable(true);
                         } else {
                             selectDate.setDisable(false);
                             vBox.getChildren().clear();
                         }
-                        while (set.next()) {
-
-                            FXMLLoader loader = new FXMLLoader(StoreFromController.class.getResource("/lk/ijse/theGym/view/bar/EmployeeAttendaceBar.fxml"));
-                            Parent root = loader.load();
-                            EmployeeAttendanceBar controller = loader.getController();
-                            controller.setData(set.getString(1), set.getString(2), set.getString(3), set.getString(4), set.getString(5), set.getString(6));
-                            vBox.getChildren().add(root);
+                        for (EmployeeAttendanceProjection projection : employeeAttendanceProjections) {
+                            loadAttendanceBar(projection);
                         }
                         break;
-
                     }
                 }
-            } catch (SQLException | IOException | ClassNotFoundException throwables) {
+            } catch (SQLException | ClassNotFoundException throwables) {
                 throwables.printStackTrace();
             }
         } else {
@@ -312,34 +294,14 @@ public class EmployeeFromController implements Initializable {
 
     private void searchDate() {
         vBox.getChildren().clear();
-
-
         try {
-            LocalDate date = selectDate.getValue();
-            String dateNow = "0000-00-00";
-            try {
-                dateNow = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-
-            } catch (NullPointerException e) {
-
-            }
-            ResultSet set = EmployeeController.searchDate(dateNow);
-//            if (set.next()) {
-//                selectMonth.setDisable(true);
-//            }
-
-            while (set.next()) {
+            ArrayList<EmployeeAttendanceProjection> attendanceEmployeeByDate = EmployeeAttendanceModel.findAttendanceEmployeeByDate(DateTimeUtil.formatDatePatten(selectDate.getValue()));
+            for (EmployeeAttendanceProjection projection:attendanceEmployeeByDate) {
                 selectMonth.setDisable(true);
-                System.out.println(set.getString(2));
-
-                FXMLLoader loader = new FXMLLoader(StoreFromController.class.getResource("/lk/ijse/theGym/view/bar/EmployeeAttendaceBar.fxml"));
-                Parent root = loader.load();
-                EmployeeAttendanceBar controller = loader.getController();
-                controller.setData(set.getString(1), set.getString(2), set.getString(3), set.getString(4), set.getString(5), set.getString(6));
-                vBox.getChildren().add(root);
+               loadAttendanceBar(projection);
             }
-        } catch (SQLException | ClassNotFoundException | IOException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException | ClassNotFoundException throwable) {
+            throwable.printStackTrace();
         }
     }
 

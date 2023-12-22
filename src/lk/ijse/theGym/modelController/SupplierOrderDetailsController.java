@@ -1,11 +1,9 @@
-package lk.ijse.theGym.model;
+package lk.ijse.theGym.modelController;
 
-import lk.ijse.theGym.db.DBConnection;
 import lk.ijse.theGym.to.SupplierOrder;
 import lk.ijse.theGym.to.SupplierOrderDetails;
 import lk.ijse.theGym.util.CrudUtil;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,17 +12,6 @@ public class SupplierOrderDetailsController {
     public static ResultSet getMonthlyOrders() throws SQLException, ClassNotFoundException {
         return CrudUtil.crudUtil("SELECT COUNT(*) FROM supplier_order_details");
     }
-
-//    public static boolean setOrder(SupplierOrderDetails supplierOrderDetails) throws SQLException, ClassNotFoundException {
-//        return CrudUtil.crudUtil("INSERT INTO supplier_order_details VALUES (?,?,?,?,?,?)",
-//                supplierOrderDetails.getOrder_id(),
-//                supplierOrderDetails.getSupplier_id(),
-//                supplierOrderDetails.getItem_code(),
-//                supplierOrderDetails.getQut(),
-//                supplierOrderDetails.getDate(),
-//                supplierOrderDetails.getPrice()
-//                );
-//    }
 
     public static ResultSet getLastId() throws SQLException, ClassNotFoundException {
         return CrudUtil.crudUtil("SELECT order_id  FROM supplier_order_details ORDER BY order_id  DESC LIMIT 1");
@@ -84,4 +71,18 @@ public class SupplierOrderDetailsController {
 
         return true;
     }
+
+    /*
+    public static boolean setOrder(SupplierOrderDetails supplierOrderDetails) throws SQLException, ClassNotFoundException {
+        return CrudUtil.crudUtil("INSERT INTO supplier_order_details VALUES (?,?,?,?,?,?)",
+                supplierOrderDetails.getOrder_id(),
+                supplierOrderDetails.getSupplier_id(),
+                supplierOrderDetails.getItem_code(),
+                supplierOrderDetails.getQut(),
+                supplierOrderDetails.getDate(),
+                supplierOrderDetails.getPrice()
+                );
+    }
+*/
+
 }

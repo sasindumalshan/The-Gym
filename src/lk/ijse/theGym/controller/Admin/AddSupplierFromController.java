@@ -5,7 +5,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import lk.ijse.theGym.model.SupplierController;
+import lk.ijse.theGym.modelController.SupplierController;
 import lk.ijse.theGym.to.Supplier;
 import lk.ijse.theGym.util.Navigation;
 import lk.ijse.theGym.util.Notification;

@@ -7,8 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
 import lk.ijse.theGym.dto.ItemDTO;
 import lk.ijse.theGym.model.ItemModel;
-import lk.ijse.theGym.model.SupplierController;
-import lk.ijse.theGym.model.SupplierOrderDetailsController;
+import lk.ijse.theGym.modelController.SupplierController;
+import lk.ijse.theGym.modelController.SupplierOrderDetailsController;
 
 import java.net.URL;
 import java.sql.ResultSet;

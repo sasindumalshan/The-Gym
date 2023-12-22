@@ -2,14 +2,11 @@ package lk.ijse.theGym.controller.User.bar;
 
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import lk.ijse.theGym.model.EmployeeAttendanceController;
-import lk.ijse.theGym.model.EmployeeController;
-import lk.ijse.theGym.to.EmployeeAttendance;
+import lk.ijse.theGym.dto.projection.EmployeeAttendanceProjection;
+import lk.ijse.theGym.modelController.EmployeeController;
 import lk.ijse.theGym.util.Navigation;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class EmployeeAttendanceBar {
 
@@ -24,11 +21,12 @@ public class EmployeeAttendanceBar {
         Navigation.popupNavigation("ViewEmployeeDetailsFrom.fxml");
     }
 
-    public void setData(String string, String string1, String string2, String string3, String string4, String string5) {
-        txtEmployeeId.setText(string);
-        txtName.setText(string1+" "+string2);
-        txtRole.setText(string3);
-        txtdate.setText(string4);
-        txtTime.setText(string5);
+    public void setData(EmployeeAttendanceProjection projection) {
+
+        txtEmployeeId.setText(projection.getId());
+        txtName.setText(projection.getFistName()+" "+projection.getLastName());
+        txtRole.setText(projection.getRoll());
+        txtdate.setText(projection.getAttendanceDate());
+        txtTime.setText(projection.getAttendanceTime());
     }
 }

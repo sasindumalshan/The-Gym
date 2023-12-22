@@ -6,11 +6,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import lk.ijse.theGym.model.CoachController;
-import lk.ijse.theGym.model.CustomerAttendanceController;
+import lk.ijse.theGym.modelController.CoachController;
+import lk.ijse.theGym.model.CustomerAttendanceModel;
 import lk.ijse.theGym.util.DateTimeUtil;
 import lk.ijse.theGym.util.Navigation;
-import lk.ijse.theGym.util.Notification;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,32 +36,33 @@ public class CashierBordFromController implements Initializable {
     }
 
     public void minimizMouseClick(MouseEvent mouseEvent) {
-        Stage stage= (Stage) anchorpane.getScene().getWindow();
+        Stage stage = (Stage) anchorpane.getScene().getWindow();
         stage.setIconified(true);
     }
 
     public void CustomerOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.swatchNavigation("RegstionFrom.fxml",actionEvent);
+        Navigation.swatchNavigation("RegstionFrom.fxml", actionEvent);
     }
 
     public void PaymentOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.swatchNavigation("PaymentFrom.fxml",actionEvent);
+        Navigation.swatchNavigation("PaymentFrom.fxml", actionEvent);
     }
 
     public void StoreOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.swatchNavigation("StoreViewFrom.fxml",actionEvent);
+        Navigation.swatchNavigation("StoreViewFrom.fxml", actionEvent);
 
     }
 
     public void AttendancOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.swatchNavigation("Attendance.fxml",actionEvent);
+        Navigation.swatchNavigation("Attendance.fxml", actionEvent);
 
     }
 
     public void logoutMouseClick(MouseEvent mouseEvent) throws IOException {
-        Navigation.swatchNavigation("LoginFrom.fxml",mouseEvent);
+        Navigation.swatchNavigation("LoginFrom.fxml", mouseEvent);
     }
-    private void setTime(){
+
+    private void setTime() {
         Thread clock = new Thread() {
             public void run() {
                 while (true) {
@@ -79,8 +79,9 @@ public class CashierBordFromController implements Initializable {
         };
         clock.start();
     }
-    private void setDate(){
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("EEE, d MMMMM ");
+
+    private void setDate() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE, d MMMMM ");
         txtDate.setText(simpleDateFormat.format(new Date()));
     }
 
@@ -97,8 +98,8 @@ public class CashierBordFromController implements Initializable {
 
     private void setCoachCount() {
         try {
-            ResultSet set= CoachController.getCoachCunt();
-            if (set.next()){
+            ResultSet set = CoachController.getCoachCunt();
+            if (set.next()) {
                 txtCoaches.setText(set.getString(1));
             }
         } catch (SQLException | ClassNotFoundException throwables) {
@@ -108,10 +109,7 @@ public class CashierBordFromController implements Initializable {
 
     private void setCustomerAttendanceCount() {
         try {
-            ResultSet set= CustomerAttendanceController.getTodayAttendanceCount(DateTimeUtil.dateNow());
-            if (set.next()){
-                txtEmployeeAttendance.setText(set.getString(1));
-            }
+            txtEmployeeAttendance.setText(CustomerAttendanceModel.countAttendanceByDate(DateTimeUtil.dateNow()));
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }

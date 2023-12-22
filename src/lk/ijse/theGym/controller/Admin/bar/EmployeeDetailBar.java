@@ -7,7 +7,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import lk.ijse.theGym.controller.Admin.EmployeeFromController;
-import lk.ijse.theGym.model.EmployeeController;
+import lk.ijse.theGym.modelController.EmployeeController;
 import lk.ijse.theGym.to.Employee;
 import lk.ijse.theGym.util.Navigation;
 

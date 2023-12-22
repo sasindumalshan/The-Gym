@@ -13,10 +13,15 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import lk.ijse.theGym.db.DBConnection;
-import lk.ijse.theGym.model.*;
-import lk.ijse.theGym.to.CoachAttendance;
+import lk.ijse.theGym.dto.CoachAttendanceDTO;
+import lk.ijse.theGym.dto.CustomerAttendanceDTO;
+import lk.ijse.theGym.dto.projection.AttendanceProjection;
+import lk.ijse.theGym.dto.EmployeeAttendanceDTO;
+import lk.ijse.theGym.model.CoachAttendanceModel;
+import lk.ijse.theGym.model.CustomerAttendanceModel;
+import lk.ijse.theGym.model.EmployeeAttendanceModel;
+import lk.ijse.theGym.modelController.*;
 import lk.ijse.theGym.to.CustomerAttendance;
-import lk.ijse.theGym.to.EmployeeAttendance;
 import lk.ijse.theGym.util.DateTimeUtil;
 import lk.ijse.theGym.util.Navigation;
 import lk.ijse.theGym.util.Notification;
@@ -26,7 +31,6 @@ import net.sf.jasperreports.view.JasperViewer;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -49,12 +53,12 @@ public class AttendanceFromController implements Initializable {
     ArrayList<String> todayAllAttendanceId = new ArrayList<>();
 
 
-    private void navigation(String id, String name, String time, String date) {
+    private void navigation(AttendanceProjection attendanceProjection) {
         try {
             FXMLLoader loader = new FXMLLoader(StoreFromController.class.getResource("/lk/ijse/theGym/view/bar/AttendanceBarFrom.fxml"));
             Parent root = loader.load();
             AttendanceBarFromController controller = loader.getController();
-            controller.setData(id, name, time, date);
+            controller.setData(attendanceProjection);
             vBox.getChildren().add(root);
         } catch (IOException e) {
             e.printStackTrace();
@@ -161,24 +165,15 @@ public class AttendanceFromController implements Initializable {
     }
 
     private void setTodayAllCoachAttendanceCount() throws SQLException, ClassNotFoundException {
-        ResultSet set = CoachAttendanceController.getTodayAttendanceCount();
-        if (set.next()) {
-            txtCoach.setText(set.getString(1));
-        }
+        txtCoach.setText(CoachAttendanceModel.countAttendanceByDate());
     }
 
     private void setTodayAllCustomerAttendanceCount() throws SQLException, ClassNotFoundException {
-        ResultSet set = CustomerAttendanceController.getTodayAttendanceCount();
-        if (set.next()) {
-            txtCustomer.setText(set.getString(1));
-        }
+        txtCustomer.setText(CustomerAttendanceModel.countAttendanceByDate(DateTimeUtil.dateNow()));
     }
 
     private void setTodayAllEmployeeAttendanceCount() throws SQLException, ClassNotFoundException {
-        ResultSet set = EmployeeAttendanceController.getTodayAttendanceCount();
-        if (set.next()) {
-            txtEmployee.setText(set.getString(1));
-        }
+        txtEmployee.setText(EmployeeAttendanceModel.countAttendanceByDate(DateTimeUtil.dateNow()));
     }
 
     private void setMemberType() {
@@ -201,24 +196,24 @@ public class AttendanceFromController implements Initializable {
     }
 
     private void todayEmployeeAttendance(String date) throws SQLException, ClassNotFoundException {
-        ResultSet set2 = EmployeeAttendanceController.getTodayEmpAttendance(date);
-        while (set2.next()) {
-            navigation(set2.getString(3), set2.getString(4) + " " + set2.getString(5), set2.getString(2), set2.getString(1));
-        }
+        ArrayList<AttendanceProjection> projectionList = EmployeeAttendanceModel.findAttendanceByDate(date);
+        setDataToNavigation(projectionList);
     }
 
     private void todayCoachAttendance(String date) throws SQLException, ClassNotFoundException {
-        ResultSet set3 = CoachAttendanceController.getTodayAttendance(date);
-        while (set3.next()) {
-            navigation(set3.getString(3), set3.getString(4) + " " + set3.getString(5), set3.getString(2), set3.getString(1));
+        ArrayList<AttendanceProjection> projectionList = CoachAttendanceModel.findAttendanceByDate(date);
+        setDataToNavigation(projectionList);
+    }
+
+    private void setDataToNavigation(ArrayList<AttendanceProjection> projectionList) {
+        for (AttendanceProjection attendanceProjection : projectionList) {
+            navigation(attendanceProjection);
         }
     }
 
     private void todayCustomerAttendance(String date) throws SQLException, ClassNotFoundException {
-        ResultSet set1 = CustomerAttendanceController.getTodayAttendance(date);
-        while (set1.next()) {
-            navigation(set1.getString(3), set1.getString(4) + " " + set1.getString(5), set1.getString(2), set1.getString(1));
-        }
+        ArrayList<AttendanceProjection> projectionList = CustomerAttendanceModel.findAttendanceCustomerByDate(date);
+        setDataToNavigation(projectionList);
     }
 
     private void clear() {
@@ -237,46 +232,34 @@ public class AttendanceFromController implements Initializable {
                 if (getSelectedDate() == null) {
 
                     if (String.valueOf(combMembers.getValue()).equals("All")) {
-                        searchCustomerId(DateTimeUtil.dateNow(), search.getText());
                         searchCustomerName(DateTimeUtil.dateNow(), search.getText());
-                        searchEmployeeId(DateTimeUtil.dateNow(), search.getText());
-                        searchEmployeeName(DateTimeUtil.dateNow(), search.getText());
-                        searchCoachId(DateTimeUtil.dateNow(), search.getText());
-                        searchCoachName(DateTimeUtil.dateNow(), search.getText());
+                        searchEmployeeNameOrId(DateTimeUtil.dateNow(), search.getText());
+                        searchCoachNameOrId(DateTimeUtil.dateNow(), search.getText());
                     }
                     if (String.valueOf(combMembers.getValue()).equals("Employee")) {
-                        searchEmployeeId(DateTimeUtil.dateNow(), search.getText());
-                        searchEmployeeName(DateTimeUtil.dateNow(), search.getText());
+                        searchEmployeeNameOrId(DateTimeUtil.dateNow(), search.getText());
                     }
                     if (String.valueOf(combMembers.getValue()).equals("Members")) {
-                        searchCustomerId(DateTimeUtil.dateNow(), search.getText());
                         searchCustomerName(DateTimeUtil.dateNow(), search.getText());
                     }
                     if (String.valueOf(combMembers.getValue()).equals("Coach")) {
-                        searchCoachId(DateTimeUtil.dateNow(), search.getText());
-                        searchCoachName(DateTimeUtil.dateNow(), search.getText());
+                        searchCoachNameOrId(DateTimeUtil.dateNow(), search.getText());
                     }
 
                 } else {
                     if (String.valueOf(combMembers.getValue()).equals("All")) {
-                        searchCustomerId(DateTimeUtil.dateNow(), getSelectedDate());
                         searchCustomerName(DateTimeUtil.dateNow(), getSelectedDate());
-                        searchEmployeeId(DateTimeUtil.dateNow(), getSelectedDate());
-                        searchEmployeeName(DateTimeUtil.dateNow(), getSelectedDate());
-                        searchCoachId(DateTimeUtil.dateNow(), getSelectedDate());
-                        searchCoachName(DateTimeUtil.dateNow(), getSelectedDate());
+                        searchEmployeeNameOrId(DateTimeUtil.dateNow(), getSelectedDate());
+                        searchCoachNameOrId(DateTimeUtil.dateNow(), getSelectedDate());
                     }
                     if (String.valueOf(combMembers.getValue()).equals("Employee")) {
-                        searchEmployeeId(DateTimeUtil.dateNow(), getSelectedDate());
-                        searchEmployeeName(DateTimeUtil.dateNow(), getSelectedDate());
+                        searchEmployeeNameOrId(DateTimeUtil.dateNow(), getSelectedDate());
                     }
                     if (String.valueOf(combMembers.getValue()).equals("Members")) {
-                        searchCustomerId(DateTimeUtil.dateNow(), getSelectedDate());
                         searchCustomerName(DateTimeUtil.dateNow(), getSelectedDate());
                     }
                     if (String.valueOf(combMembers.getValue()).equals("Coach")) {
-                        searchCoachId(DateTimeUtil.dateNow(), getSelectedDate());
-                        searchCoachName(DateTimeUtil.dateNow(), getSelectedDate());
+                        searchCoachNameOrId(getSelectedDate(), search.getText());
                     }
 
 
@@ -284,10 +267,9 @@ public class AttendanceFromController implements Initializable {
                 clear();
 
                 for (int i = 0; i < ids.size(); i++) {
-                    System.out.println(ids.get(i));
-                    setData(CustomerAttendanceController.getIdDate(ids.get(i)));
-                    setData(CoachAttendanceController.getIdData(ids.get(i)));
-                    setData(EmployeeAttendanceController.getIdData(ids.get(i)));
+                    setDataToNavigation(CustomerAttendanceModel.findAttendanceByCustomerId(ids.get(i)));
+                    setDataToNavigation(CoachAttendanceModel.findAttendanceByCoachId(ids.get(i)));
+                    setDataToNavigation(EmployeeAttendanceModel.findAttendanceByEmployeeId(ids.get(i)));
                 }
                 if (ids.size() == 0) {
                     clear();
@@ -312,7 +294,7 @@ public class AttendanceFromController implements Initializable {
                         e.printStackTrace();
                     }
                     System.out.println(i);
-                    if (i==5){
+                    if (i == 5) {
                         Platform.runLater(() -> txtId.requestFocus());
                     }
                 }
@@ -321,64 +303,50 @@ public class AttendanceFromController implements Initializable {
         Count5S.start();
     }
 
-    private void setData(ResultSet set) throws SQLException {
-        if (set.next()) {
-            navigation(set.getString(3), set.getString(4) + " " + set.getString(5), set.getString(2), set.getString(1));
-        }
-    }
-
-    private void checkDublicateID(ResultSet set) throws SQLException {
-        while (set.next()) {
-            if (ids.size() == 0) {
-
-                ids.add(set.getString(1));
+    private void checkDuplicatedId(ArrayList<AttendanceProjection> projectionArrayList) throws SQLException {
+        for (AttendanceProjection attendanceProjection : projectionArrayList) {
+            if (ids.isEmpty()) {
+                ids.add(attendanceProjection.getId());
             } else {
-                for (int i = 0; i < ids.size(); i++) {
-                    if (!ids.get(i).equals(set.getString(1))) {
-                        ids.add(set.getString(1));
+                for (String id : ids) {
+                    if (!id.equals(attendanceProjection.getId())) {
+                        ids.add(attendanceProjection.getId());
                     }
                 }
             }
         }
     }
 
-    private void searchCoachName(String date, String name) throws SQLException, ClassNotFoundException {
-        ResultSet set = CoachAttendanceController.getsearchName(date, name + "%");
-        checkDublicateID(set);
+    private void searchCoachNameOrId(String date, String searchText) throws SQLException, ClassNotFoundException {
+        ArrayList<AttendanceProjection> attendanceProjectionArrayList = CoachAttendanceModel.findAttendanceByDateAndFistNameLikeOrLastNameOrDateLikeOrCoachId(date, searchText + "%");
+        checkDuplicatedId(attendanceProjectionArrayList);
     }
 
-    private void searchCoachId(String date, String id) throws SQLException, ClassNotFoundException {
-        ResultSet set = CoachAttendanceController.getsearchId(date, id + "%");
-        checkDublicateID(set);
+    private void searchEmployeeNameOrId(String date, String searchText) throws SQLException, ClassNotFoundException {
+        ArrayList<AttendanceProjection> attendanceProjectionArrayList = EmployeeAttendanceModel.findAttendanceByDateAndFistNameLikeOrLastNameOrDateLikeOrEmployeeId(date, searchText + "%");
+        checkDuplicatedId(attendanceProjectionArrayList);
     }
 
-    private void searchEmployeeName(String date, String name) throws SQLException, ClassNotFoundException {
-        ResultSet set = EmployeeAttendanceController.getsSearchName(date, name + "%");
-        checkDublicateID(set);
-    }
-
-    private void searchEmployeeId(String date, String id) throws SQLException, ClassNotFoundException {
+   /* private void searchEmployeeId(String date, String id) throws SQLException, ClassNotFoundException {
         ResultSet set = EmployeeAttendanceController.getSearchId(date, id + "%");
-        checkDublicateID(set);
+        checkDuplicatedId(set);
+    }*/
+
+    private void searchCustomerName(String date, String searchText) throws SQLException, ClassNotFoundException {
+        ArrayList<AttendanceProjection> attendanceProjectionArrayList = CustomerAttendanceModel.findAttendanceByDateAndFistNameLikeOrLastNameOrDateLikeOrCustomerId(date, searchText + "%");
+        checkDuplicatedId(attendanceProjectionArrayList);
     }
 
-    private void searchCustomerName(String date, String name) throws SQLException, ClassNotFoundException {
-        ResultSet set = CustomerAttendanceController.getSearchName(date, name + "%");
-        checkDublicateID(set);
-    }
-
-    private void searchCustomerId(String date, String id) throws SQLException, ClassNotFoundException {
+    /*private void searchCustomerId(String date, String id) throws SQLException, ClassNotFoundException {
         ResultSet set = CustomerAttendanceController.getSearchId(date, id + "%");
-        checkDublicateID(set);
-    }
-
+        checkDuplicatedId(set);
+    }*/
 
 
     private boolean searchDuplicateId() {
         for (int i = 0; i < todayAllAttendanceId.size(); i++) {
             if (todayAllAttendanceId.get(i).equals(txtId.getText())) {
-//                new Alert(Alert.AlertType.WARNING,"Already Added").show();
-                Notification.notificationWARNING("Already Added","you Already mark Attendance");
+                Notification.notificationWARNING("Already Added", "you Already mark Attendance");
                 txtId.setText("");
                 return false;
             }
@@ -387,46 +355,63 @@ public class AttendanceFromController implements Initializable {
     }
 
 
-    private void setDataTodayAllAttendanceIds(ResultSet set) throws SQLException {
-        while (set.next()) {
-            todayAllAttendanceId.add(set.getString(1));
+    private void setDataTodayAllAttendanceIds(ArrayList<AttendanceProjection> projectionArrayList) throws SQLException {
+        for (AttendanceProjection attendanceProjection : projectionArrayList) {
+            todayAllAttendanceId.add(attendanceProjection.getId());
         }
-
     }
 
 
     public void idOnkeyTyped(KeyEvent keyEvent) {
         try {
-            setDataTodayAllAttendanceIds(CustomerAttendanceController.getAllIds());
-            setDataTodayAllAttendanceIds(EmployeeAttendanceController.getAllIds());
-            setDataTodayAllAttendanceIds(CoachAttendanceController.getAllIds());
+            setDataTodayAllAttendanceIds(CustomerAttendanceModel.findAttendanceCustomerByDate(DateTimeUtil.dateNow()));
+            setDataTodayAllAttendanceIds(EmployeeAttendanceModel.findAttendanceByDate(DateTimeUtil.dateNow()));
+            setDataTodayAllAttendanceIds(CoachAttendanceModel.findAttendanceByDate(DateTimeUtil.dateNow()));
 
             if (searchDuplicateId()) {
                 boolean cNot = false;
                 boolean eNot = false;
                 boolean mNot = false;
                 if (CustomerController.idExists(txtId.getText())) {
-                    boolean added = CustomerAttendanceController.setAttendance(new CustomerAttendance(DateTimeUtil.dateNow(), DateTimeUtil.timeNow(), txtId.getText()));
-                    if (added){
-                        Notification.notification("Mark Attendance","successful Mark on today Attendance ");
+
+                    CustomerAttendanceDTO customerAttendanceDTO=new CustomerAttendanceDTO();
+                    customerAttendanceDTO.setCustomer_id(txtId.getText());
+                    customerAttendanceDTO.setTime(DateTimeUtil.timeNow());
+                    customerAttendanceDTO.setDate(DateTimeUtil.dateNow());
+
+                    boolean added = CustomerAttendanceModel.save(customerAttendanceDTO);
+                    if (added) {
+                        Notification.notification("Mark Attendance", "successful Mark on today Attendance ");
                     }
                     txtId.setText("");
                 } else {
                     mNot = true;
                 }
                 if (EmployeeController.idExists(txtId.getText())) {
-                    boolean added = EmployeeAttendanceController.setAttendance(new EmployeeAttendance(txtId.getText(), DateTimeUtil.dateNow(), DateTimeUtil.timeNow()));
-                    if (added){
-                        Notification.notification("Mark Attendance","successful Mark on today Attendance ");
+
+                    EmployeeAttendanceDTO employeeAttendanceDTO=new EmployeeAttendanceDTO();
+                    employeeAttendanceDTO.setEmployee_id(txtId.getText());
+                    employeeAttendanceDTO.setDate(DateTimeUtil.dateNow());
+                    employeeAttendanceDTO.setTime(DateTimeUtil.timeNow());
+
+                    boolean isSave = EmployeeAttendanceModel.save(employeeAttendanceDTO);
+                    if (isSave) {
+                        Notification.notification("Mark Attendance", "successful Mark on today Attendance ");
                     }
                     txtId.setText("");
                 } else {
                     eNot = true;
                 }
                 if (CoachController.idExists(txtId.getText())) {
-                    boolean added = CoachAttendanceController.setAttendance(new CoachAttendance(DateTimeUtil.dateNow(), DateTimeUtil.timeNow(), txtId.getText()));
-                    if (added){
-                        Notification.notification("Mark Attendance","successful Mark on today  Attendance ");
+
+                    CoachAttendanceDTO coachAttendanceDTO = new CoachAttendanceDTO();
+                    coachAttendanceDTO.setCoach_id(txtId.getText());
+                    coachAttendanceDTO.setDate(DateTimeUtil.dateNow());
+                    coachAttendanceDTO.setTime(DateTimeUtil.timeNow());
+                    boolean isSave = CoachAttendanceModel.save(coachAttendanceDTO);
+
+                    if (isSave) {
+                        Notification.notification("Mark Attendance", "successful Mark on today  Attendance ");
                     }
                     txtId.setText("");
                 } else {
@@ -435,7 +420,7 @@ public class AttendanceFromController implements Initializable {
                 if (cNot & eNot & mNot) {
                     txtId.clear();
 //                    new Alert(Alert.AlertType.WARNING, "Place Add Member ").show();
-                    Notification.notificationWARNING("This Member Not Added","please add this Member and before you can workout ");
+                    Notification.notificationWARNING("This Member Not Added", "please add this Member and before you can workout ");
 
                 }
                 setCount();

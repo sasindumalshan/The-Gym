@@ -1,4 +1,4 @@
-package lk.ijse.theGym.model;
+package lk.ijse.theGym.modelController;
 
 import lk.ijse.theGym.to.Supplier;
 import lk.ijse.theGym.util.CrudUtil;
@@ -47,14 +47,6 @@ public class SupplierController {
                 );
     }
 
-    public static ResultSet searchSupplierId(String id) throws SQLException, ClassNotFoundException {
-        return CrudUtil.crudUtil("SELECT * FROM supplier WHERE supplier_id=?",id);
-    }
-
-    public static ResultSet searchSupplierName(String name) throws SQLException, ClassNotFoundException {
-        return CrudUtil.crudUtil("SELECT * FROM supplier WHERE company_name=?",name);
-    }
-
     public static ResultSet getComName(String id) throws SQLException, ClassNotFoundException {
         return CrudUtil.crudUtil("SELECT company_name FROM supplier WHERE supplier_id=?",id);
     }
@@ -66,4 +58,12 @@ public class SupplierController {
     public static ResultSet getSearchId(String id) throws SQLException, ClassNotFoundException {
         return CrudUtil.crudUtil("SELECT supplier_id FROM supplier WHERE supplier.supplier_id LIKE ?",id+"%");
     }
+
+    /*public static ResultSet searchSupplierId(String id) throws SQLException, ClassNotFoundException {
+        return CrudUtil.crudUtil("SELECT * FROM supplier WHERE supplier_id=?",id);
+    }
+
+    public static ResultSet searchSupplierName(String name) throws SQLException, ClassNotFoundException {
+        return CrudUtil.crudUtil("SELECT * FROM supplier WHERE company_name=?",name);
+    }*/
 }
