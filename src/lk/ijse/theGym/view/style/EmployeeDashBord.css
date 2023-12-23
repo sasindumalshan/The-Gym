@@ -17,7 +17,7 @@
 
 }
 .set-image{
-   -fx-background-image: url("/lk/ijse/theGym/view/assets/icon/icons8-reply-arrow-100.png");
+   -fx-background-image: url("/lk/ijse/theGym/view/assets/image/icon/icons8-reply-arrow-100.png");
 }
 .white-button:hover{
    -fx-effect: dropshadow( gaussian ,#FFFFFF,20,0.1,0,0);

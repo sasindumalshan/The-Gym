@@ -1,5 +1,5 @@
 .set-Bg-image{
-    -fx-background-image:url("/lk/ijse/theGym/view/assets/BGImage/Login.jpg");
+    -fx-background-image:url("/lk/ijse/theGym/view/assets/image/BGImage/Login.jpg");
 }
 .text-field{
     -fx-border-color: White;

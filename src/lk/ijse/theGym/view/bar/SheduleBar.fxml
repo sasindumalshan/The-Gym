@@ -26,22 +26,22 @@
             </Pane>
             <ImageView fx:id="btnUpdate" fitHeight="28.0" fitWidth="38.0" layoutX="929.0" layoutY="16.0" onMouseClicked="#updateOnMouseClick" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
-                  <Image url="@../assets/icon/icons8-edit-100%20(1).png" />
+                  <Image url="@../assets/image/icon/icons8-edit-100%20(1).png" />
                </image>
             </ImageView>
             <ImageView fx:id="btnDelete" fitHeight="28.0" fitWidth="38.0" layoutX="892.0" layoutY="16.0" onMouseClicked="#deleteOnMouseClick" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
-                  <Image url="@../assets/icon/icons8-remove-24.png" />
+                  <Image url="@../assets/image/icon/icons8-remove-24.png" />
                </image>
             </ImageView>
             <ImageView fx:id="btnCancel" fitHeight="26.0" fitWidth="26.0" layoutX="893.0" layoutY="16.0" onMouseClicked="#cancelOnMouseClick" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
-                  <Image url="@../assets/icon/icons8-cancel-24.png" />
+                  <Image url="@../assets/image/icon/icons8-cancel-24.png" />
                </image>
             </ImageView>
             <ImageView fx:id="btnOk" fitHeight="26.0" fitWidth="28.0" layoutX="931.0" layoutY="17.0" onMouseClicked="#okOnMouseClick" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
-                  <Image url="@../assets/icon/icons8-ok-24.png" />
+                  <Image url="@../assets/image/icon/icons8-ok-24.png" />
                </image>
             </ImageView>
             <JFXTextField fx:id="lblExe" alignment="TOP_CENTER" focusColor="#405aa800" layoutX="73.0" layoutY="8.0" prefHeight="40.0" prefWidth="699.0" styleClass="text-details" unFocusColor="#21101000" visible="false" />

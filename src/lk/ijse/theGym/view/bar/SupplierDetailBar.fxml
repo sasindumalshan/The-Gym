@@ -30,7 +30,7 @@
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="btn-txt" text="Delete" GridPane.columnIndex="1" />
                   <ImageView fitHeight="33.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/icon/icons8-remove-24.png" />
+                        <Image url="@../assets/image/icon/icons8-remove-24.png" />
                      </image>
                      <GridPane.margin>
                         <Insets left="10.0" />
@@ -54,7 +54,7 @@
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="btn-txt" text="Update" GridPane.columnIndex="1" />
                   <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/icon/icons8-update-24.png" />
+                        <Image url="@../assets/image/icon/icons8-update-24.png" />
                      </image>
                      <GridPane.margin>
                         <Insets left="10.0" />
@@ -66,7 +66,7 @@
       </JFXButton>
       <ImageView fitHeight="39.0" fitWidth="35.0" layoutX="1781.0" layoutY="13.0" onMouseClicked="#viewDataOnMouseClick" pickOnBounds="true" preserveRatio="true" styleClass="bar-btn">
          <image>
-            <Image url="@../assets/icon/icons8-about-48%20(1).png" />
+            <Image url="@../assets/image/icon/icons8-about-48%20(1).png" />
          </image>
       </ImageView>
    </children>

@@ -17,7 +17,7 @@
             <Text fx:id="txtCity" fill="WHITE" layoutX="1206.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-detail" text="City" wrappingWidth="443.42337799072266" />
             <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1796.0" layoutY="15.0" onMouseClicked="#ViewOnMouseClick" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/icon/icons8-about-48%20(1).png" />
+                  <Image url="@../assets/image/icon/icons8-about-48%20(1).png" />
                </image>
             </ImageView>
             <JFXButton fx:id="btnRemove" layoutX="1654.0" layoutY="15.0" onAction="#removeOnAction" prefHeight="35.0" prefWidth="123.0" text="Remove">
@@ -28,7 +28,7 @@
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/icon/icons8-remove-24.png" />
+                        <Image url="@../assets/image/icon/icons8-remove-24.png" />
                      </image>
                   </ImageView>
                </graphic>
