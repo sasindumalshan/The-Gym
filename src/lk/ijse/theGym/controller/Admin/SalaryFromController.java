@@ -15,12 +15,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import lk.ijse.theGym.controller.User.StoreFromController;
 import lk.ijse.theGym.dto.CoachSalaryDetailsDTO;
+import lk.ijse.theGym.dto.EmployeeSalaryDetailsDTO;
 import lk.ijse.theGym.model.CoachAttendanceModel;
 import lk.ijse.theGym.model.CoachSalaryModel;
 import lk.ijse.theGym.model.EmployeeAttendanceModel;
+import lk.ijse.theGym.model.EmployeeSalaryDetailsModel;
 import lk.ijse.theGym.modelController.*;
 import lk.ijse.theGym.to.CoachSalaryDetails;
-import lk.ijse.theGym.to.EmployeeSalaryDetails;
 import lk.ijse.theGym.to.Salary;
 import lk.ijse.theGym.util.DateTimeUtil;
 import lk.ijse.theGym.util.Notification;
@@ -96,12 +97,12 @@ public class SalaryFromController implements Initializable {
         if (comboId.getValue() != null) {
             try {
                 if (EmployeeController.idExists(id)) {
-                    if (EmployeeSalaryDetailsController.addDetails(new EmployeeSalaryDetails(
-                            id,
-                            DateTimeUtil.dateNow(),
-                            txtPerMonthSalary.getText(),
-                            salaryId
-                    ))) {
+                    EmployeeSalaryDetailsDTO employeeSalaryDetailsDTO = new EmployeeSalaryDetailsDTO();
+                    employeeSalaryDetailsDTO.setEmployee_id(id);
+                    employeeSalaryDetailsDTO.setPrice(Double.parseDouble(txtPerMonthSalary.getText()));
+                    employeeSalaryDetailsDTO.setDate(DateTimeUtil.dateNow());
+                    employeeSalaryDetailsDTO.setSalary_id(salaryId);
+                    if (EmployeeSalaryDetailsModel.save(employeeSalaryDetailsDTO)) {
                         Notification.notification("Salary is Payed", "payed successful ");
 //                        new Alert(Alert.AlertType.CONFIRMATION, "OK").show();
                         setSalaryDetails();
@@ -354,9 +355,9 @@ public class SalaryFromController implements Initializable {
                     year.add(s);
                 }
             }
-            ResultSet set1 = EmployeeSalaryDetailsController.getDays();
-            while (set1.next()) {
-                String[] split = set1.getString(1).split("-");
+            List<String> dateList = EmployeeSalaryDetailsModel.findDistinctDate();
+            for (String date:dateList) {
+                String[] split = date.split("-");
                 String s = split[0];
                 for (int i = 0; i < year.size(); i++) {
                     if (year.get(i).equals(s)) {
@@ -391,8 +392,8 @@ public class SalaryFromController implements Initializable {
                     }
 
                 }
-                ResultSet set1 = EmployeeSalaryDetailsController.existThisMonth(comboYear.getValue() + "-" + month, set.getString(1));
-                if (!set1.next()) {
+                List<EmployeeSalaryDetailsDTO> detailsDTOS = EmployeeSalaryDetailsModel.findEmployeeSalaryDetailsByEmployeeIdAndDateLike(comboYear.getValue() + "-" + month, set.getString(1));
+                if (detailsDTOS.isEmpty()) {
                     ids.add(set.getString(1));
                 }
 
@@ -449,9 +450,14 @@ public class SalaryFromController implements Initializable {
 
         Vbox.getChildren().clear();
         try {
-            ResultSet set = EmployeeSalaryController.getAll(comboYear.getValue() + "-" + month);
-            while (set.next()) {
-                navigation(set.getString(1), set.getString(3), set.getString(4), set.getString(2));
+            List<lk.ijse.theGym.dto.EmployeeSalaryDetailsDTO> employeeSalaryDetailsDTOS = lk.ijse.theGym.model.EmployeeSalaryDetailsModel.findEmployeeSalaryByLikeDate(comboYear.getValue() + "-" + month);
+            for (lk.ijse.theGym.dto.EmployeeSalaryDetailsDTO employeeSalaryDetailsDTO:employeeSalaryDetailsDTOS) {
+                navigation(
+                        employeeSalaryDetailsDTO.getEmployee_id(),
+                        String.valueOf(employeeSalaryDetailsDTO.getPrice()),
+                        employeeSalaryDetailsDTO.getSalary_id(),
+                        employeeSalaryDetailsDTO.getDate()
+                );
 
             }
             List<CoachSalaryDetailsDTO> coachSalaryDetailsDTOsList = CoachSalaryModel.findCoachSalaryDetails(comboYear.getValue() + "-" + month);

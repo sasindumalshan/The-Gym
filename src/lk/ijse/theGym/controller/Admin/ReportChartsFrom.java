@@ -10,6 +10,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import lk.ijse.theGym.model.EmployeeSalaryDetailsModel;
 import lk.ijse.theGym.modelController.*;
 import lk.ijse.theGym.util.DateTimeUtil;
 
@@ -18,6 +19,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ReportChartsFrom implements Initializable {
@@ -55,11 +57,11 @@ public class ReportChartsFrom implements Initializable {
     }
 
     private void onlyYearReport() {
-        txtReport.setText(String.valueOf(rBtnSelectYear.getValue()) + " REPORT ");
+        txtReport.setText(rBtnSelectYear.getValue() + " REPORT ");
         clear();
         try {
             for (String month : allMonth) {
-                ResultSet set = SupplierOrderDetailsController.getMonthlyReport(String.valueOf(rBtnSelectYear.getValue() + "-" + setMonthForQulQuery(month) + "-" + "%"));
+                ResultSet set = SupplierOrderDetailsController.getMonthlyReport(rBtnSelectYear.getValue() + "-" + setMonthForQulQuery(month) + "-" + "%");
                 if (set.next()) {
                     if (set.getString(1) == null) {
 //                        System.out.println("null");
@@ -75,19 +77,11 @@ public class ReportChartsFrom implements Initializable {
                 }
             }
             for (String month : allMonth) {
-                ResultSet set = EmployeeSalaryDetailsController.getMonthlyReport(String.valueOf(rBtnSelectYear.getValue() + "-" + setMonthForQulQuery(month) + "-" + "%"));
-                if (set.next()) {
-                    if (set.getString(1) == null) {
-                        sumOfEmployeeSalary.add("0");
-                    } else {
-                        sumOfEmployeeSalary.add(set.getString(1));
-                    }
-                } else {
-                    sumOfEmployeeSalary.add("0");
-                }
+                String sumOfEmployeeSalaryDetails = EmployeeSalaryDetailsModel.sumByDate(rBtnSelectYear.getValue() + "-" + setMonthForQulQuery(month) + "-" + "%");
+                sumOfEmployeeSalary.add(sumOfEmployeeSalaryDetails);
             }
             for (String month : allMonth) {
-                ResultSet set = CoachSalaryDetailsController.getMonthlyReport(String.valueOf(rBtnSelectYear.getValue() + "-" + setMonthForQulQuery(month) + "-" + "%"));
+                ResultSet set = CoachSalaryDetailsController.getMonthlyReport(rBtnSelectYear.getValue() + "-" + setMonthForQulQuery(month) + "-" + "%");
                 if (set.next()) {
                     if (set.getString(1) == null) {
                         sumOfCoachSalary.add("0");
@@ -99,7 +93,7 @@ public class ReportChartsFrom implements Initializable {
                 }
             }
             for (String month : allMonth) {
-                ResultSet set = OrderController.getMonthlyReport(String.valueOf(rBtnSelectYear.getValue() + "-" + setMonthForQulQuery(month) + "-" + "%"));
+                ResultSet set = OrderController.getMonthlyReport(rBtnSelectYear.getValue() + "-" + setMonthForQulQuery(month) + "-" + "%");
                 if (set.next()) {
                     if (set.getString(1) == null) {
                         customerOder.add("0");
@@ -111,7 +105,7 @@ public class ReportChartsFrom implements Initializable {
                 }
             }
             for (String month : allMonth) {
-                ResultSet set = CustomerPaymentController.getMonthlyReport(String.valueOf(rBtnSelectYear.getValue() + "-" + setMonthForQulQuery(month) + "-" + "%"));
+                ResultSet set = CustomerPaymentController.getMonthlyReport(rBtnSelectYear.getValue() + "-" + setMonthForQulQuery(month) + "-" + "%");
                 if (set.next()) {
                     if (set.getString(1) == null) {
                         customerPayment.add("0");
@@ -229,14 +223,15 @@ public class ReportChartsFrom implements Initializable {
 
             for (String year : year) {
                 int empSalaryTotal = 0;
-                ResultSet set = EmployeeSalaryDetailsController.getFinalTotalOnYear(year);
-                while (set.next()) {
-                    if (set.getString(1) == null) {
-                        empSalaryTotal += 0;
-                    } else {
-                        empSalaryTotal += Integer.parseInt(set.getString(1));
+                List<String> dateList = EmployeeSalaryDetailsModel.findPriceByDate(year);
+                if (!dateList.isEmpty()){
+                    for (String date:dateList) {
+                        empSalaryTotal += Integer.parseInt(date);
                     }
+                }else {
+                    empSalaryTotal += 0;
                 }
+
                 sumOfEmployeeSalary.add(String.valueOf(empSalaryTotal));
             }
 
@@ -348,16 +343,8 @@ public class ReportChartsFrom implements Initializable {
                 Profit.add(String.valueOf(total));
             }
             for (String countOfDay : days) {
-                ResultSet set = EmployeeSalaryDetailsController.getSumOfSalaryOnDay(year + "-" + month + "-" + countOfDay);
-                if (set.next()) {
-                    if (set.getString(1) == null) {
-                        sumOfEmployeeSalary.add("0");
-                    } else {
-                        sumOfEmployeeSalary.add(set.getString(1));
-                    }
-                } else {
-                    sumOfEmployeeSalary.add("0");
-                }
+                String sumOfEmployeeSalaryDetails = EmployeeSalaryDetailsModel.sumByDate(year + "-" + month + "-" + countOfDay);
+                sumOfEmployeeSalary.add(sumOfEmployeeSalaryDetails);
             }
             for (String countOfDay : days) {
                 ResultSet set = CoachSalaryDetailsController.getSumOfSalaryOnDay(year + "-" + month + "-" + countOfDay);
