@@ -11,14 +11,16 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import lk.ijse.theGym.controller.User.bar.OrderDetailsBarFromController;
-import lk.ijse.theGym.modelController.OrderDetailsModel;
+import lk.ijse.theGym.dto.OrderDTO;
+import lk.ijse.theGym.model.OrdersModel;
+import lk.ijse.theGym.model.OrderDetailsModel;
 import lk.ijse.theGym.util.DateTimeUtil;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class OrderDetailsFromController implements Initializable {
@@ -45,9 +47,9 @@ public class OrderDetailsFromController implements Initializable {
     private void setData(String date) {
         vBox.getChildren().clear();
         try {
-            ResultSet set = OrderDetailsModel.getAllData(date);
-            while (set.next()) {
-                navigation(set.getString(1), set.getString(2), set.getString(3), set.getString(4), set.getString(5));
+            List<OrderDTO> ordersList = OrdersModel.findOrdersByDate(date);
+            for (OrderDTO orderDTO:ordersList) {
+                navigation(orderDTO);
             }
         } catch (SQLException | IOException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
@@ -61,10 +63,10 @@ public class OrderDetailsFromController implements Initializable {
             year.clear();
             year.add(DateTimeUtil.yearNow());
 
-            ResultSet set = OrderDetailsModel.getAllYears();
-            while (set.next()) {
+            List<String> allYears = OrderDetailsModel.findDate();
+            for (String thisYear:allYears) {
                 for (int i = 0; i < year.size(); i++) {
-                    String[] split = set.getString(1).split("-");
+                    String[] split = thisYear.split("-");
 
                     if (!year.get(i).equals(split[0])) {
                         year.add(split[0]);
@@ -82,11 +84,11 @@ public class OrderDetailsFromController implements Initializable {
         comboSelectMonth.getItems().addAll(allMonth);
     }
 
-    private void navigation(String customerId, String date, String time, String orderId, String total) throws IOException {
+    private void navigation(OrderDTO orderDTO) throws IOException {
         FXMLLoader loader = new FXMLLoader(StoreFromController.class.getResource("/lk/ijse/theGym/view/bar/OrderDetailsBarFrom.fxml"));
         Parent root = loader.load();
         OrderDetailsBarFromController controller = loader.getController();
-        controller.setData(customerId, date, time, orderId, total);
+        controller.setData(orderDTO);
         vBox.getChildren().add(root);
     }
 
@@ -100,15 +102,15 @@ public class OrderDetailsFromController implements Initializable {
             searchIds.clear();
             vBox.getChildren().clear();
             try {
-                ResultSet set = OrderDetailsModel.searchIDOrCustomerId(search.getText());
-                while (set.next()) {
+                List<String> idList = OrderDetailsModel.findCustomerIdByOrderIdLikeOrCustomerIdLike(search.getText());
+                for (String id :idList) {
                     for (int i = 0; i < searchIds.size(); i++) {
-                        if (!searchIds.get(i).equals(set.getString(1))) {
-                            searchIds.add(set.getString(1));
+                        if (!searchIds.get(i).equals(id)) {
+                            searchIds.add(id);
                         }
                     }
                     if (searchIds.isEmpty()) {
-                        searchIds.add(set.getString(1));
+                        searchIds.add(id);
                     }
 
                 }
@@ -126,9 +128,9 @@ public class OrderDetailsFromController implements Initializable {
         vBox.getChildren().clear();
         try {
             for (int i = 0; i < searchIds.size(); i++) {
-                ResultSet set= OrderDetailsModel.getDataForOrderId(searchIds.get(i));
-                while (set.next()){
-                    navigation(set.getString(1), set.getString(2), set.getString(3), set.getString(4), set.getString(5));
+                List<OrderDTO> ordersList = OrdersModel.findOrdersByOrdersId(searchIds.get(i));
+                for (OrderDTO orderDTO:ordersList){
+                    navigation(orderDTO);
                 }
             }
         } catch (SQLException | ClassNotFoundException | IOException throwables) {

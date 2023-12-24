@@ -19,7 +19,7 @@ import lk.ijse.theGym.dto.OrderDTO;
 import lk.ijse.theGym.dto.OrderDetailsDTO;
 import lk.ijse.theGym.modelController.CustomerController;
 import lk.ijse.theGym.model.ItemModel;
-import lk.ijse.theGym.modelController.OrderController;
+import lk.ijse.theGym.model.OrdersModel;
 import lk.ijse.theGym.util.DateTimeUtil;
 import lk.ijse.theGym.util.Notification;
 import lk.ijse.theGym.util.RegexUtil;
@@ -33,6 +33,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CustomerOrderFromController implements Initializable {
@@ -315,7 +316,7 @@ public class CustomerOrderFromController implements Initializable {
                     detailsDTO.setOrder_id(orderDTO.getOrder_id());
                 }
 
-                if (OrderController.PlaceOrder(orderDTO, orderDetailsDTOS)) {
+                if (OrdersModel.PlaceOrder(orderDTO, orderDetailsDTOS)) {
                     lblCustomerId.requestFocus();
                     txtName.setText("");
                     txtNic.setText("");
@@ -351,14 +352,14 @@ public class CustomerOrderFromController implements Initializable {
     }
 
     private String nextOrderId() {
-        String id = null;
+        String currentId = null;
         try {
-            ResultSet set = OrderController.getLastOrderId();
-            while (set.next()) {
-                id = set.getString(1);
+            List<String> idList = OrdersModel.findOrdersIdOrderByLength();
+            for (String id :idList) {
+                currentId =id;
             }
             try {
-                String[] O = id.split("O00");
+                String[] O = currentId.split("O00");
                 int n = Integer.parseInt(O[1]);
                 n++;
                 return "O00" + n;

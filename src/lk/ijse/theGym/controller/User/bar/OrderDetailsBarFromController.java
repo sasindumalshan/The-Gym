@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import lk.ijse.theGym.dto.OrderDTO;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,12 +18,12 @@ public class OrderDetailsBarFromController implements Initializable {
     public Text txtTotal;
     public Button btn;
 
-    public void setData(String customerId,String date,String time,String orderId,String total){
-       txtCustomerId.setText(customerId);
-       txtDate.setText(date);
-       txtTime.setText(time);
-       txtOrderId.setText(orderId);
-       txtTotal.setText(total);
+    public void setData(OrderDTO orderDTO){
+       txtCustomerId.setText(orderDTO.getCustomer_id());
+       txtDate.setText(orderDTO.getDate());
+       txtTime.setText(orderDTO.getTime());
+       txtOrderId.setText(orderDTO.getOrder_id());
+       txtTotal.setText(String.valueOf(orderDTO.getFinal_total()));
     }
 
 

@@ -11,7 +11,10 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import lk.ijse.theGym.model.EmployeeSalaryDetailsModel;
-import lk.ijse.theGym.modelController.*;
+import lk.ijse.theGym.modelController.CoachSalaryDetailsController;
+import lk.ijse.theGym.modelController.CustomerPaymentController;
+import lk.ijse.theGym.model.OrdersModel;
+import lk.ijse.theGym.modelController.SupplierOrderDetailsController;
 import lk.ijse.theGym.util.DateTimeUtil;
 
 import java.net.URL;
@@ -93,16 +96,8 @@ public class ReportChartsFrom implements Initializable {
                 }
             }
             for (String month : allMonth) {
-                ResultSet set = OrderController.getMonthlyReport(rBtnSelectYear.getValue() + "-" + setMonthForQulQuery(month) + "-" + "%");
-                if (set.next()) {
-                    if (set.getString(1) == null) {
-                        customerOder.add("0");
-                    } else {
-                        customerOder.add(set.getString(1));
-                    }
-                } else {
-                    customerOder.add("0");
-                }
+                String monthlyTotal = OrdersModel.sumOrdersByDateLike(rBtnSelectYear.getValue() + "-" + setMonthForQulQuery(month) + "-" + "%");
+                customerOder.add(monthlyTotal);
             }
             for (String month : allMonth) {
                 ResultSet set = CustomerPaymentController.getMonthlyReport(rBtnSelectYear.getValue() + "-" + setMonthForQulQuery(month) + "-" + "%");
@@ -177,17 +172,11 @@ public class ReportChartsFrom implements Initializable {
         clear();
 
         try {
-
             for (String year : year) {
                 int orderTotal = 0;
-                ResultSet set = OrderController.getFinalTotalOnYear(year);
-                while (set.next()) {
-
-                    if (set.getString(1) == null) {
-                        orderTotal += 0;
-                    } else {
-                        orderTotal += Integer.parseInt(set.getString(1));
-                    }
+                List<String> finalTotalOnYear = OrdersModel.findFinalTotalByDate(year);
+                for (String total:finalTotalOnYear) {
+                    orderTotal += Integer.parseInt(total);
                 }
                 customerOder.add(String.valueOf(orderTotal));
             }
@@ -224,11 +213,11 @@ public class ReportChartsFrom implements Initializable {
             for (String year : year) {
                 int empSalaryTotal = 0;
                 List<String> dateList = EmployeeSalaryDetailsModel.findPriceByDate(year);
-                if (!dateList.isEmpty()){
-                    for (String date:dateList) {
+                if (!dateList.isEmpty()) {
+                    for (String date : dateList) {
                         empSalaryTotal += Integer.parseInt(date);
                     }
-                }else {
+                } else {
                     empSalaryTotal += 0;
                 }
 
@@ -315,16 +304,8 @@ public class ReportChartsFrom implements Initializable {
                 }
             }
             for (String countOfDay : days) {
-                ResultSet set = OrderController.getFinalTotalOnDay(year + "-" + month + "-" + countOfDay);
-                if (set.next()) {
-                    if (set.getString(1) == null) {
-                        customerOder.add("0");
-                    } else {
-                        customerOder.add(set.getString(1));
-                    }
-                } else {
-                    customerOder.add("0");
-                }
+                String finalTotalOnDay = OrdersModel.sumOrdersByDate(year + "-" + month + "-" + countOfDay);
+                customerOder.add(finalTotalOnDay);
             }
             for (String countOfDay : days) {
                 ResultSet set = CustomerPaymentController.getFinalTotal(year + "-" + month + "-" + countOfDay);
