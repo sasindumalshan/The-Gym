@@ -1,27 +1,18 @@
 package lk.ijse.theGym.modelController;
 
+import lk.ijse.theGym.dto.CoachDTO;
 import lk.ijse.theGym.to.Coach;
 import lk.ijse.theGym.to.Customer;
 import lk.ijse.theGym.util.CrudUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CoachController {
-    public static boolean idExists(String id) throws SQLException, ClassNotFoundException {
-        ResultSet set= CrudUtil.crudUtil("SELECT coach_id FROM coach WHERE coach_id=?",id);
-        return set.next();
-    }
 
-    public static ResultSet getAll() throws SQLException, ClassNotFoundException {
-        return CrudUtil.crudUtil("SELECT * FROM coach");
-    }
-
-    public static ResultSet getLastaId() throws SQLException, ClassNotFoundException {
-        return CrudUtil.crudUtil("SELECT  coach_id FROM coach ORDER BY LENGTH(coach_id),coach_id");
-    }
-
-    public static boolean addCoach(Coach coach) throws SQLException, ClassNotFoundException {
+    public static boolean save(Coach coach) throws SQLException, ClassNotFoundException {
         return CrudUtil.crudUtil("INSERT INTO coach VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                 coach.getCoach_id(),
                 coach.getFist_name(),
@@ -39,37 +30,10 @@ public class CoachController {
                 coach.getCoach_type()
 
 
-                );
+        );
     }
 
-    public static ResultSet getAllForID(String id) throws SQLException, ClassNotFoundException {
-        System.out.println("Coach id"+id);
-
-        return CrudUtil.crudUtil("SELECT * FROM coach WHERE coach_id=?",id);
-    }
-
-    public static boolean removeCustomer(String text) throws SQLException, ClassNotFoundException {
-        return CrudUtil.crudUtil("DELETE FROM coach WHERE coach_id=?",text);
-    }
-
-    public static boolean updateCustomer(Customer customer) throws SQLException, ClassNotFoundException {
-        return CrudUtil.crudUtil("UPDATE customer SET fist_name=?,last_name=?,address_city=?,address_street=?,address_lene=?,e_mail=?,contact_number=?,nic=?,birthday=? WHERE customer_id=?",
-                customer.getFist_name(),
-                customer.getLast_name(),
-                customer.getAddress_city(),
-                customer.getAddress_street(),
-                customer.getAddress_lene(),
-                customer.getE_mail(),
-                customer.getContact_number(),
-                customer.getNic(),
-                customer.getBirthday(),
-                customer.getCustomer_id()
-
-
-                );
-    }
-
-    public static boolean updateCoach(Coach coach) throws SQLException, ClassNotFoundException {
+    public static boolean update(Coach coach) throws SQLException, ClassNotFoundException {
         return CrudUtil.crudUtil("UPDATE coach SET fist_name=?,last_name=?,address_city=?,address_street=?,address_lene=?,e_mail=?,contact_number=?,nic=?,birthday=? WHERE coach_id=?",
                 coach.getFist_name(),
                 coach.getLast_name(),
@@ -82,7 +46,65 @@ public class CoachController {
                 coach.getBirthday(),
                 coach.getCoach_id()
 
-                );
+        );
+    }
+
+    public static boolean remove(String text) throws SQLException, ClassNotFoundException {
+        return CrudUtil.crudUtil("DELETE FROM coach WHERE coach_id=?",text);
+    }
+
+    public static String countCoach() throws SQLException, ClassNotFoundException {
+        return setString(CrudUtil.crudUtil("SELECT COUNT(*) FROM coach"));
+    }
+
+    public static String countSalaryBySalaryId(String salary_id) throws SQLException, ClassNotFoundException {
+        return setString(CrudUtil.crudUtil("SELECT COUNT(*) FROM coach WHERE salary_Id=?",salary_id));
+    }
+
+    public static boolean idExists(String id) throws SQLException, ClassNotFoundException {
+        ResultSet set= CrudUtil.crudUtil("SELECT coach_id FROM coach WHERE coach_id=?",id);
+        return set.next();
+    }
+
+    private static String setString(ResultSet resultSet) throws SQLException {
+        if (resultSet.next())return resultSet.getString(1);
+        return null;
+    }
+
+    public static List<CoachDTO> findCoach() throws SQLException, ClassNotFoundException {
+        return setDTOs(CrudUtil.crudUtil("SELECT * FROM coach"));
+    }
+
+    private static List<CoachDTO> setDTOs(ResultSet resultSet) throws SQLException {
+        List<CoachDTO> list=new ArrayList<>();
+        while (resultSet.next()){
+            CoachDTO dto=new CoachDTO(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5),
+                    resultSet.getString(6),
+                    resultSet.getString(7),
+                    resultSet.getString(8),
+                    resultSet.getString(9),
+                    resultSet.getString(10),
+                    resultSet.getString(11),
+                    resultSet.getString(12),
+                    resultSet.getString(13),
+                    resultSet.getString(14)
+            );
+            list.add(dto);
+        }
+        return list;
+    }
+
+    public static ResultSet getLastaId() throws SQLException, ClassNotFoundException {
+        return CrudUtil.crudUtil("SELECT  coach_id FROM coach ORDER BY LENGTH(coach_id),coach_id");
+    }
+
+    public static ResultSet getAllForID(String id) throws SQLException, ClassNotFoundException {
+        return CrudUtil.crudUtil("SELECT * FROM coach WHERE coach_id=?",id);
     }
 
     public static ResultSet getSearchIdData(String id) throws SQLException, ClassNotFoundException {
@@ -97,19 +119,11 @@ public class CoachController {
         return CrudUtil.crudUtil("SELECT *FROM coach WHERE coach_id=?",id);
     }
 
-    public static ResultSet getCoachCunt() throws SQLException, ClassNotFoundException {
-        return CrudUtil.crudUtil("SELECT COUNT(*) FROM coach");
-    }
-
     public static ResultSet getALlId() throws SQLException, ClassNotFoundException {
         return CrudUtil.crudUtil("SELECT coach_id FROM coach WHERE coach_type=?","Company");
     }
 
     public static ResultSet getDataForId(String valueOf) throws SQLException, ClassNotFoundException {
         return CrudUtil.crudUtil("SELECT fist_name,last_name ,nic,coach_id,salary_id FROM coach WHERE coach_id=?",valueOf);
-    }
-
-    public static ResultSet getSalaryCount(String salary_id) throws SQLException, ClassNotFoundException {
-        return CrudUtil.crudUtil("SELECT COUNT(*) FROM coach WHERE salary_Id=?",salary_id);
     }
 }

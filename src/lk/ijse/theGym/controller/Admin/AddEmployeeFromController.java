@@ -9,8 +9,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.theGym.dto.SalaryDTO;
 import lk.ijse.theGym.modelController.EmployeeController;
-import lk.ijse.theGym.modelController.SalaryController;
+import lk.ijse.theGym.model.SalaryModel;
 import lk.ijse.theGym.to.Employee;
 import lk.ijse.theGym.util.Navigation;
 import lk.ijse.theGym.util.Notification;
@@ -29,6 +30,9 @@ import java.util.*;
 
 public class AddEmployeeFromController implements Initializable {
 
+    static String id = null;
+    static String name = null;
+    static String email = null;
     private static String dateNow;
     public JFXTextField txtFName;
     public JFXTextField txtLName;
@@ -44,14 +48,11 @@ public class AddEmployeeFromController implements Initializable {
     public JFXTextField txtPassword;
     public JFXButton btnAdd;
     ArrayList<String> roles = new ArrayList<>();
-    static String id = null;
-    static String name = null;
-    static String email = null;
 
     public void addOnAction(ActionEvent actionEvent) {
-        id=getNextID();
-        name= txtFName.getText()+" "+txtLName.getText();
-        email=txtEmail.getText();
+        id = getNextID();
+        name = txtFName.getText() + " " + txtLName.getText();
+        email = txtEmail.getText();
         if (txtFName.getText().equals("") |
                 txtLName.getText().equals("") |
                 txtEmail.getText().equals("") |
@@ -101,7 +102,7 @@ public class AddEmployeeFromController implements Initializable {
                         hm.put("name", name);
                         hm.put("email", email);
 
-                        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,hm, jrDataSource);
+                        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, hm, jrDataSource);
                         JasperViewer.viewReport(jasperPrint, false);
 //
                     } catch (JRException e) {
@@ -122,10 +123,8 @@ public class AddEmployeeFromController implements Initializable {
     private String getSalaryId() {
 
         try {
-            ResultSet set = SalaryController.findSalaryId((String) combRole.getValue());
-            if (set.next()) {
-                return set.getString(1);
-            }
+            SalaryDTO salaryDTO = SalaryModel.findSalaryByRole((String) combRole.getValue());
+            return salaryDTO.getSalary_Id();
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
@@ -177,9 +176,9 @@ public class AddEmployeeFromController implements Initializable {
 
     private void setAllRole() {
         try {
-            ResultSet set = SalaryController.getAllRoles();
-            while (set.next()) {
-                roles.add(set.getString(1));
+            List<SalaryDTO> salaryDTOS = SalaryModel.findSalary();
+            for (SalaryDTO salaryDTO:salaryDTOS) {
+                roles.add(salaryDTO.getRole());
             }
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();

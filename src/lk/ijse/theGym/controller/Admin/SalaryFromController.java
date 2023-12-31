@@ -16,17 +16,15 @@ import javafx.scene.text.Text;
 import lk.ijse.theGym.controller.User.StoreFromController;
 import lk.ijse.theGym.dto.CoachSalaryDetailsDTO;
 import lk.ijse.theGym.dto.EmployeeSalaryDetailsDTO;
-import lk.ijse.theGym.model.CoachAttendanceModel;
-import lk.ijse.theGym.model.CoachSalaryModel;
-import lk.ijse.theGym.model.EmployeeAttendanceModel;
-import lk.ijse.theGym.model.EmployeeSalaryDetailsModel;
-import lk.ijse.theGym.modelController.*;
-import lk.ijse.theGym.to.CoachSalaryDetails;
-import lk.ijse.theGym.to.Salary;
+import lk.ijse.theGym.dto.SalaryDTO;
+import lk.ijse.theGym.model.*;
+import lk.ijse.theGym.modelController.CoachController;
+import lk.ijse.theGym.model.CoachSalaryDetailsModel;
+import lk.ijse.theGym.modelController.EmployeeController;
 import lk.ijse.theGym.util.DateTimeUtil;
 import lk.ijse.theGym.util.Notification;
 import lk.ijse.theGym.util.RegexUtil;
-import lk.ijse.theGym.view.data.salary;
+import lk.ijse.theGym.view.data.SalaryTm;
 
 import java.io.IOException;
 import java.net.URL;
@@ -109,12 +107,13 @@ public class SalaryFromController implements Initializable {
                     }
                 }
                 if (CoachController.idExists(id)) {
-                    if (CoachSalaryDetailsController.addDetails(new CoachSalaryDetails(
+                    CoachSalaryDetailsDTO coachSalaryDetailsDTO = new CoachSalaryDetailsDTO(
                             id,
                             DateTimeUtil.dateNow(),
                             txtPerMonthSalary.getText(),
                             salaryId
-                    ))) {
+                    );
+                    if (CoachSalaryDetailsModel.save(coachSalaryDetailsDTO)) {
                         Notification.notification("Salary is Payed", "payed successful ");
 //                        new Alert(Alert.AlertType.CONFIRMATION, "OK").show();
                     }
@@ -139,10 +138,9 @@ public class SalaryFromController implements Initializable {
                 String employeeCount = EmployeeAttendanceModel.getAttendanceCount(String.valueOf(comboId.getValue()), getProcessDate());
                 txtAttendance.setText(employeeCount);
 
-                ResultSet set2 = SalaryController.findSalary(set1.getString(5));
-                if (set2.next()) {
-                    txtAvailableSalary.setText(set2.getString(1));
-                }
+                SalaryDTO salary = SalaryModel.findSalaryById(set1.getString(5));
+                txtAvailableSalary.setText(String.valueOf(salary.getSalary()));
+
                 SimpleDateFormat format = new SimpleDateFormat("MM");
                 int days = DateTimeUtil.getDays(Integer.parseInt(DateTimeUtil.yearNow()), Integer.valueOf(format.format(new Date())));
                 double oneDaySalary = Double.parseDouble(txtAvailableSalary.getText()) / days;
@@ -159,10 +157,9 @@ public class SalaryFromController implements Initializable {
                 String coachCount = CoachAttendanceModel.countAttendanceByDateAndCouchId(String.valueOf(comboId.getValue()), getProcessDate());
                 txtAttendance.setText(coachCount);
 
-                ResultSet set2 = SalaryController.findSalary(set.getString(5));
-                if (set2.next()) {
-                    txtAvailableSalary.setText(set2.getString(1));
-                }
+                SalaryDTO salary = SalaryModel.findSalaryById(set.getString(5));
+                txtAvailableSalary.setText(String.valueOf(salary.getSalary()));
+
                 SimpleDateFormat format = new SimpleDateFormat("MM");
                 int days = DateTimeUtil.getDays(Integer.parseInt(DateTimeUtil.yearNow()), Integer.valueOf(format.format(new Date())));
                 double oneDaySalary = Double.parseDouble(txtAvailableSalary.getText()) / days;
@@ -207,14 +204,13 @@ public class SalaryFromController implements Initializable {
                     role = txtOtherRole.getText();
                 }
                 try {
-                    if (SalaryController.addSalary(new Salary(
-                            getNextId(),
-                            role,
-                            Double.valueOf(lblPrice.getText())
+                    SalaryDTO salaryDTO = new SalaryDTO();
+                    salaryDTO.setSalary_Id(getNextId());
+                    salaryDTO.setSalary(Double.valueOf(lblPrice.getText()));
+                    salaryDTO.setRole(role);
 
-                    ))) {
+                    if (SalaryModel.save(salaryDTO)) {
                         Notification.notification("Salary Added", "your salary Added");
-//                        new Alert(Alert.AlertType.CONFIRMATION, "Ok").show();
                         setSalaryData();
                     }
                 } catch (SQLException | ClassNotFoundException throwables) {
@@ -228,8 +224,11 @@ public class SalaryFromController implements Initializable {
             }
             if (btnAdd.getText().equals("UPDATE SALARY")) {
                 try {
-                    if (SalaryController.updateSalary(clickId, lblPrice.getText())) {
-//                      new Alert(Alert.AlertType.CONFIRMATION, "Ok").show();
+
+                    SalaryDTO salaryDTO = SalaryModel.findSalaryById(clickId);
+                    salaryDTO.setSalary(Double.parseDouble(lblPrice.getText()));
+
+                    if (SalaryModel.update(salaryDTO)) {
                         Notification.notification("Salary Updated", "your salary is updated ");
                         btnAdd.setText("ADD NEW SALARY");
                         comboRole.getItems().clear();
@@ -248,14 +247,14 @@ public class SalaryFromController implements Initializable {
     }
 
     private String getNextId() {
-        String id = null;
+        String currentId = null;
         try {
-            ResultSet set = SalaryController.getlastId();
-            if (set.next()) {
-                id = set.getString(1);
+            List<String> salaryIds = SalaryModel.findSalaryIdOrderByLength();
+            for (String id : salaryIds) {
+                currentId = id;
             }
             try {
-                String[] s = id.split("S");
+                String[] s = currentId.split("S");
                 int n = Integer.parseInt(s[1]);
                 n++;
                 return "S" + n;
@@ -342,9 +341,9 @@ public class SalaryFromController implements Initializable {
         boolean isNotDuplicate2 = true;
 
         try {
-            ResultSet set = CoachSalaryDetailsController.getDays();
-            while (set.next()) {
-                String[] split = set.getString(1).split("-");
+            List<String> days = CoachSalaryDetailsModel.findDistinctDateCoachSalaryDetails();
+            for (String day :days) {
+                String[] split = day.split("-");
                 String s = split[0];
                 for (int i = 0; i < year.size(); i++) {
                     if (year.get(i).equals(s)) {
@@ -356,7 +355,7 @@ public class SalaryFromController implements Initializable {
                 }
             }
             List<String> dateList = EmployeeSalaryDetailsModel.findDistinctDate();
-            for (String date:dateList) {
+            for (String date : dateList) {
                 String[] split = date.split("-");
                 String s = split[0];
                 for (int i = 0; i < year.size(); i++) {
@@ -407,8 +406,8 @@ public class SalaryFromController implements Initializable {
                     }
 
                 }
-                ResultSet set2 = CoachSalaryDetailsController.exsistThisMonth(comboYear.getValue() + "-" + month, set1.getString(1));
-                if (!set2.next()) {
+                boolean isExistThisMonth = CoachSalaryDetailsModel.existThisMonth(comboYear.getValue() + "-" + month, set1.getString(1));
+                if (!isExistThisMonth) {
                     ids.add(set1.getString(1));
                 }
 
@@ -427,9 +426,9 @@ public class SalaryFromController implements Initializable {
         ArrayList<String> role = new ArrayList<>();
         role.clear();
         try {
-            ResultSet set = SalaryController.getAllRoles();
-            while (set.next()) {
-                role.add(set.getString(1));
+            List<SalaryDTO> salaryDTOS = SalaryModel.findSalary();
+            for (SalaryDTO salaryDTO : salaryDTOS) {
+                role.add(salaryDTO.getRole());
             }
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
@@ -451,7 +450,7 @@ public class SalaryFromController implements Initializable {
         Vbox.getChildren().clear();
         try {
             List<lk.ijse.theGym.dto.EmployeeSalaryDetailsDTO> employeeSalaryDetailsDTOS = lk.ijse.theGym.model.EmployeeSalaryDetailsModel.findEmployeeSalaryByLikeDate(comboYear.getValue() + "-" + month);
-            for (lk.ijse.theGym.dto.EmployeeSalaryDetailsDTO employeeSalaryDetailsDTO:employeeSalaryDetailsDTOS) {
+            for (lk.ijse.theGym.dto.EmployeeSalaryDetailsDTO employeeSalaryDetailsDTO : employeeSalaryDetailsDTOS) {
                 navigation(
                         employeeSalaryDetailsDTO.getEmployee_id(),
                         String.valueOf(employeeSalaryDetailsDTO.getPrice()),
@@ -475,29 +474,29 @@ public class SalaryFromController implements Initializable {
     }
 
     public void setSalaryData() {
-        ArrayList<lk.ijse.theGym.view.data.salary> salaryData = new ArrayList<>();
+        ArrayList<SalaryTm> salaryData = new ArrayList<>();
         Vbox.getChildren().clear();
         try {
-            ResultSet set = SalaryController.getAll();
-            while (set.next()) {
+            List<SalaryDTO> salary = SalaryModel.findSalary();
+            for (SalaryDTO salaryDTO : salary) {
                 boolean isNotDuplicate1 = true;
                 int index1 = -1;
                 int index2 = -1;
                 boolean isNotDuplicate2 = true;
-                ResultSet set2 = EmployeeController.getSalaryCount(set.getString(1));
+                ResultSet set2 = EmployeeController.getSalaryCount(salaryDTO.getSalary_Id());
                 if (set2.next()) {
 
                     for (int i = 0; i < salaryData.size(); i++) {
-                        if (set.getString(1).equals(salaryData.get(i).getId())) {
+                        if (salaryDTO.getSalary_Id().equals(salaryData.get(i).getId())) {
                             isNotDuplicate1 = false;
                             index1 = i;
                         }
                     }
                     if (isNotDuplicate1) {
-                        salaryData.add(new salary(
-                                set.getString(1),
-                                set.getString(3),
-                                set.getString(2),
+                        salaryData.add(new SalaryTm(
+                                salaryDTO.getSalary_Id(),
+                                String.valueOf(salaryDTO.getSalary()),
+                                salaryDTO.getRole(),
                                 set2.getString(1) == null ? "0" : set2.getString(1)
 
                         ));
@@ -509,16 +508,16 @@ public class SalaryFromController implements Initializable {
 
                 } else {
                     for (int i = 0; i < salaryData.size(); i++) {
-                        if (set.getString(1).equals(salaryData.get(i).getId())) {
+                        if (salaryDTO.getSalary_Id().equals(salaryData.get(i).getId())) {
                             isNotDuplicate1 = false;
                             index1 = i;
                         }
                     }
                     if (isNotDuplicate1) {
-                        salaryData.add(new salary(
-                                set.getString(1),
-                                set.getString(3),
-                                set.getString(2),
+                        salaryData.add(new SalaryTm(
+                                salaryDTO.getSalary_Id(),
+                                String.valueOf(salaryDTO.getSalary()),
+                                salaryDTO.getRole(),
                                 salaryData.get(index1).getUsage() == null ? "0" : String.valueOf(Integer.valueOf(salaryData.get(index1).getUsage()) + Integer.parseInt(set2.getString(1)))
 
                         ));
@@ -528,46 +527,26 @@ public class SalaryFromController implements Initializable {
 
                     }
                 }
-                ResultSet set3 = CoachController.getSalaryCount(set.getString(1));
-                if (set3.next()) {
-                    for (int i = 0; i < salaryData.size(); i++) {
-                        if (set.getString(1).equals(salaryData.get(i).getId())) {
-                            isNotDuplicate2 = false;
-                            index2 = i;
-                        }
-                    }
-                    if (isNotDuplicate2) {
-                        salaryData.add(new salary(
-                                set.getString(1),
-                                set.getString(3),
-                                set.getString(2),
-                                set3.getString(1) == null ? "0" : set3.getString(1)
 
-                        ));
-                    } else {
-                        isNotDuplicate2 = true;
-                        salaryData.get(index2).setUsage(String.valueOf(Integer.valueOf(salaryData.get(index2).getUsage()) + Integer.parseInt(set3.getString(1))));
-
+                String salaryCount = CoachController.countSalaryBySalaryId(salaryDTO.getSalary_Id());
+                for (int i = 0; i < salaryData.size(); i++) {
+                    if (salaryDTO.getSalary_Id().equals(salaryData.get(i).getId())) {
+                        isNotDuplicate2 = false;
+                        index2 = i;
                     }
+                }
+                if (isNotDuplicate2) {
+                    salaryData.add(new SalaryTm(
+                            salaryDTO.getSalary_Id(),
+                            String.valueOf(salaryDTO.getSalary()),
+                            salaryDTO.getRole(),
+                            salaryCount == null ? "0" : salaryCount
+
+                    ));
                 } else {
-                    for (int i = 0; i < salaryData.size(); i++) {
-                        if (set.getString(1).equals(salaryData.get(i).getId())) {
-                            isNotDuplicate2 = false;
-                            index2 = i;
-                        }
-                    }
-                    if (isNotDuplicate2) {
-                        salaryData.add(new salary(
-                                set.getString(1),
-                                set.getString(3),
-                                set.getString(2),
-                                salaryData.get(index2).getUsage() == null ? "0" : set3.getString(1)
+                    isNotDuplicate2 = true;
+                    salaryData.get(index2).setUsage(String.valueOf(Integer.valueOf(salaryData.get(index2).getUsage()) + Integer.parseInt(salaryCount)));
 
-                        ));
-                    } else {
-                        isNotDuplicate2 = true;
-                        salaryData.get(index2).setUsage(String.valueOf(Integer.valueOf(salaryData.get(index2).getUsage()) + Integer.parseInt(set3.getString(1))));
-                    }
                 }
 
             }

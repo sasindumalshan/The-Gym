@@ -11,9 +11,9 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import lk.ijse.theGym.model.EmployeeSalaryDetailsModel;
-import lk.ijse.theGym.modelController.CoachSalaryDetailsController;
-import lk.ijse.theGym.modelController.CustomerPaymentController;
 import lk.ijse.theGym.model.OrdersModel;
+import lk.ijse.theGym.model.CoachSalaryDetailsModel;
+import lk.ijse.theGym.modelController.CustomerPaymentController;
 import lk.ijse.theGym.modelController.SupplierOrderDetailsController;
 import lk.ijse.theGym.util.DateTimeUtil;
 
@@ -84,16 +84,9 @@ public class ReportChartsFrom implements Initializable {
                 sumOfEmployeeSalary.add(sumOfEmployeeSalaryDetails);
             }
             for (String month : allMonth) {
-                ResultSet set = CoachSalaryDetailsController.getMonthlyReport(rBtnSelectYear.getValue() + "-" + setMonthForQulQuery(month) + "-" + "%");
-                if (set.next()) {
-                    if (set.getString(1) == null) {
-                        sumOfCoachSalary.add("0");
-                    } else {
-                        sumOfCoachSalary.add(set.getString(1));
-                    }
-                } else {
-                    sumOfCoachSalary.add("0");
-                }
+                String coachSalary = CoachSalaryDetailsModel.sumSalaryLikeDate(rBtnSelectYear.getValue() + "-" + setMonthForQulQuery(month) + "-" + "%");
+                sumOfCoachSalary.add(coachSalary);
+
             }
             for (String month : allMonth) {
                 String monthlyTotal = OrdersModel.sumOrdersByDateLike(rBtnSelectYear.getValue() + "-" + setMonthForQulQuery(month) + "-" + "%");
@@ -175,7 +168,7 @@ public class ReportChartsFrom implements Initializable {
             for (String year : year) {
                 int orderTotal = 0;
                 List<String> finalTotalOnYear = OrdersModel.findFinalTotalByDate(year);
-                for (String total:finalTotalOnYear) {
+                for (String total : finalTotalOnYear) {
                     orderTotal += Integer.parseInt(total);
                 }
                 customerOder.add(String.valueOf(orderTotal));
@@ -226,13 +219,9 @@ public class ReportChartsFrom implements Initializable {
 
             for (String year : year) {
                 int coachSalary = 0;
-                ResultSet set = CoachSalaryDetailsController.getFinalTotalOnYear(year);
-                while (set.next()) {
-                    if (set.getString(1) == null) {
-                        coachSalary += 0;
-                    } else {
-                        coachSalary += Integer.parseInt(set.getString(1));
-                    }
+                List<String> prices = CoachSalaryDetailsModel.findPriceCoachSalaryDetailsLikeDate(year);
+                for (String price:prices) {
+                    coachSalary += Integer.parseInt(price);
                 }
                 sumOfCoachSalary.add(String.valueOf(coachSalary));
             }
@@ -328,16 +317,8 @@ public class ReportChartsFrom implements Initializable {
                 sumOfEmployeeSalary.add(sumOfEmployeeSalaryDetails);
             }
             for (String countOfDay : days) {
-                ResultSet set = CoachSalaryDetailsController.getSumOfSalaryOnDay(year + "-" + month + "-" + countOfDay);
-                if (set.next()) {
-                    if (set.getString(1) == null) {
-                        sumOfCoachSalary.add("0");
-                    } else {
-                        sumOfCoachSalary.add(set.getString(1));
-                    }
-                } else {
-                    sumOfCoachSalary.add("0");
-                }
+                String coachSalary = CoachSalaryDetailsModel.sumSalaryByDate(year + "-" + month + "-" + countOfDay);
+                sumOfCoachSalary.add(coachSalary);
             }
             for (int j = 0; j < days.size(); j++) {
                 int total = Integer.parseInt(sumOfEmployeeSalary.get(j)) + Integer.parseInt(sumOfCoachSalary.get(j)) + Integer.parseInt(supplierOder.get(j));

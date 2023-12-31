@@ -8,10 +8,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import lk.ijse.theGym.dto.SalaryDTO;
 import lk.ijse.theGym.modelController.CoachController;
 import lk.ijse.theGym.modelController.CustomerController;
 import lk.ijse.theGym.modelController.PackController;
-import lk.ijse.theGym.modelController.SalaryController;
+import lk.ijse.theGym.model.SalaryModel;
 import lk.ijse.theGym.to.Coach;
 import lk.ijse.theGym.to.Customer;
 import lk.ijse.theGym.util.DateTimeUtil;
@@ -27,10 +28,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class CustomerAddFromController implements Initializable {
 
@@ -115,10 +113,8 @@ public class CustomerAddFromController implements Initializable {
 
     private String setsalaryPrice(String string) {
         try {
-            ResultSet set = SalaryController.getSalary(string);
-            if (set.next()) {
-                return set.getString(1);
-            }
+            SalaryDTO salaryDTO = SalaryModel.findSalaryById(string);
+           return String.valueOf(salaryDTO.getSalary());
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
@@ -290,7 +286,7 @@ public class CustomerAddFromController implements Initializable {
 
                 } else {
                     try {
-                        if (CoachController.addCoach(
+                        if (CoachController.save(
                                 new Coach(
                                         Mid,
                                         lblFastName.getText(),
@@ -351,7 +347,7 @@ public class CustomerAddFromController implements Initializable {
             if (btn.getText().equals("UPDATE")) {
                 try {
                     if (CustomerController.idExists(id)) {
-                        if (CoachController.updateCustomer(new Customer(
+                        if (CustomerController.updateCustomer(new Customer(
                                 id,
                                 lblFastName.getText(),
                                 lblLastName.getText(),
@@ -379,7 +375,7 @@ public class CustomerAddFromController implements Initializable {
                         }
                     }
                     if (CoachController.idExists(id)) {
-                        if (CoachController.updateCoach(new Coach(
+                        if (CoachController.update(new Coach(
                                 id,
                                 lblFastName.getText(),
                                 lblLastName.getText(),
@@ -432,9 +428,9 @@ public class CustomerAddFromController implements Initializable {
         comboSalary.getItems().clear();
         ArrayList<String> salaryIds = new ArrayList<>();
         try {
-            ResultSet set = SalaryController.getAllSalaryIds();
-            while (set.next()) {
-                salaryIds.add(set.getString(1));
+            List<String> salaryIdList = SalaryModel.findSalaryIdOrderByLength();
+            for (String id:salaryIdList) {
+                salaryIds.add(id);
             }
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
@@ -676,11 +672,8 @@ public class CustomerAddFromController implements Initializable {
 
     public void cmbSalary(ActionEvent actionEvent) {
         try {
-            ResultSet set=SalaryController.getSalary(String.valueOf(comboSalary.getValue()));
-            if (set.next()){
-
-                TXTSalaryPrice.setText(set.getString(1));
-            }
+            SalaryDTO salaryDTO = SalaryModel.findSalaryById(String.valueOf(comboSalary.getValue()));
+                TXTSalaryPrice.setText(String.valueOf(salaryDTO.getSalary()));
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();

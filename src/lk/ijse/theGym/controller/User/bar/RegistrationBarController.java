@@ -115,7 +115,7 @@ public class RegistrationBarController implements Initializable {
                         while (MyAlert.isButtonClick) {
                             if (MyAlert.isYesSelected) {
                                 try {
-                                    if (CoachController.removeCustomer(txtCustId.getText())) {
+                                    if (CoachController.remove(txtCustId.getText())) {
                                         MyAlert.isButtonClick = false;
                                         MyAlert.isYesSelected = false;
                                         Platform.runLater(() -> RegisterFromController.getInstance().setCoachesData());

@@ -34,33 +34,34 @@ public class AdminDashBordFromController implements Initializable {
     }
 
     public void minimizMouseClick(MouseEvent mouseEvent) {
-        Stage stage= (Stage) anchorpane.getScene().getWindow();
+        Stage stage = (Stage) anchorpane.getScene().getWindow();
         stage.setIconified(true);
     }
 
     public void EmployeeOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.swatchNavigation("EmployeeFrom.fxml",actionEvent);
+        Navigation.swatchNavigation("EmployeeFrom.fxml", actionEvent);
     }
 
     public void SupplersOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.swatchNavigation("SupplerFrom.fxml",actionEvent);
+        Navigation.swatchNavigation("SupplerFrom.fxml", actionEvent);
     }
 
     public void StoreOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.swatchNavigation("StoreFrom.fxml",actionEvent);
+        Navigation.swatchNavigation("StoreFrom.fxml", actionEvent);
     }
 
     public void ReportOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.swatchNavigation("ReportFrom.fxml",actionEvent);
+        Navigation.swatchNavigation("ReportFrom.fxml", actionEvent);
     }
 
     public void logoutMouseClick(MouseEvent mouseEvent) throws IOException {
-        Navigation.swatchNavigation("LoginFrom.fxml",mouseEvent);
+        Navigation.swatchNavigation("LoginFrom.fxml", mouseEvent);
     }
-    private void setTime(){
+
+    private void setTime() {
         Thread clock = new Thread() {
             public void run() {
-               while (true) {
+                while (true) {
                     DateFormat hour = new SimpleDateFormat("hh");
                     txtHour.setText(hour.format(new Date()));
                     DateFormat min = new SimpleDateFormat("mm");
@@ -74,8 +75,9 @@ public class AdminDashBordFromController implements Initializable {
         };
         clock.start();
     }
-    private void setDate(){
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("EEE, d MMMMM ");
+
+    private void setDate() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE, d MMMMM ");
         txtDate.setText(simpleDateFormat.format(new Date()));
     }
 
@@ -89,8 +91,8 @@ public class AdminDashBordFromController implements Initializable {
 
     private void setEmployee() {
         try {
-            ResultSet set= EmployeeController.getCoachCunt();
-            if (set.next()){
+            ResultSet set = EmployeeController.getCoachCunt();
+            if (set.next()) {
                 txtEmployeeAttendance.setText(set.getString(1));
             }
         } catch (SQLException | ClassNotFoundException throwables) {
@@ -100,10 +102,7 @@ public class AdminDashBordFromController implements Initializable {
 
     private void setCoach() {
         try {
-            ResultSet set= CoachController.getCoachCunt();
-            if (set.next()){
-                txtCoaches.setText(set.getString(1));
-            }
+            txtCoaches.setText(CoachController.countCoach());
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }

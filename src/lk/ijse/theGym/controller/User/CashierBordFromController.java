@@ -6,14 +6,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import lk.ijse.theGym.modelController.CoachController;
 import lk.ijse.theGym.model.CustomerAttendanceModel;
+import lk.ijse.theGym.modelController.CoachController;
 import lk.ijse.theGym.util.DateTimeUtil;
 import lk.ijse.theGym.util.Navigation;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -98,10 +97,7 @@ public class CashierBordFromController implements Initializable {
 
     private void setCoachCount() {
         try {
-            ResultSet set = CoachController.getCoachCunt();
-            if (set.next()) {
-                txtCoaches.setText(set.getString(1));
-            }
+            txtCoaches.setText(CoachController.countCoach());
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }

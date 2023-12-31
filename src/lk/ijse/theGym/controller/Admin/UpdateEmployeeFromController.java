@@ -8,8 +8,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.theGym.dto.SalaryDTO;
 import lk.ijse.theGym.modelController.EmployeeController;
-import lk.ijse.theGym.modelController.SalaryController;
+import lk.ijse.theGym.model.SalaryModel;
 import lk.ijse.theGym.to.Employee;
 import lk.ijse.theGym.util.Navigation;
 import lk.ijse.theGym.util.Notification;
@@ -21,9 +22,11 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class UpdateEmployeeFromController implements Initializable {
+    private static String dateNow;
     public JFXTextField txtFName;
     public JFXTextField txtLName;
     public JFXTextField txtEmail;
@@ -37,20 +40,20 @@ public class UpdateEmployeeFromController implements Initializable {
     public JFXTextField txtUserName;
     public JFXTextField txtPassword;
     public JFXButton btn;
-    ArrayList<String> roles=new ArrayList<>();
-    private static String dateNow;
-    public void updateOnAction(ActionEvent actionEvent) {
-        if (txtFName.getText().equals("")|
-                txtLName.getText().equals("")|
-                txtEmail.getText().equals("")|
-                txtMoNo.getText().equals("")|
-                txtNIC.getText().equals("")|
-                combRole.getValue()==null){
-            Notification.notificationWARNING("Please Check again","something wrong");
+    ArrayList<String> roles = new ArrayList<>();
 
-        }else {
+    public void updateOnAction(ActionEvent actionEvent) {
+        if (txtFName.getText().equals("") |
+                txtLName.getText().equals("") |
+                txtEmail.getText().equals("") |
+                txtMoNo.getText().equals("") |
+                txtNIC.getText().equals("") |
+                combRole.getValue() == null) {
+            Notification.notificationWARNING("Please Check again", "something wrong");
+
+        } else {
             try {
-                boolean isUpdate=EmployeeController.Update(new Employee(
+                boolean isUpdate = EmployeeController.Update(new Employee(
                         "",
                         txtFName.getText(),
                         txtLName.getText(),
@@ -68,7 +71,7 @@ public class UpdateEmployeeFromController implements Initializable {
                         getSalaryId()
 
                 ));
-                if (isUpdate){
+                if (isUpdate) {
                     EmployeeFromController.getInstance().vBox.getChildren().clear();
                     EmployeeFromController.getInstance().loadAllId();
                     Navigation.close(actionEvent);
@@ -81,19 +84,20 @@ public class UpdateEmployeeFromController implements Initializable {
     }
 
     public void roleOnAction(ActionEvent actionEvent) {
-        if(combRole.getValue().equals("Admin")|combRole.getValue().equals("Cashier")){
+        if (combRole.getValue().equals("Admin") | combRole.getValue().equals("Cashier")) {
             txtUserName.setVisible(true);
             txtPassword.setVisible(true);
-        }else {
+        } else {
             txtUserName.setVisible(false);
             txtPassword.setVisible(false);
         }
     }
+
     private void setAllRole() {
         try {
-            ResultSet set= SalaryController.getAllRoles();
-            while (set.next()){
-                roles.add(set.getString(1));
+            List<SalaryDTO> salaryDTOS = SalaryModel.findSalary();
+            for (SalaryDTO salaryDTO:salaryDTOS) {
+                roles.add(salaryDTO.getRole());
             }
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
@@ -116,7 +120,7 @@ public class UpdateEmployeeFromController implements Initializable {
     private void setData() {
         try {
             ResultSet set = EmployeeController.getAllData();
-            if (set.next()){
+            if (set.next()) {
                 txtFName.setText(set.getString(2));
                 txtLName.setText(set.getString(3));
                 txtUserName.setText(set.getString(4));
@@ -135,13 +139,12 @@ public class UpdateEmployeeFromController implements Initializable {
             throwables.printStackTrace();
         }
     }
+
     private String getSalaryId() {
 
         try {
-            ResultSet set = SalaryController.findSalaryId((String) combRole.getValue());
-            if (set.next()) {
-                return set.getString(1);
-            }
+            SalaryDTO salaryDTO = SalaryModel.findSalaryByRole((String) combRole.getValue());
+            return salaryDTO.getSalary_Id();
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
@@ -182,7 +185,7 @@ public class UpdateEmployeeFromController implements Initializable {
 
     }
 
-    public void ctiy(KeyEvent keyEvent){
+    public void ctiy(KeyEvent keyEvent) {
         RegexUtil.regex(btn, txtCity, txtCity.getText(), "\\b([a-z]|[A-Z])+", "-fx-text-fill: black");
 
     }
@@ -199,7 +202,7 @@ public class UpdateEmployeeFromController implements Initializable {
     }
 
     public void mobil(KeyEvent keyEvent) {
-        RegexUtil.regex(btn,txtMoNo, txtMoNo.getText(), "0((11)|(7(7|0|8|4|9|1|[3-7]))|(3[1-8])|(4(1|5|7))|(5(1|2|4|5|7))|(6(3|[5-7]))|([8-9]1))[0-9]{7}", "-fx-text-fill: white");
+        RegexUtil.regex(btn, txtMoNo, txtMoNo.getText(), "0((11)|(7(7|0|8|4|9|1|[3-7]))|(3[1-8])|(4(1|5|7))|(5(1|2|4|5|7))|(6(3|[5-7]))|([8-9]1))[0-9]{7}", "-fx-text-fill: white");
 
     }
 }

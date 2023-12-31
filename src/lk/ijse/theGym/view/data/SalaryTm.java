@@ -1,15 +1,15 @@
 package lk.ijse.theGym.view.data;
 
-public class salary {
+public class SalaryTm {
     private String id;
     private String salary;
     private String role;
     private String usage;
 
-    public salary() {
+    public SalaryTm() {
     }
 
-    public salary(String id, String salary, String role, String usage) {
+    public SalaryTm(String id, String salary, String role, String usage) {
         this.id = id;
         this.salary = salary;
         this.role = role;

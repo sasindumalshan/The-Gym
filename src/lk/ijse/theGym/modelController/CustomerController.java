@@ -93,4 +93,21 @@ public class CustomerController {
     public static ResultSet getPackage(String id) throws SQLException, ClassNotFoundException {
         return CrudUtil.crudUtil("SELECT  package_Id FROM customer WHERE customer_id=?",id);
     }
+
+    public static boolean updateCustomer(Customer customer) throws SQLException, ClassNotFoundException {
+        return CrudUtil.crudUtil("UPDATE customer SET fist_name=?,last_name=?,address_city=?,address_street=?,address_lene=?,e_mail=?,contact_number=?,nic=?,birthday=? WHERE customer_id=?",
+                customer.getFist_name(),
+                customer.getLast_name(),
+                customer.getAddress_city(),
+                customer.getAddress_street(),
+                customer.getAddress_lene(),
+                customer.getE_mail(),
+                customer.getContact_number(),
+                customer.getNic(),
+                customer.getBirthday(),
+                customer.getCustomer_id()
+
+
+        );
+    }
 }

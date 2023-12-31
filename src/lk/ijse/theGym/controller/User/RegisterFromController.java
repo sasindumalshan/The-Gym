@@ -10,6 +10,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import lk.ijse.theGym.controller.User.bar.RegistrationBarController;
+import lk.ijse.theGym.dto.CoachDTO;
 import lk.ijse.theGym.modelController.CoachController;
 import lk.ijse.theGym.modelController.CustomerController;
 import lk.ijse.theGym.util.Navigation;
@@ -19,6 +20,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class RegisterFromController implements Initializable {
@@ -29,7 +31,7 @@ public class RegisterFromController implements Initializable {
     public JFXTextField search;
     public Text txtAllCoach;
     public Text txtAllCustomer;
-    private ArrayList<String> ids = new ArrayList<>();
+    private final ArrayList<String> ids = new ArrayList<>();
 
     public RegisterFromController() {
         instance = this;
@@ -133,17 +135,17 @@ public class RegisterFromController implements Initializable {
         try {
             if (rBtnCustomer.isSelected()) {
                 for (int i = 0; i < ids.size(); i++) {
-                    ResultSet set=CustomerController.getSearchAllData(ids.get(i));
-                    if (set.next()){
-                        navigation(set.getString(1),set.getString(2)+" "+set.getString(3),set.getString(5)+" ,"+set.getString(4)+" ,"+set.getString(6),set.getString(7));
+                    ResultSet set = CustomerController.getSearchAllData(ids.get(i));
+                    if (set.next()) {
+                        navigation(set.getString(1), set.getString(2) + " " + set.getString(3), set.getString(5) + " ," + set.getString(4) + " ," + set.getString(6), set.getString(7));
                     }
                 }
             }
             if (rBtnCoach.isSelected()) {
                 for (int i = 0; i < ids.size(); i++) {
-                    ResultSet set=CoachController.getSearchAllForID(ids.get(i));
-                    if (set.next()){
-                        navigation(set.getString(1),set.getString(2)+" "+set.getString(3),set.getString(5)+" ,"+set.getString(4)+" ,"+set.getString(6),set.getString(7));
+                    ResultSet set = CoachController.getSearchAllForID(ids.get(i));
+                    if (set.next()) {
+                        navigation(set.getString(1), set.getString(2) + " " + set.getString(3), set.getString(5) + " ," + set.getString(4) + " ," + set.getString(6), set.getString(7));
                     }
 
                 }
@@ -166,27 +168,9 @@ public class RegisterFromController implements Initializable {
     }
 
     public void setCustomerData() {
-     vBox.getChildren().clear();
-            try {
-                ResultSet set = CustomerController.getAll();
-                while (set.next()) {
-                    navigation(set.getString(1), set.getString(2) + " " + set.getString(3), set.getString(5) + " ," + set.getString(4) + " ," + set.getString(6), set.getString(7));
-                }
-            } catch (SQLException | ClassNotFoundException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-
-
-
-    public void CoachesOnAction(ActionEvent actionEvent) {
-        setCoachesData();
-    }
-
-    public void setCoachesData() {
         vBox.getChildren().clear();
         try {
-            ResultSet set = CoachController.getAll();
+            ResultSet set = CustomerController.getAll();
             while (set.next()) {
                 navigation(set.getString(1), set.getString(2) + " " + set.getString(3), set.getString(5) + " ," + set.getString(4) + " ," + set.getString(6), set.getString(7));
             }
@@ -196,12 +180,34 @@ public class RegisterFromController implements Initializable {
     }
 
 
-    private void navigation(String id, String name, String city, String email) {
+    public void CoachesOnAction(ActionEvent actionEvent) {
+        setCoachesData();
+    }
+
+    public void setCoachesData() {
+        vBox.getChildren().clear();
+        try {
+            List<CoachDTO> all = CoachController.findCoach();
+            for (CoachDTO dto : all) {
+                navigation(
+                        dto.getCoach_id(),
+                        dto.getFist_name() + " " + dto.getLast_name(),
+                        dto.getAddress_lene() + ", " + dto.getAddress_street() + ", " + dto.getAddress_city(),
+                        dto.getE_mail()
+                );
+            }
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+
+    private void navigation(String id, String name, String address, String email) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/theGym/view/bar/RegistrationBarFrom.fxml"));
             Parent root = loader.load();
             RegistrationBarController controller = loader.getController();
-            controller.setData(id, name, email, city);
+            controller.setData(id, name, email, address);
             vBox.getChildren().add(root);
         } catch (IOException e) {
             e.printStackTrace();
@@ -218,10 +224,7 @@ public class RegisterFromController implements Initializable {
 
     public void setCoachCount() {
         try {
-            ResultSet set=CoachController.getCoachCunt();
-            if (set.next()){
-                txtAllCoach.setText(set.getString(1));
-            }
+            txtAllCoach.setText(CoachController.countCoach());
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
@@ -229,8 +232,8 @@ public class RegisterFromController implements Initializable {
 
     public void setCustomerCount() {
         try {
-            ResultSet set=CustomerController.getCustomerCount();
-            if (set.next()){
+            ResultSet set = CustomerController.getCustomerCount();
+            if (set.next()) {
                 txtAllCustomer.setText(set.getString(1));
             }
         } catch (SQLException | ClassNotFoundException throwables) {
