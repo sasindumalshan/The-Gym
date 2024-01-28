@@ -98,13 +98,15 @@ public class ItemModel {
 
     private static ItemDTO setDTO(ResultSet resultSet) throws SQLException {
         ItemDTO itemDTO = new ItemDTO();
-        itemDTO.setItem_id(resultSet.getString(1));
-        itemDTO.setItem_name(resultSet.getString(2));
-        itemDTO.setCategory(resultSet.getString(3));
-        itemDTO.setQut(Integer.parseInt(resultSet.getString(4)));
-        itemDTO.setPrice(Double.parseDouble(resultSet.getString(5)));
-        itemDTO.setBrand(resultSet.getString(6));
-        itemDTO.setDescription(resultSet.getString(7));
+        if (resultSet.next()){
+            itemDTO.setItem_id(resultSet.getString(1));
+            itemDTO.setItem_name(resultSet.getString(2));
+            itemDTO.setCategory(resultSet.getString(3));
+            itemDTO.setQut(Integer.parseInt(resultSet.getString(4)));
+            itemDTO.setPrice(Double.parseDouble(resultSet.getString(5)));
+            itemDTO.setBrand(resultSet.getString(6));
+            itemDTO.setDescription(resultSet.getString(7));
+        }
         return itemDTO;
     }
 

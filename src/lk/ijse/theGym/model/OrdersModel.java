@@ -119,8 +119,12 @@ public class OrdersModel {
 
     private static String setString(ResultSet resultSet) throws SQLException {
         if (resultSet.next()) {
-            return resultSet.getString(1);
+            return resultSet.getString(1)==null?"0":resultSet.getString(1);
         }
         return "0";
+    }
+
+    public static String getYearSum(String year) throws SQLException, ClassNotFoundException {
+       return setString(CrudUtil.crudUtil("SELECT SUM( final_total) FROM orders WHERE YEAR(date)=?",year));
     }
 }

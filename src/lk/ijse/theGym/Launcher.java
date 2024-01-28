@@ -14,7 +14,7 @@ public class Launcher extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/lk/ijse/theGym/view/Admin/AdminDashBordFrom.fxml"));
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/lk/ijse/theGym/view/LoginFrom.fxml"));
         Scene scene = new Scene(rootNode);
         // stage.getIcons().addAll(new Image("/view/assest/icon/image-removebg-preview (11).png"));
         stage.setTitle("The Gym");

@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SupplierOrderDetailsController {
+
     public static ResultSet getMonthlyOrders() throws SQLException, ClassNotFoundException {
         return CrudUtil.crudUtil("SELECT COUNT(*) FROM supplier_order_details");
     }
@@ -29,16 +30,24 @@ public class SupplierOrderDetailsController {
         return CrudUtil.crudUtil("SELECT * FROM supplier_order_details WHERE order_id=?",orderId);
     }
 
-    public static ResultSet getTotalOnDay(String day) throws SQLException, ClassNotFoundException {
-        return CrudUtil.crudUtil("SELECT SUM(total) FROM suppler_order WHERE date=?",day);
+    public static String getTotalOnDay(String day) throws SQLException, ClassNotFoundException {
+        ResultSet resultSet= CrudUtil.crudUtil("SELECT SUM(total) FROM suppler_order WHERE date=?",day);
+       return setString(resultSet);
     }
+
+    private static String setString(ResultSet resultSet) throws SQLException {
+        if (resultSet.next()){
+            return resultSet.getString(1)==null?"0":resultSet.getString(1);
+        }
+        return "0";
+    }
+
     public static ResultSet getFinalTotalOnYear(String year) throws SQLException, ClassNotFoundException {
         return CrudUtil.crudUtil("SELECT total FROM suppler_order WHERE date LIKE ?",year+"%");
 
     }
 
     public static ResultSet getMonthlyReport(String date) throws SQLException, ClassNotFoundException {
-        System.out.println(date);
         return CrudUtil.crudUtil("SELECT SUM(total) FROM Suppler_Order WHERE date LIKE ?",date);
     }
 
@@ -70,6 +79,10 @@ public class SupplierOrderDetailsController {
         }
 
         return true;
+    }
+
+    public static String getYearSum(String year) throws SQLException, ClassNotFoundException {
+      return   setString(CrudUtil.crudUtil("SELECT SUM(total) FROM Suppler_Order WHERE YEAR(date)=?",year));
     }
 
     /*
