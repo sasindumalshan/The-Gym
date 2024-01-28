@@ -410,8 +410,6 @@ public class SalaryFromController implements Initializable {
                 if (!isExistThisMonth) {
                     ids.add(set1.getString(1));
                 }
-
-
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
